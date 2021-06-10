@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/user/join.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+    <div onmouseover ></div>
+    {% include "header.html" %}
+        <div id ="join">
+            <div id ="join-wrapper">
+                <div id="join-content">
+                    <form action="/user/join/success" method="POST" enctype="application/x-www-form-urlencoded">
+                        <h3>
+                            <label for="id">아이디</label>
+                        </h3>
+                        <span class="id-box">
+                            <input type="text" id="id" maxlength="30" minlength="7" name="idx" required>
+                        </span>
+                        <h3>
+                            <label for="psw">비밀번호</label>
+                        </h3>
+                        <span class="psw-box">
+                            <input type="password" id="psw" maxlength="40" minlength="11" name="psw" required>
+                        </span>
+                        <h3>
+                            <label for="uname">이름</label>
+                        </h3>
+                        <span class="uname-box">
+                            <input type="text" id="uname" maxlength="30" name="name" required>
+                        </span>
+                        <span>
+                            <p>성별을 선택하세요</p>
+                            <span>남</span>
+                            <input type="radio" id="male1" name="gender" value="0" required>
+                            <span>여</span>
+                            <input type="radio" id="female" name="gender" value="1">
+                
+                        </span>
+
+                        <div id="birth">
+                            <h3><label for="birth">생년월일을 선택하세요</label></h3>
+                            <input type="date" id="dd" class="int" maxlength="2" placeholder="일" name="birth" required>
+                        </div>
+
+                        <div id="tel">
+                            <h3><label for="tel">휴대전화번호를 입력하세요</label></h3>
+                            <input type="tel" id="tel" class="int" name="tel" minlength="9">
+                        </div>
+
+
+                        <input type="submit" value="제출">
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    {% include "footer.html" %}
+
+</body>
+</html>

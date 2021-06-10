@@ -1,0 +1,62 @@
+#login-container{
+    width: 70%;
+    height:630px;
+    margin: 30px auto;
+    padding-top: 150px;
+   
+}
+#login-box{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 40px;
+    border:1px solid black;
+}
+#login-box>span{
+    width: 40%;
+    height: 480px;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    display: inline-flex;
+}
+#login-box>span:nth-child(1){
+    margin-left: 20px;
+    padding-right: 50px;
+    border-right: 1px solid black;
+}
+#right>ul>li{
+    text-align: center;
+    padding-bottom: 30px;
+}
+input[type=text], input[type=password]{
+    width:400px;
+    height: 35px;
+}
+.login-content>div{
+    display: inline-flex;
+    flex-direction: column;
+    text-align: left;
+    margin-left:-70px;
+}
+.login-content>div>label{
+    font-size: 20px;
+}
+.login-content>button{
+    width: 90px;
+    height: 120px;
+    box-sizing: border-box;
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+#right>ul>li>ul{
+    padding-top: 15px;
+    padding-left: 100px;
+}
+#right>ul>li>ul>li{
+    display: inline-flex;
+}
+#left>ul{
+    width: 500px;
+    justify-content: center;
+}
