@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +10,65 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/header.css">
 </head>
+
 <body>
-    
+
     {% include "header.html" %}
+    <table id="table">
+        <tr>
+            <td>번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>등록일</td>
+            <td>조회수</td>
+        </tr>
+    </table>
+    <ul id="user_review">
+
+    </ul>
     {% include "footer.html" %}
-    
+
 </body>
+<script type="text/javascript">
+let table = document.querySelector('#table')
+    let user_review = document.querySelector('#user_review')
+
+    async function lol(){
+        let data = await fetch('http://localhost:3000/community/review_notice')
+        let result = await data.json();
+        let userlist = result.userreview;
+        num = 1;
+        for(i=0; i<=userlist.length; i++){
+            if(i%10==0){
+                let li = document.createElement('li')
+                li.innerHTML=num;
+                console.log(li)
+        
+                li.addEventListener('click',(event)=>{
+                    let page = event.target.innerHTML;
+                    let page_start = (page-1)*10
+                    let page_end = (page)*10
+                    let page_target = userlist.slice(page_start,page_end)
+                    
+                    for(j=0; j<page_target.length; j++){
+                        let tr = document.createElement('tr');
+                        let values = Object.values(page_target[j])
+
+                        for(l=0; l<values.length; l++){
+                            let td = document.createElement('td')
+                            td.innerHTML = values[l];
+                            tr.appendChild(td)
+                        }
+                        table.appendChild(tr)
+                    }
+                })
+                num++
+            user_review.appendChild(li)
+           
+            }
+        }
+    }
+    lol()
+</script>
+
 </html>

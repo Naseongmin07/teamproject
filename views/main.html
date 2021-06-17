@@ -9,11 +9,18 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/header.css">
+    
 </head>
 
 <body>
 
     {% include "header.html" %}
+    
+    <div id="chat">
+        <a href="/chat/chat"
+        onclick="window.open(this.href, '_blank', 'width=500, height=500'); return false;">
+    1:1 실시간 상담</a>
+    </div>
     <div id="contens">
         <div id="main-slide-wrap">
             <!-- 메인 슬라이드부분 -->
@@ -167,7 +174,7 @@
                 </p>
             </div>
         </div>
-        <div id="main-bg">
+        <div id="main-sub-top">
             <div class="sub-top sub">
                 <div class="sub-slide">
                     <h3>공연/음악/전시/강좌</h4>
@@ -232,158 +239,163 @@
                             </span>
                         </p>
                 </div>
-                <div class="sub-bottom sub">
-                    <div class="sub-btm qr">
-                        <div class="btm_name_box">
-                            <div class="btm_name1 on">
-                                <h2>공지사항</h2>
-                            </div>
-                            <div class="btm_name2">
-                                <h2>티켓오픈</h2>
-                            </div>
+            </div>
+            
+        </div>
+        <div id="main-sub-bottom">
+            <div class="sub-bottom sub">
+                <div class="sub-btm qr">
+                    <div class="btm_name_box">
+                        <div class="btm_name1 on">
+                            <h2>공지사항</h2>
                         </div>
-                        <img src="/image/main/bottom_img/sub_btm.png">
-                        <ul class="sub_mf3">
-                            <li>2021 전당이온다
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>예술의전당 하우스
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>고객안내서비스 종료
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>임대차 공고
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>2021 예술의전당 6월 청년미술상
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>사회적 거리두기0.5단계
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>어린이라운지
-                                <span>2021.06.18</span>
-                            </li>
-                        </ul>
-                        <ul class="sub_mf4">
-                            <li>2021 경남도립극단
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>리틀뮤지션
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>에델 라인클랑 단독콘서트
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>연극 우산도둑
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>인형극 하얀산
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>코리안샴푸니오케스트라
-                                <span>2021.06.18</span>
-                            </li>
-                            <li>윤동주,발을쏘다
-                                <span>2021.06.18</span>
-                            </li>
-                        </ul>
+                        <div class="btm_name2">
+                            <h2>티켓오픈</h2>
+                        </div>
                     </div>
-                    <div class="sub-btm2 qr">
-                        <div class="sub_name">
-                            <img src="/image/main/bottom_img/sub_btm2.png">
-                            <h1>
-                                알림판
-                            </h1>
-                        </div>
-                        <ul>
-                            <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm1.jpg">
-                            </li>
-                            <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm2.jpg">
-                            </li>
-                            <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm3.png">
-                            </li>
-                            <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm4.jpg">
-                            </li>
-                            <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm5.jpg">
-                            </li>
-                        </ul>
+                    <img src="/image/main/bottom_img/sub_btm.png">
+                    <ul class="sub_mf3">
+                        <li>2021 전당이온다
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>예술의전당 하우스
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>고객안내서비스 종료
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>임대차 공고
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>2021 예술의전당 6월 청년미술상
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>사회적 거리두기0.5단계
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>어린이라운지
+                            <span>2021.06.18</span>
+                        </li>
+                    </ul>
+                    <ul class="sub_mf4">
+                        <li>2021 경남도립극단
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>리틀뮤지션
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>에델 라인클랑 단독콘서트
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>연극 우산도둑
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>인형극 하얀산
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>코리안샴푸니오케스트라
+                            <span>2021.06.18</span>
+                        </li>
+                        <li>윤동주,발을쏘다
+                            <span>2021.06.18</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="sub-btm2 qr">
+                    <div class="sub_name">
+                        <img src="/image/main/bottom_img/sub_btm2.png">
+                        <h1>
+                            알림판
+                        </h1>
+                    </div>
+                    <ul>
+                        <li>
+                            <img src="/image/main/bottom_img/sub_btm2/sub_btm1.jpg">
+                        </li>
+                        <li>
+                            <img src="/image/main/bottom_img/sub_btm2/sub_btm2.jpg">
+                        </li>
+                        <li>
+                            <img src="/image/main/bottom_img/sub_btm2/sub_btm3.png">
+                        </li>
+                        <li>
+                            <img src="/image/main/bottom_img/sub_btm2/sub_btm4.jpg">
+                        </li>
+                        <li>
+                            <img src="/image/main/bottom_img/sub_btm2/sub_btm5.jpg">
+                        </li>
+                    </ul>
 
+                </div>
+                <div class="sub-btm3 qr">
+                    <div class="sub_nmae">
+                        <img src="/image/main/bottom_img/sub_btm3.png">
+                        <h1>YouTube</h1>
                     </div>
-                    <div class="sub-btm3 qr">
-                        <div class="sub_nmae">
-                            <img src="/image/main/bottom_img/sub_btm3.png">
-                            <h1>YouTube</h1>
-                        </div>
+                    <div class="sub_tube-form2">
                         <div class="sub_tube_form">
                             <div class="sub_tube">
                                 <a href="#">예술의전당</a>
                                 <span>
-                                    2021-05-05
+                                    <p>2021-05-05</p>
                                     <img src="/image/main/bottom_img/mqdefault.jpg">
                                 </span>
                             </div>
                             <div class="sub_tube">
                                 <a href="#">요즘 예술가를 만나다 서예가 인중 이정화</a>
                                 <span>
-                                    2021-05-05
+                                    <p>2021-05-05</p>
                                     <img src="/image/main/bottom_img/mqdefault (1).jpg">
                                 </span>
                             </div>
                             <div class="sub_tube">
                                 <a href="#">[흥부]예술의전당 전격재능기부</a>
                                 <span>
-                                    2021-05-05
+                                    <p>2021-05-05</p>
                                     <img src="/image/main/bottom_img/mqdefault (2).jpg">
                                 </span>
                             </div>
                         </div>
                     </div>
-                    <div class="sub-btm4 ">
-                        <ul>
-                            <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon01.png">
-                                </span>
-                                <span class="img_name">개강날짜</span>
-                            </li>
-                            <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon02.png">
-                                </span>
-                                <span class="img_name">공간안내</span>
-                            </li>
-                            <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon03.png">
-                                </span>
-                                <span class="img_name">교통주차</span>
-                            </li>
-                            <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon05.png">
-                                </span>
-                                <span class="img_name">포트폴리오</span>
-                            </li>
-                            <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon06.png">
-                                </span>
-                                <span class="img_name">1:1문의</span>
-                            </li>
-                            <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon07.png">
-                                </span>
-                                <span class="img_name">이벤트</span>
-                            </li>
-                            <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon08.png">
-                                </span>
-                                <span class="img_name">마이페이지</span>
-                            </li>
-                        </ul>
-                    </div>
+                </div>
+                <div class="sub-btm4 ">
+                    <ul>
+                        <li class="btm4 sa">
+                            <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon01.png">
+                            </span>
+                            <span class="img_name">개강날짜</span>
+                        </li>
+                        <li class="btm4 sa">
+                            <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon02.png">
+                            </span>
+                            <span class="img_name">공간안내</span>
+                        </li>
+                        <li class="btm4 sa">
+                            <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon03.png">
+                            </span>
+                            <span class="img_name">교통주차</span>
+                        </li>
+                        <li class="btm4 sa">
+                            <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon05.png">
+                            </span>
+                            <span class="img_name">포트폴리오</span>
+                        </li>
+                        <li class="btm4 sa">
+                            <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon06.png">
+                            </span>
+                            <span class="img_name">1:1문의</span>
+                        </li>
+                        <li class="btm4 sa">
+                            <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon07.png">
+                            </span>
+                            <span class="img_name">이벤트</span>
+                        </li>
+                        <li class="btm4 sa">
+                            <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon08.png">
+                            </span>
+                            <span class="img_name">마이페이지</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

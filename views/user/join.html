@@ -17,22 +17,46 @@
                 <div id="join-content">
                     <form action="/user/join/success" method="POST" enctype="application/x-www-form-urlencoded">
                         <h3>
-                            <label for="id">아이디</label>
+                            <label for="class_team">class</label>
                         </h3>
-                        <span class="id-box">
-                            <input type="text" id="id" maxlength="30" minlength="7" name="idx" required>
+                        <span class="class_team-box">
+                            <input type="text" id="class_team" name="class_team" required>
                         </span>
                         <h3>
-                            <label for="psw">비밀번호</label>
+                            <label for="pay">가격</label>
                         </h3>
-                        <span class="psw-box">
-                            <input type="password" id="psw" maxlength="40" minlength="11" name="psw" required>
+                        <span class="pay-box">
+                            <input type="text" id="pay" name="pay" required>
+                        </span>
+                        <h3>
+                            <label for="userid">아이디</label>
+                        </h3>
+                        <span class="userid-box">
+                            <input type="text" id="userid" maxlength="30" minlength="6" name="userid" required>
+                        </span>
+                        <h3>
+                            <label for="userpw">비밀번호</label>
+                        </h3>
+                        <span class="userpw-box">
+                            <input type="password" id="userpw" maxlength="40" minlength="6" name="userpw" required>
                         </span>
                         <h3>
                             <label for="uname">이름</label>
                         </h3>
                         <span class="uname-box">
                             <input type="text" id="uname" maxlength="30" name="name" required>
+                        </span>
+                        <h3>
+                            <label for="nickname">닉네임</label>
+                        </h3>
+                        <span class="nickname-box">
+                            <input type="text" id="nickname" maxlength="30" name="nickname" required>
+                        </span>
+                        <h3>
+                            <label for="email">email</label>
+                        </h3>
+                        <span class="email-box">
+                            <input type="text" id="email" maxlength="30" name="email" required>
                         </span>
                         <span>
                             <p>성별을 선택하세요</p>
@@ -52,7 +76,23 @@
                             <h3><label for="tel">휴대전화번호를 입력하세요</label></h3>
                             <input type="tel" id="tel" class="int" name="tel" minlength="9">
                         </div>
+                            <h3>
+                                <label for="etc">기타 특이사항</label>
+                            </h3>
+                            <div class="etc-box">
+                                <textarea id="etc" name="etc"></textarea>
+                            </div>
+                            <!-- <span>
+                                <h3>취업 여부</h3>
+                                <span>근로자</span>
+                                <input type="radio" id="on" name="onoff" value="0" required>
+                                <span>비근로자</span>
+                                <input type="radio" id="off" name="onoff" value="1">
+                            </span>
+                            <span>
+                                <h3>포트폴리오</h3>
 
+                            </span> -->
 
                         <input type="submit" value="제출">
                     </form>

@@ -12,7 +12,75 @@
 <body>
     
     {% include "header.html" %}
+    
+    <table id="table">
+        <tr>
+            <td>번호</td>
+            <td>제목</td>
+            <td>작성자</td>
+            <td>등록일</td>
+            <td>조회수</td>
+        </tr>
+
+        <!-- {% for item in userlist %}
+        <tr>
+            <td>{{item.dataValues.id}}</td>
+            <td><a href="#">{{item.dataValues.subject}}</a></td>
+            <td>{{item.dataValues.name}}</td>
+            <td>{{item.dataValues.today}}</td>
+            <td>{{item.dataValues.hit}}</td>
+        </tr>
+        {% endfor %} -->
+    </table>
+    <ul id="notice_ul">
+
+    </ul>
+
     {% include "footer.html" %}
     
 </body>
+    <script type="text/javascript">
+        let  table = document.querySelector('#table')
+        let notice_ul = document.querySelector('#notice_ul')
+        async function load_data(){
+            let options = {headers : { 
+                'content-ype': 'application/json',
+                'Accept':'application/json'
+                }}
+            let data = await fetch('http://localhost:3000/community/load_notice')
+            
+           
+            let result = await data.json()
+
+            let userlist = result.userlist;
+            
+            let num = 1
+            for(let i = 0; i<=userlist.length; i++){
+                if(i%10 == 0){
+                    li = document.createElement('li')
+                    li.innerHTML = num
+                    li.addEventListener('click',(event)=>{
+                        let page = event.target.innerHTML
+                        let index_start = (page-1)*10
+                        let index_end = page*10
+                        let target_data = userlist.slice(index_start,index_end)
+                      
+                        for(let j=0; j<target_data.length; j++){
+                            let tr = document.createElement('tr');
+                            let values = Object.values(target_data[j]);
+                            for(let l=0; l<values.length; l++){
+                                let td = document.createElement('td')
+                                td.innerHTML=values[l];
+                                tr.appendChild(td) 
+                            }
+                            table.appendChild(tr)
+                        }
+                    })
+                    notice_ul.appendChild(li)
+                    num++
+                    }
+                }
+        }
+        load_data()
+    </script>
 </html>

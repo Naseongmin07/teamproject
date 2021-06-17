@@ -1,18 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/job/interview.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/header.css">
 </head>
+
 <body>
-    
+
     {% include "header.html" %}
+
+    <div class="contens_article">
+        <h3>취업자인터뷰</h3>
+        <!-- <form action="/job/interviewPost" method="post" enctype="multipart/form-data">
+            <input type="file" name="img" accept="image/png,image/jpeg">
+            <input type="submit" value="버튼">
+        </form> -->
+
+
+        <div class="contens">
+            <div class="interview_article">
+                <!-- <div class="interview_list">
+                    <a href="#" class="interview_img"></a>
+                    <dl class="interview_con">
+                        <dt class="title_T">제목</dt>
+                        <dd><a href="#">노바코어 프로그래머</a>
+                        </dd>
+                        <dt class="writer_W">이름</dt>
+                        <dd>시수현 취업자</dd>
+                        <dt class="count_C">조회수</dt>
+                        <dd>222</dd>
+                    </dl>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
     {% include "footer.html" %}
-    
+
 </body>
+<script type="text/javascript">
+    let interview_article = document.querySelector('.interview_article')
+     
+    let contens = document.querySelector('.contens')
+
+
+
+    async function load_data() {
+   
+        let options = {
+
+            Headers: {
+                'content-type': 'application/json',
+                'Accept': 'application/json'
+            }
+        }
+        let data = await fetch('http://localhost:3000/job/interviewPost')
+        let result = await data.json()
+
+        let interviewlist = result.resultlist;
+        let ul = document.createElement('ul')
+        ul.className = 'ul'
+        contens.appendChild(ul)
+        let num = 1
+
+        for (let i = 0; i < interviewlist.length; i++) {
+            if (i % 10 == 0) {
+                
+                li = document.createElement('li')
+                li.innerHTML = num
+                if(i==0){
+                    li.className = 'first_li'
+                }
+                li.addEventListener('click', (event) => {
+                    let page = event.target.innerHTML
+                    let page_start = (page - 1) * 10
+                    let page_end = (page) * 10
+                    let target_data = interviewlist.slice(page_start, page_end)
+                    
+                    console.log(page)
+                   
+
+                    let column = ['이미지', '제목', '글쓴이', '조회수']
+                    let target = Object.keys(target_data)
+                    let values = Object.values(target_data);
+                    
+                    console.log(column)
+                    console.log(values)
+                    for(i = 0 ; i < values.length; i++){
+                        let interview_list = document.createElement('div')
+                        interview_list.classList.add('interview_list')
+                        let dl = document.createElement('dl')
+                        dl.classList.add('interview_con')
+                        let target_obj = values[i]
+                        let target_obj_values = Object.values(target_obj)
+                        
+                        for (j = 0; j < target_obj_values.length; j++) {
+
+
+                            if (column[j] == '이미지') {
+                                let a = document.createElement('a')
+                                let img = document.createElement('img')
+                                img.classList.add('interview_img')
+                                a.href = '#'
+                                img.src = `http://localhost:3000/${target_obj_values[j].replace("\\", '/')}`
+                                a.appendChild(img)
+                                interview_list.appendChild(a)
+                            }
+                            else if (column[j] == values[j]) { //제목
+                                let dt = document.createElement('dt')
+                                let dd = document.createElement('dd')
+                                let a = document.createElement('a')
+                                a.href = '#'
+                                dt.innerHTML = column[j];
+                                a.innerHTML = column[j];
+                                dd.appendChild(a)
+                                dl.appendChild(dt)
+                                dl.appendChild(dd)
+
+                            } else {
+                                let dt = document.createElement('dt')
+                                let dd = document.createElement('dd')
+                                dt.innerHTML = column[j];
+                                dd.innerHTML = target_obj_values[j];
+                                dl.appendChild(dt)
+                                dl.appendChild(dd)
+                            }
+                        }
+                        interview_list.appendChild(dl)
+                        interview_article.appendChild(interview_list)
+                    }
+                    })
+                    ul.appendChild(li)
+                    num++
+                }
+        }   
+        first_li = document.querySelector('.first_li')
+        first_li.click()
+    }
+    load_data()
+    
+
+</script>
+
 </html>

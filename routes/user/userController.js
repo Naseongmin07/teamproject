@@ -13,17 +13,15 @@ let join = (req,res)=>{
 }
 let join_success = async (req,res)=>{   
    // console.log(req.body)
-    let {idx,psw,name,birth,gender} = req.body    
+    let {userid,userpw,class_team,pay,name,nickname,birth,gender,email,today,img,etc,onoff,portfolio} = req.body    
     let tel = req.body.tel
         tel = tel.replace('-','').replace('-','')
         console.log(tel)
-    let created_at = new Date().toLocaleDateString()
-    let img = 'img'
-    let email = 'email'   
+    // let today = new Date().toLocaleDateString()
 
     try{
         let rst = await User.create({
-            idx,psw,name,birth,gender,created_at,tel,img,email
+            userid,userpw,class_team,pay,name,nickname,birth,gender,email,today,tel,img,etc,onoff,portfolio
         })        
     }catch(e){
         console.log('error',e)

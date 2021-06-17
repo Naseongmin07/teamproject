@@ -4,19 +4,30 @@ const moment = require('moment')
 module.exports = class User extends Sequelize.Model{
     static init(sequelize){
         return super.init({
-            idx:{
-                type:Sequelize.STRING(20),
-                allowNull:false,
-                primarykey:true,
-                unique:true
-            },
-            psw:{
+            userid:{
                 type:Sequelize.STRING(30),
                 allowNull:false,
+                unique:true
+            },
+            userpw:{
+                type:Sequelize.STRING(30),
+                allowNull:false,
+            },
+            class_team:{
+                type:Sequelize.STRING(30),
+                allowNull:true,
+            },
+            pay:{
+                type:Sequelize.STRING(30),
+                allowNull:true,
             },
             name:{
                 type:Sequelize.STRING(30),
                 allowNull:false,
+            },
+            nickname:{
+                type:Sequelize.STRING(30),
+                allowNull:true,
             },
             birth:{
                 type:Sequelize.DATE,
@@ -30,7 +41,7 @@ module.exports = class User extends Sequelize.Model{
                 type:Sequelize.STRING(50),
                 allowNull:false
             },
-            created_at:{
+            today:{
                 allowNull:false,
                 type:Sequelize.DATE,
                 defaultValue:Sequelize.NOW,
@@ -44,8 +55,21 @@ module.exports = class User extends Sequelize.Model{
             img:{
                 type:Sequelize.TEXT,
                 allowNull:true          
-
-            }            
+            },
+            etc:{
+                type:Sequelize.TEXT,
+                allowNull:true  
+            },
+            onoff:{
+                type:Sequelize.BOOLEAN,
+                allowNull:true,
+                defaultValue:1
+            },
+            portfolio:{
+                type:Sequelize.TEXT,
+                allowNull:true  
+            },
+                     
         },{
             sequelize,
             timestamps:false,

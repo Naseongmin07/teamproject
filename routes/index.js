@@ -7,7 +7,7 @@ const communityRouter = require('./community/index.js')
 const consultRouter = require('./consult/index.js')
 const curriculumRouter = require('./curriculum/index.js')
 const jobRouter =require('./job/index.js')
-
+const chat = require('./chat/index.js')
 
 router.use('/user',userRouter)
 router.use('/college',collegeRouter)
@@ -15,6 +15,7 @@ router.use('/community',communityRouter)
 router.use('/consult',consultRouter)
 router.use('/curriculum',curriculumRouter)
 router.use('/job',jobRouter)
+router.use('/chat',chat)
 
 router.get('/',(req,res)=>{
     res.render('main.html')
