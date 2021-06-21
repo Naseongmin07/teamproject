@@ -1,5 +1,16 @@
 {% extends 'topmenuform.html' %}
 
 {% block topmenu %}
-topmenu
+{{ onesubboard.subBoard }}
+{{ subboard[0].contentType }}
+{% if onesubboard.contentType == 1 %}
+    안녕하세요
+    {% set res = subboard %}
+    {% for item in res %}
+    <li><a href="/admin/login_on?topmenu={{res[loop.index-1].mainBoard}}&submenu={{res[loop.index-1].subBoard}}">{{res[loop.index-1].subBoard}}</a></li>
+    {% endfor %}
+{% else %}
+    안녕못해요
+{% endif %}
+    
 {% endblock %}

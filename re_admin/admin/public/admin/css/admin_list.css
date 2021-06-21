@@ -23,3 +23,6 @@
 #user_add_container label{
     width: 70px;
 }
+#user_table_form td{
+    width: 20px;
+}

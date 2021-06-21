@@ -37,32 +37,38 @@ let admin_main = async (req,res)=>{
             case '사용자관리':
                 let resu = await User.findAll({})
                 res.render('./admin_list.html',{main,resu})
-                break
+                break;
         }
     }else if(req.query.topmenu){
         let {topmenu} = req.query
         switch (topmenu){
             case 'administrator':
-                res.redirect('/admin/login_on?main=관리자리스트')
+                res.render('./admin_list.html',{main:'관리자리스트'})
                 break;
-            case '시설소개':
-                res.render('./topmenu.html',{topmenu})
-                break;
-            case '교육과정':
-                res.render('./topmenu.html',{topmenu})
-                break;
-            case '취업정보':
-                res.render('./topmenu.html',{topmenu})
-                break;
-            case '커뮤니티':
-                res.render('./topmenu.html',{topmenu})
-            break;
-            case '상담신청':
-                res.render('./topmenu.html',{topmenu})
-                break;
-            case '방문자신청':
-                res.render('./topmenu.html',{topmenu})
-                break;
+            case `${topmenu}`:
+                let subboard = await Submain.findAll({where:{mainBoard:`${topmenu}`}})
+                let onesubboard = await Submain.findOne({where:{mainBoard:`${topmenu}`}})
+                console.log(onesubboard)
+                res.render('./topmenu.html',{topmenu,subboard,onesubboard})
+            // case '시설소개':
+            //     res.render('./topmenu.html',{topmenu})
+                
+            //     break;
+            // case '교육과정':
+            //     res.render('./topmenu.html',{topmenu})
+            //     break;
+            // case '취업정보':
+            //     res.render('./topmenu.html',{topmenu})
+            //     break;
+            // case '커뮤니티':
+            //     res.render('./topmenu.html',{topmenu})
+            // break;
+            // case '상담신청':
+            //     res.render('./topmenu.html',{topmenu})
+            //     break;
+            // case '방문자신청':
+            //     res.render('./topmenu.html',{topmenu})
+            //     break;
         }
     }
 }
@@ -129,8 +135,7 @@ let board_manage_post = async (req,res)=>{
                         id:idx
                     }
                 })
-            }
-            
+            }            
         }
     }catch(e){
         res.redirect('/admin/login_on?main=게시판생성관리')
@@ -204,11 +209,16 @@ let user_list = async (req,res)=>{
     
     switch (location){
         case 'add_user':
+            try{
             let {userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg} = req.body
             await User.create({userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg})
             res.redirect('/admin/login_on?main=사용자관리')
             break;
+            }catch(e){
+                res.render('./error.html',{error:'잘못된사용자정보'})
+            }
         case 'search_user':
+            try{
             if(req.body.search_condition_m=='name'){
                let searched = await User.findOne({
                    where:{
@@ -223,8 +233,57 @@ let user_list = async (req,res)=>{
                     }
                 })
                 res.render('./admin_list.html',{searched,main})
-            }
-            //res.send('search_user')
+            };
+            break;
+        }catch(e){
+            res.render('./error.html',{error:'잘못된사용자검색'})
+        }
+        case 'manage_user':
+            try{
+                let num = ((req.body.numbercheck).length)-1
+                for(i=0;i<=num;i++){
+                    if(req.body[i]=='수정'){
+                        let uName = req.body.uName[i]
+                        let uCoursename = req.body.uCoursename[i]
+                        let uBirth = req.body.uBirth[i]
+                        let uPaycheck = req.body.uPaycheck[i]
+                        let ucreated_at = req.body.ucreated_at[i]
+                        let uTel = req.body.uTel[i]
+                        let uAddress = req.body.uAddress[i]
+                        let userEtc = req.body.userEtc[i]
+                        let uImg = req.body.uImg[i]
+                        idx = req.body.numbercheck[i]
+                        await User.update({
+                            userName:uName,
+                            courseName:uCoursename,
+                            paycheck:uPaycheck,
+                            userBirth:uBirth,
+                            created_at:ucreated_at,
+                            userTel:uTel,
+                            userAddress:uAddress,
+                            userEtc:userEtc,
+                            userImg:uImg
+                        },{
+                            where:{
+                                id:idx
+                            }
+                        })
+                        res.redirect('/admin/login_on?main=사용자관리')
+                        //console.log(userEtc,ucreated_at,uImg,uTel,uBirth,uName,uCoursename,uAddress,uPaycheck)
+                    }else if(req.body[i]=='삭제'){
+                        idx = req.body.numbercheck[i]
+                        await User.destroy({
+                            where:{
+                                id:idx
+                            }
+                        })
+                        res.redirect('/admin/login_on?main=사용자관리')
+                    }
+                }
+                break;
+            }catch(e){
+                res.render('./error.html',{error:'잘못된사용자정보'})
+            }            
     }
 }
 

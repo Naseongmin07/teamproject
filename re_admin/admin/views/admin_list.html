@@ -367,7 +367,7 @@
                     </div>
                     <div>
                         <label for="Tel">연락처</label>
-                        <input type="number" id="Tel" name="userTel">
+                        <input type="tel" id="Tel" name="userTel">
                     </div>
                     <div>
                         <label for="Address">주소</label>
@@ -376,7 +376,7 @@
                     <div>
                         <p>구직상황</p>
                         <label for="Job_no">구직 진행중</label>
-                        <input type="radio" id="JobS_ok" name="employmentStatus" value="0" checked>
+                        <input type="radio" id="Job_ok" name="employmentStatus" value="0" checked>
                         <label for="Job_ok">구직 완료</label>
                         <input type="radio" id="Job_no" name="employmentStatus" value="1">            
                     </div>
@@ -398,77 +398,68 @@
                     <input type="submit" value="등록">    
                 </form>
             </div>
-            <table border="1">
-                <th>번호</th>
-                <th>이름</th>
-                <th>아이디</th>
-                <th>비밀번호</th>
-                <th>수강명</th>
-                <th>수강료 지급상태</th>
-                <th>생년월일</th>
-                <th>등록일</th>
-                <th>연락처</th>
-                <th>주소</th>
-                <th>취업여부</th>
-                <th>포트폴리오</th>
-                <th>기타사항</th>
-                <th>사진</th>
-                
-                
-                {% set res = resu %}
-                {% for item in res %}
-                <tr>
-                    <td>{{[loop.index]}}
-                        <span name="id" value="{{res[loop.index-1].id}}"></span>
-                    </td>
-                    <td>{{res[loop.index-1].userName}}</td>
-                    <td>{{res[loop.index-1].userIdx}}</td>
-                    <td>{{res[loop.index-1].userPsw}}</td>
-                    <td>{{res[loop.index-1].courseName}}</td>
-                    <td>{{res[loop.index-1].paycheck}}</td>
-                    <td>{{res[loop.index-1].userBirth}}</td>
-                    <td>{{res[loop.index-1].created_at}}</td>
-                    <td>{{res[loop.index-1].userTel}}</td>
-                    <td>{{res[loop.index-1].userAddress}}</td>
-                    <td>{{res[loop.index-1].employmentStatus}}</td>
-                    <td>{{res[loop.index-1].portfolio}}</td>
-                    <td>{{res[loop.index-1].userEtc}}</td>
-                    <td>{{res[loop.index-1].userImg}}</td>
-                </tr>        
-                {% endfor %}
+            <div id="user_table_form">
+                <form action="/admin/login_on/user_list?location=manage_user" method="POST">
+                    <table border="1">
+                        <th>번호</th>
+                        <th>이름</th>
+                        <th>수강명</th> 
+                        <th>수강료</th>
+                        <th>생년월일</th>
+                        <th>등록일</th>
+                        <th>연락처</th>
+                        <th>주소</th>
+                        <th>기타사항</th>
+                        <th>사진</th> 
+                        <th>수정</th>
+                        <th>삭제</th>                       
+                        
+                        {% set res = resu %}
+                        {% for item in res %}
+                            <tr>
+                                <td>
+                                    <input type="text" value="{{[loop.index-1]}}" name="number">
+                                    <input type="number" value="{{res[loop.index-1].id}}" name="numbercheck" style="display: none;">
+                                </td>
+                                <td>
+                                    <input type="text" name="uName" value="{{res[loop.index-1].userName}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="uCoursename" value="{{res[loop.index-1].courseName}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="uPaycheck" value="{{res[loop.index-1].paycheck}}" >
+                                </td>
+                                <td>
+                                    <input type="date" name="uBirth" value="{{res[loop.index-1].userBirth}}">
+                                </td>
+                                <td>
+                                    <input type="date" name="ucreated_at" value="{{res[loop.index-1].created_at}}">
+                                </td>
+                                <td>
+                                    <input type="number" name="uTel" value="{{res[loop.index-1].userTel}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="uAddress" value="{{res[loop.index-1].userAddress}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="userEtc" value="{{res[loop.index-1].userEtc}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="uImg" value="{{res[loop.index-1].userImg}}">
+                                </td>
+                                <td>                        
+                                    <input type="submit" name="{{[loop.index-1]}}" value="수정">
+                                </td>
+                                <td>
+                                    <input type="submit" name="{{[loop.index-1]}}" value="삭제">
+                                </td>
 
-               
-                <tr>
-                    <td>{{searched.userName}}</td>
-                    <td>{{searched.userIdx}}</td>
-                    <td>{{searched.userPsw}}</td>
-                    <td>{{searched.courseName}}</td>
-                    <td>{{searched.paycheck}}</td>
-                    <td>{{searched.userBirth}}</td>
-                    <td>{{searched.created_at}}</td>
-                    <td>{{searched.userTel}}</td>
-                    <td>{{searched.userAddress}}</td>
-                    <td>{{searched.employmentStatus}}</td>
-                    <td>{{searched.portfolio}}</td>
-                    <td>{{searched.userEtc}}</td>
-                    <td>{{searched.userImg}}</td>
-                </tr>        
-                <!-- <tr>
-                    <td>name</td>
-                    <td>idx</td>
-                    <td>psw</td>
-                    <td>courseName</td>
-                    <td>paycheck</td>
-                    <td>userBirth</td>
-                    <td>created_at</td>
-                    <td>userTel</td>
-                    <td>userAddress</td>
-                    <td>employmentStatus</td>
-                    <td>portfolio</td>
-                    <td>userEtc</td>
-                    <td>userImg</td>
-                </tr> -->
-            </table>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
         </div>
     {% endif %}
 {% endblock %}
