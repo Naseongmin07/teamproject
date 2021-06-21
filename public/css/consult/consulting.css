@@ -1,0 +1,72 @@
+.ki_write{
+    width: 870px;
+    height: 21px;
+    padding: 0 0 20px 0 ;
+}
+
+.textarea{
+    width: 870px;
+    height: 100px;
+}
+
+.board_write > tbody > tr > td{
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0 10px 0;
+}
+
+.board_article{
+    width: 100%;
+    float: right;
+}
+
+.board_div{
+    margin-top: 100px;
+}
+
+.board_input{
+    width: 100%;
+    border-top: 1px solid #006cdb;
+}
+
+.board_input > tbody > tr > th{
+    background: #f8f8f8;
+    text-align: center;
+}
+
+
+.board_input > tbody > tr{
+    border-bottom: 1px solid #eeeeee;
+    height: 20px;
+}
+
+.board_input > tbody > tr > td{
+    padding: 10px 10px 10px 20px;
+}
+
+
+.btn_group{
+    width: 250px;
+    margin: 50px auto 0 auto;
+}
+
+.btn_blue{
+    cursor: pointer;
+    padding: 7px 30px;
+    background: #006cdb;
+    border: 1px solid #006cdb;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.btn_white{
+    cursor: pointer;
+    padding: 7px 30px;
+    border: 1px solid #006cdb;
+    border-radius: 6px;
+    font-weight: bold;
+    color: #006cdb;
+}
+
+
+

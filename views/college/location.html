@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/middle.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/college/location.css">
+</head>
+<body>
+    
+    {% include "header.html" %}
+    {% include "middle.html" %}
+                    <div id="map" style="width:850px;height:550px;">
+                    
+                    </div>
+                    <div class="college_location">
+                        <ul>
+                            <li>서울특별시 강동구 천호대로 995 금복빌딩 3,4층 경일게임아카데미(지하철 5,8호선 1번출구 10m이내)</li>
+                            <li>Tel. 02-479-4050 / Fax. 02-479-4056</li>
+                            <li>Email. kigsnet@naver.com</li>
+                            <li>지하철 5,8호선 1번 출구로 올라오셔서 10m이내 금복빌딩 3층으로 올라오시면 됩니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6b2736db393e525c04141a5b6205a968"></script>
+    <script type="text/javascript" src="/js/college/location.js"></script>
+    {% include "footer.html" %}
+</body>
+</html>

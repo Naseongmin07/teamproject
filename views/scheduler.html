@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/scheduler.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <title>Document</title>
+</head>
+<body>
+    {% include "header.html" %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
+    <div id = "container">
+        <div id="banner">
+            <div class="before_box banner_button">
+                <img class="before_img" src="https://www.sac.or.kr/design/theme/sac/images/sub/romantic_left.png">
+            </div>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/image/scheduler/banner/banner_1.gif">
+                        <p>06.25(금) 11:00</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/image/scheduler/banner/banner_2.gif">
+                        <p>06.25(금) 11:00</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/image/scheduler/banner/banner_3.gif">
+                        <p>06.25(금) 11:00</p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/image/scheduler/banner/banner_4.gif">
+                        <p>06.25(금) 11:00</p>
+                    </div>
+                </div>
+            </div>
+            <div class="next_box banner_button">
+                <img class="next_img" src="https://www.sac.or.kr/design/theme/sac/images/sub/romantic_right.png">
+            </div>
+        </div>
+        <div id = "container_header">
+            <div id="container_header_content">
+                <div class="home icon"><img src = "https://www.sac.or.kr/design/theme/sac/images/sub/cwac-menu_icon01.png"></div>
+                <div class="content_sub_menu sub_menu_introduce">
+                    <p>과정·소개</p>
+                    <img src = "https://www.sac.or.kr/design/theme/sac/images/sub/cwac-menu_icon02.png">
+                    <div class = "loading_container container_introduce">
+                        <div class = "loading_section loading_introduce">
+                            <div class="loading_box_black"></div>
+                        </div>
+                    </div>
+                    <ul class="introduce container_menu_content">
+                        <a href="/college/introduction"><li>인사말</li></a>
+                        <a href="/college/history"><li>연혁</li></a>
+                        <a href="/college/teachers"><li>교직원소개</li></a>
+                        <a href="/college/interior"><li>시설소개</li></a>
+                        <a href="/college/location"><li>오시는길</li></a>
+                    </ul>
+                </div>
+                <div class="content_sub_menu sub_menu_program">
+                    <p>전체일정(달력)</p>
+                    <img src = "https://www.sac.or.kr/design/theme/sac/images/sub/cwac-menu_icon02.png">
+                    <div class = "loading_container container_program">
+                        <div class = "loading_section loading_program">
+                            <div class="loading_box_black"></div>
+                        </div>
+                    </div>
+                    <ul class = "program container_menu_content">
+                        <li><a href="/scheduler">전체일정(달력)</a></li>
+                        <li><a href="#">개강일정</a></li>
+                        <li><a href="#">행사일정</a></li>
+                    </ul>
+                </div>
+                <div class="sns icon"><img src = "https://www.sac.or.kr/design/theme/sac/images/sub/cwac-menu_icon04.png"></div>
+                <div class="print icon"><img src = "https://www.sac.or.kr/design/theme/sac/images/sub/cwac-menu_icon03.png"></div>
+                <div class="sns_area">
+                    <img src="https://www.sac.or.kr/design/theme/sac/images/sub/sns_APP1.gif">
+                    <img src="https://www.sac.or.kr/design/theme/sac/images/sub/sns_APP2.gif">
+                    <img src="https://www.sac.or.kr/design/theme/sac/images/sub/sns_APP3.gif">
+                    <img src="https://www.sac.or.kr/design/theme/sac/images/sub/sns_APP4.gif">
+                </div>
+            </div>
+        </div>
+        <div id = "container_calendar">
+            <div id = "calendar_header">
+                <div class = "square"></div>
+                <p>전체일정</p>
+            </div>
+            <div id = "calendar_date">
+                <div id = "date">
+                    <img class = "before_btn" src = "https://www.sac.or.kr/design/theme/sac/images/sub/schedule_left.gif">
+                    <div class = "year box_date"></div>
+                    <div class = "month box_date"></div>
+                    <img class = "next_btn" src = "https://www.sac.or.kr/design/theme/sac/images/sub/schedule_right.gif">
+                </div>
+            </div>
+            <div id="calendar_box">
+            </div>
+        </div>
+    </div>
+    
+    
+    <div id="legend">
+        <ul>
+            <li>
+                <div class="VRAR div_label"></div>
+                <div class="label_name">VR/AR</div>
+            </li>
+            <li>
+                <div class="blockchain div_label"></div>
+                <div class="label_name">블록체인</div>
+            </li>
+            <li>
+                <div class="gamekrw div_label"></div>
+                <div class="label_name">게임원화</div>
+            </li>
+            <li>
+                <div class="gameschedule div_label"></div>
+                <div class="label_name">게임기획</div>
+            </li>
+            <li>
+                <div class="progammer div_label"></div>
+                <div class="label_name">프로게이머</div>
+            </li>
+            <li>
+                <div class="gameprogramming div_label"></div>
+                <div class="label_name">게임 프로그래밍</div>
+            </li>
+        </ul>
+    </div>
+    {% include "footer.html" %}
+    <script type = "text/javascript" src="js/scheduler.js"></script>
+</body>
+</html>

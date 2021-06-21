@@ -1,0 +1,61 @@
+.common_board{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.common_board > tr {
+    height: 35px;
+    border-bottom: 1px solid rgb(236, 236, 236);
+}
+
+.common_board > :nth-child(1){
+    text-align: center !important;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid rgb(105, 132, 189) ;
+    vertical-align: middle;
+    background: #f8f8f8;
+    height: 40px !important;
+}
+
+.common_board > tr > :nth-child(1){
+    width: 60px;
+    text-align:center;
+    
+}
+
+.common_board > tr > :nth-child(2){
+    width: 540px;
+}
+
+.common_board > tr > :nth-child(3){
+    text-align: center;
+}
+
+.common_board > tr > :nth-child(4){
+    text-align: center;
+}
+
+.common_board > tr > :nth-child(5){
+    text-align: center;
+}
+
+.page_ul > li{
+    cursor: pointer;
+    text-align:center;
+    margin-left: 5px;
+    float: left;
+    width: 20px;
+    height: 20px;
+}
+
+
+.page_ul{
+    height: 50px;
+    width: 400px;
+    margin: 30px auto 0 auto;
+}
+
+
+

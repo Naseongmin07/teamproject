@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/middle.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/consult/consulting.css">
+</head>
+<body>
+    
+    {% include "header.html" %}
+    {% include "middle.html" %}
+                    <div>
+                        <h4 class="ki_write">개인정보취급방침</h4>
+                    </div>
+                    <div>
+                        <table class="board_write">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <textarea class = "textarea">
+가. 수집하는 개인정보 항목 및 수집방법
+나. 개인정보의 수집 및 이용목적
+다. 수집한 개인정보의 보유 및 이용기간
+
+가. 수집하는 개인정보 항목 및 수집방법
+본원은 고객님의 온라인상담을 위해 개인정보를 아래와 같이 수집하고 있습니다.
+- 이름, 핸드폰, 직업, 나이, 이메일 등 기록
+본원은 다음과 같은 방법으로 개인정보를 수집합니다.
+- 상담 게시판에 상담 신청 게시글 등록
+나. 개인정보의 수집 및 이용목적
+본 학원은 수집한 개인정보를 다음의 목적을 위해 활용합니다.
+- 과정문의에 대한 학과담당자들의 전화 및 이메일상담
+- 신규 서비스(강좌) 개발 및 특화, 이벤트 등 광고성 정보 전달
+다. 수집한 개인정보의 보유 및 이용기간
+원칙적으로 개인정보 수집 및 이용목적이 달성된 후에는 해당정보를 지체 없이 파기합니다.
+                                        </textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="board_article">
+                        <label>
+                            <input type="radio" name="agree" value="0" checked="true">
+                            동의하지않습니다
+                        </label>
+                        <label>
+                            <input type="radio" name="agree" value="1">
+                            동의합니다
+                        </label>
+                    </div>
+                    <div class="board_div">
+                        <h4 class="ki_write">상담정보</h4>
+                    </div>
+                    <div class="board_board">
+                        <table class="board_input">
+                            <tr>
+                                <th>이름*</th>
+                                <td class="board_name">
+                                    <input type="text" name="name" style="width:100px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>성별*</th>
+                                <td class = "board_gender">
+                                    <input type="radio" name="gender" value="남">
+                                    남
+                                    <input type="radio" name="gender" value="여">
+                                    여
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>나이*</th>
+                                <td class = "board_age">
+                                    <input type="text" name="name" style="width:100px;">
+                                    세
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>이메일*</th>
+                                <td class = "board_email">
+                                    <input type="text" name="name" style="width:100px;">
+                                    @
+                                    <input type="text" id="email_domain" name="name" style="width:100px;">
+                                    <select id="email_select" onchange=onchangeFn()> 
+                                        <option></option>
+                                        <option>직접입력</option>
+                                        <option>naver.com</option>
+                                        <option>hanmail.net</option>
+                                        <option>daum.net</option>
+                                        <option>nate.com</option>
+                                        <option>hotmail.com</option>
+                                        <option>gmail.com</option>
+                                        <option>korea.com</option>
+                                        <option>kornet.net</option>
+                                        <option>dreamwiz.com</option>
+                                        <option>hanafos.com</option>
+                                        <option>intizen.com</option>
+                                        <option>msn.co.kr</option>
+                                        <option>paran.com</option>
+                                        <option>sayclub.com</option>
+                                        <option>yahoo.com</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>전화번호*</th>
+                                <td class = "board_tel">
+                                    <input type="text" name="mobile1" style="width: 80px;">
+                                    -
+                                    <input type="text" name="mobile1" style="width: 100px;">
+                                    -
+                                    <input type="text" name="mobile1" style="width: 100px;">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>상담내용*</th>
+                                <td class = "board_content">
+                                    <textarea style="width:100%; min-height:300px;"></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="btn_group">
+                        <button class="btn_blue">상담신청하기</button>
+                        <button class="btn_white">취 소</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type = "text/javascript" src="/js/consult/consulting.js"></script>
+    {% include "footer.html" %}
+</body>
+</html>

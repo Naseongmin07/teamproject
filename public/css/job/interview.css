@@ -1,0 +1,71 @@
+.interview_list > div > img{
+    cursor: pointer;
+    width: 180px;
+    height: 120px;
+}
+
+.common_div{
+    overflow: auto;
+    width: 100%;
+    padding-top : 50px;
+    border-top: 1px solid #006cdc;
+    height: auto;
+}
+
+.interview_list{
+    width: 50%;
+    height: 180px;
+    float: left;
+    padding: 30px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.interview_list > div{
+    position: relative;
+    width: 200px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.interview_list > div > div{
+    height:25px;
+    display: block !important;
+}
+
+
+.interview_list > div > div> div{
+    float:left;
+    padding: 0 5px 0 5px;
+}
+
+.middle_right_bottom{
+    width: 100%;
+    height: auto;
+}
+
+.middle_right_bottom > ul > li{
+    cursor: pointer;
+    text-align:center;
+    margin-left: 5px;
+    float: left;
+    width: 20px;
+    height: 20px;
+}
+
+.middle_right_bottom > ul{
+    height:30px;
+    width: 400px;
+    margin: 30px auto 0 auto;
+}
+
+.img_div{
+    float:left;
+}
+
+.ul{
+    float:left;
+}
+
+.ul > div{
+    padding: 5px 0 5px 0 ;
+}

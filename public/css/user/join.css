@@ -1,0 +1,77 @@
+#join{
+    padding: 100px 0 100px 0;
+}
+
+#join-wrapper{
+    width: 1200px;
+    border: 1px solid gray;
+    margin: 0 auto;
+}
+
+#join-content{
+    width: 400px;
+    margin: 100px auto;
+}
+
+#join-content > form > h3{
+    font-size: 12px;
+}
+
+.input_box{
+    width: 400px;
+    height: 35px;
+}
+
+#join-content > form > div{
+    margin-bottom: 10px;
+}
+
+#birth > h3 {
+    font-size: 12px;
+}
+
+#tel > h3 {
+    font-size: 12px;
+}
+
+#gender_title{
+    font-size: 12px;
+}
+
+#birth_div{
+    display: inline-block;
+}
+
+#birth > input{
+    width: 400px;
+    height: 35px;
+}
+
+#tel > input{
+    height: 35px;
+    width: 117px;
+}
+
+#gender_div > h3 > label{
+    font-size: 12px;
+}
+
+.etc-box > textarea{
+    width: 400px;
+    height: 100px;
+}
+
+#submit_button{
+    margin-top: 50px;
+    width: 400px;
+    height: 35px;
+}
+
+#join-content > h4{
+    text-align: center;
+    font-size : 30px;
+}
+
+#join-content > form{
+    margin-top: 30px;
+}

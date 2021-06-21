@@ -1,0 +1,29 @@
+.common_table > tr > td > img{
+    width : 300px;
+    height : 200px;
+}
+
+.common_div > div{
+    float: left;
+    width : 50%;
+}
+
+.middle_right_bottom{
+    width: 100%;
+    height: auto;
+}
+
+.middle_right_bottom > ul > li{
+    cursor: pointer;
+    text-align:center;
+    margin-left: 5px;
+    float: left;
+    width: 20px;
+    height: 20px;
+}
+
+.middle_right_bottom > ul{
+    height:30px;
+    width: 400px;
+    margin: 30px auto 0 auto;
+}
