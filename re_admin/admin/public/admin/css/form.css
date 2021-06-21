@@ -1,0 +1,135 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*{
+    box-sizing: border-box;
+}
+ul li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+#top_m{
+    display: flex;
+    justify-content: center;
+}
+#top_contents_container{
+    width: 1920px;
+    background-color: #b3b3cb;
+    display: flex;
+    flex-direction: row;
+}
+#logo{
+    display: flex;
+    justify-content: center;
+    width:400px;
+}
+#top_m>div>ul{
+    width: 1920px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    
+}
+#top_m>div>ul>li {
+    box-sizing: border-box;
+    margin-right: 30px;
+    padding-right: 30px;
+    font-size: 17px;
+    font-weight: 600;
+}
+#top_m>div>ul>li>a{
+    text-decoration: none;
+    color:#48486a;
+}
+#top_m>div>ul>li:hover{
+    font-size: 19px;
+    color:#535379;
+}
+#contents_m{
+    display: flex;
+    flex-direction: row;
+}
+.manager_mode_m>ul{
+    width: 200px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border: 1px solid #333333;
+}
+.manager_mode_m>p>a{
+    padding: 0;
+    margin: 0;
+}
+.left_menu_m{
+    margin-top: 30px;
+    border: 1px solid #333333;
+}
+.left_menu_m>table>thead>tr>th{
+    padding-left: 70px;
+}
+#list_column_m{
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#main_container_top_m fieldset{
+    margin-bottom: 40px;
+}
+#main_container_m{
+    height: 700px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 50px;
+}
+#admin_add_form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 800px;
+    margin-bottom:40px ;
+}
+#main_container_main_m form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 800px;
+    border:1px solid black;
+}
+#searched_form div, #admin_add_form>div{
+    width: 200px;
+    padding: 10px;
+}
+#searched_form > div > input {
+    border:0px solid;
+}
+/* label{
+    font-size: 17px;
+    font-weight: 400;
+}
+.submit{
+    margin-top: 0;
+    width: 600px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    text-align: end;
+} */
+/* #submit{
+    width: 200px;
+    height:30px;
+    margin-top: 10px;
+    margin-right: 40px;
+}
+ */
+

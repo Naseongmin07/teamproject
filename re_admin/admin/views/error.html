@@ -1,0 +1,8 @@
+{% extends 'errorform.html' %}
+
+{% block errorContent %}
+    {% if error=="관리자아이디동일" %}
+    동일한 관리자 아이디가 존재합니다.
+    <a href="/admin/login_on?main=관리자리스트">관리자 리스트로 돌아가기</a>    
+    {% endif %}
+{% endblock %}s

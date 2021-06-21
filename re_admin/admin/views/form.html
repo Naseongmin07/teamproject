@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/admin/css/form.css">
+    <link rel="stylesheet" href="/admin/css/admin_list.css">
+    
+</head>
+<body>
+    <div id="main_form">
+        <div id="top_m">
+            <div id="top_contents_container">
+                <div id="logo">
+                    <p>경일직업능력개발원</p>
+                </div>
+                <ul>
+                    <li><a href="/admin/login_on?topmenu=administrator">administrator</a></li>
+                    <li><a href="/admin/login_on?topmenu=시설소개">시설소개</a></li>
+                    <li><a href="/admin/login_on?topmenu=교육과정">교육과정</a></li>
+                    <li><a href="/admin/login_on?topmenu=취업정보">취업정보</a></li>
+                    <li><a href="/admin/login_on?topmenu=커뮤니티">커뮤니티</a></li>
+                    <li><a href="/admin/login_on?topmenu=상담신청">상담신청</a></li>
+                    <li><a href="/admin/login_on?topmenu=방문자신청">방문자정보</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="contents_m">
+            <div id="left_contents_container_m">
+                <ul>
+                    <li class="manager_mode_m">
+                        <p><a href="">관리자모드</a></p>
+                        <ul>
+                            <li><span>{{resu.idx}}  :  </span><span><a href="">로그인</a></span></li>
+                            <li><span id="manager_name_m"></span></li>
+                            <li><span>현재 시간</span></li>
+                        </ul>
+                    </li>
+                    <li class="left_menu_m">
+                        <table class="left_menu_table_m">
+                            <thead>
+                                <tr>
+                                    <th>좌측메뉴</th>
+                                </tr>
+                            </thead>                    
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <ul id="list_column_m">
+                                            <li><a href="/admin/login_on?main=관리자리스트">관리자리스트</a></li>
+                                            <li><a href="/admin/login_on?main=사이트환경설정">사이트환경설정</a></li>
+                                            <li><a href="/admin/login_on?main=게시판생성관리">게시판생성관리</a></li>
+                                            <li><a href="/admin/login_on?main=게시판그룹관리">게시판그룹관리</a></li>
+                                            <li><a href="/admin/login_on?main=팝업관리">팝업관리</a></li>
+                                            <li><a href="/admin/login_on?main=메인비쥬얼보임">메인비쥬얼[보임]</a></li>
+                                            <li><a href="/admin/login_on?main=메인비쥬얼숨김">메인비쥬얼[숨김]</a></li>
+                                            <li><a href="/admin/login_on?main=사용자관리">사용자 관리</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+            </div> 
+            <div id="admin_list_container">
+               {% block adminMenu %}
+               {% endblock %}
+            </div>     
+        </div>    
+    </div>
+
+</body>
+</html>

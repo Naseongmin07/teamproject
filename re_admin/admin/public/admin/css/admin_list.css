@@ -1,0 +1,25 @@
+#user_list_container{
+    margin:0;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+#user_add_container{
+    width: 1300px;
+    border: 1px solid black;
+    margin-bottom: 20px;
+}
+#user_add_container>form{
+    padding: 10px;
+}
+#user_add_container>form>div{
+    width:400px;
+    padding: 10px;
+    display: inline-flex;
+    flex-direction: row;
+    font-size: 15px;
+}
+#user_add_container label{
+    width: 70px;
+}
