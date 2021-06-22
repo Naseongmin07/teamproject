@@ -366,8 +366,38 @@
     팝업
     {% elif submenu=="메인비쥬얼보임" %}
     보임
+    <form action="/admin/login_on/main_img" method="POST" enctype="multipart/form-data">
+        <div>
+            <input type="file" accept="image/*" name="imgg">
+            <input type="text" name="url">
+            <input type="submit" value="등록" name="enter">
+            <input type="text" value=1 name="watchaut" style="display: none;">
+        </div>
+    </form>
+    {% set items = main_img %}
+    {% for items in res %}
+    <form action="/admin/login_on/image_del" method="POST">
+        <div><img src="http://localhost:3000/{{items.img}}" alt="슬라이드이미지"></div>
+        <div><a href="{{items.link}}">{{item.link}}</a></div>
+        <input type="submit" name="del" value="삭제">
+        <input type="text" name="id" value="{{items.id}}" style="display: none;">
+    </form>
+    {% endfor %}
     {% elif submenu=="메인비쥬얼숨김" %}
     숨김
+    <form action="/admin/login_on/main_img" method="POST" enctype="multipart/form-data">
+        <div>
+            <input type="file" accept="image/*" name="imgg">
+            <input type="text" name="url">
+            <input type="submit" value="등록" name="enter">
+        </div>
+    </form>
+    <form action="/admin/login_on/hiddeen_main_img_del" method="POST">
+        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지"></div>
+        <div><a href="{{item.link}}">{{item.link}}</a></div>
+        <input type="submit" name="del" value="삭제">
+        <input type="text" name="id" value="{{item.id}}" style="display: none;">
+    </form>
 <!-- 사용자관리리스트======================================================================= -->
     {% elif submenu=="사용자관리" %}
         

@@ -1,9 +1,20 @@
-const {Adminlist, Submain,User,Facility,Community,Course, Employed, Portfolio} = require('../../models')
+const {Adminlist, Submain,User,Facility,Community,Course, Employed, Portfolio,Main_visual} = require('../../models')
 const pwHash = require('../../createHash.js')
 const ctoken = require('../../jwt.js')
 const {sequelize} = require('../../models/index.js')
 const { watch } = require('chokidar')
 const { renderString } = require('nunjucks')
+const multer = require('multer')
+const upload = multer({
+    storage:multer.diskStorage({
+        destination:function(req,file,callback){
+            callback(null,'uploads')
+        },
+        filename:function(req,file,callback){
+            callback(null,new Date().valueOf()+path.extname(file.originalname))
+        }
+    })
+})
 
 let admin_main = async (req,res)=>{
     let {topmenu,submenu} = req.query
@@ -15,8 +26,9 @@ let admin_main = async (req,res)=>{
                 let boardres = await Submain.findAll({})
                 let boardgroupres = await Submain.findAll({})
                 let resu = await User.findAll({})
+                let main_img = await Main_visual.findAll({})
                 console.log(req.cookies.AccessToken)
-                res.render('./admin_list.html',{subboard,topmenu,submenu,adminList,boardres,boardgroupres,resu})
+                res.render('./admin_list.html',{main_img,subboard,topmenu,submenu,adminList,boardres,boardgroupres,resu})
                 break;
             case '시설소개':
                 let result = await Facility.findAll({})
@@ -326,6 +338,14 @@ let portfolio_suc = async (req,res)=>{
     let portfolio = await Portfolio.findAll({})
     res.render('./employ.html',{submenu:'포트폴리오',portfolio})
 }
+
+let main_img = async (req,res)=>{
+    let {url,watchaut} = req.body
+    let img = req.file.filename
+    await Main_visual.create({img,url,watchaut})
+    res.redirect('/admin/login_on?topmenu=administrator&submenu=메인비쥬얼보임')
+}
+
 module.exports = {
     admin_main,
     main_form,
@@ -343,5 +363,6 @@ module.exports = {
     add_portfolio,
     employed_suc,
     portfolio_suc,
-    board_group_get
+    board_group_get,
+    main_img
 }

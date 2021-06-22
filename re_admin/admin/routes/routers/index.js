@@ -41,6 +41,7 @@ router.post('/image',upload.single('img'),async (req,res)=>{
 })
 router.post('/image_del',userController.img_del)
 
+router.post('/main_img',upload.single('imgg'),userController.main_img)
 // /admin/login_on
 router.get('/',userController.admin_main)
 router.post('/',userController.main_form)
