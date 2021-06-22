@@ -124,7 +124,7 @@
                 </table>
             </div>
         </div>
-
+<!-- 사이트환경설정============================================================================== -->
     {% elif main=="사이트환경설정" %}
         <div id="website_basic_info">
             <div id="site_set_title">
@@ -305,8 +305,39 @@
                 </form>
             </div>
         </div>
+        <!-- 게시판그룹관리=================================================== -->
     {% elif main=="게시판그룹관리" %}
-       게시판그룹
+        <div id="board_ground_manage">
+            <table border="1">
+                <th>번호</th>
+                <th>서브게시판명</th>
+                <th>게시판타입</th>
+                <th>내용</th>
+                <th>수정일</th>
+                <th>url</th>
+                <th>읽기권한</th>
+                <th>쓰기권한</th>
+                <th>댓글권한</th>
+                {% set res = boardgroupres %}
+                {% for item in res %}
+
+                <tr>
+                    <td>{{loop.index}}</td>
+                    <td><a href="/admin/login_on/board_group?idxx={{res[loop.index-1].subBoard}}">{{res[loop.index-1].subBoard}}</a></th>
+                    <td>{{res[loop.index-1].contentType}}</td>
+                    <td>{{res[loop.index-1].content}}</td>
+                    <td>{{res[loop.index-1].resetDate}}</td>
+                    <td>{{res[loop.index-1].url}}</td>
+                    <td>{{res[loop.index-1].watchaut}}</td>
+                    <td>{{res[loop.index-1].writeaut}}</td>
+                    <td>{{res[loop.index-1].replyaut}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div id="selected_board_group">
+
+        </div>
     {% elif main=="팝업관리" %}
     팝업
     {% elif main=="메인비쥬얼보임" %}

@@ -21,6 +21,10 @@ module.exports = class Submain extends Sequelize.Model{
                 type:Sequelize.TEXT,
                 allowNull:true
             },
+            content:{
+                type:Sequelize.TEXT,
+                allowNull:true
+            },
             resetDate:{
                 type:Sequelize.DATE,
                 defaultValue:Sequelize.NOW,

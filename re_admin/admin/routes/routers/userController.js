@@ -22,7 +22,8 @@ let admin_main = async (req,res)=>{
                 res.render('./admin_list.html',{main,boardres})
                 break;
             case '게시판그룹관리':
-                res.render('./admin_list.html',{main})
+                let boardgroupres = await Submain.findAll({})
+                res.render('./admin_list.html',{main,boardgroupres})
                 break;
             case '팝업관리':
                 res.render('./admin_list.html',{main})
@@ -76,6 +77,12 @@ let admin_main = async (req,res)=>{
                 break;
         }
     }
+}
+
+let board_group_get = async (req,res)=>{
+    let {idxx} = req.query
+    let selectedgroupres = await Submain.findAll({where:{subBoard:idxx}})
+    res.render('./board_group.html',{selectedgroupres,idxx})
 }
 
 let main_form = async (req,res)=>{
@@ -188,7 +195,7 @@ let admin_list = async (req,res)=>{
             if(req.body.delete=='삭제'){
                 await Adminlist.destroy({
                     where:{
-                        idx:req.body.idx
+                        idx:req.body.Idx
                     }
                 })
                 res.redirect('/admin/login_on?main=관리자리스트')
@@ -295,17 +302,7 @@ let user_list = async (req,res)=>{
     }
 }
 
-// let category_select = async (req,res)=>{
-//     let {topmenu,submenu} = req.query
-//     switch (topmenu){
-//         case '커뮤니티':
-//             let onesubboard = await Submain.findOne({where:{subBoard:submenu}})
-//             res.render('./topmenu.html',{onesubboard,topmenu,submenu})
-//             break
-//     }
-//     console.log(topmenu,submenu,'========================')
-    
-// }
+
 let community_write = async (req,res)=>{
     res.render('./communitywrite.html')
 }
@@ -379,6 +376,7 @@ module.exports = {
     add_employee,
     add_portfolio,
     employed_suc,
-    portfolio_suc
+    portfolio_suc,
+    board_group_get
     //category_select
 }

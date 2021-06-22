@@ -5,6 +5,7 @@ const multer = require('multer')
 const path = require('path')
 const { Submain, Facility } = require('../../models/index.js')
 const { route } = require('../index.js')
+const auth = require('../../middleware/auth.js')
 
 
 
@@ -59,4 +60,8 @@ router.get('/employ',userController.add_employee)
 router.get('/portfolio',userController.add_portfolio)
 router.post('/employed_suc',userController.employed_suc)
 router.post('/portfolio_sub',userController.portfolio_suc)
+
+//==========================게시판그룹관리
+router.get('/board_group',userController.board_group_get)
+
 module.exports = router
