@@ -33,7 +33,8 @@ router.post('/image',upload.single('img'),async (req,res)=>{
         image,url
     })
     let result = await Facility.findAll({})
-    res.render('./makeimg.html',{result})
+    //res.render('./makeimg.html',{result})
+    res.redirect('/admin/login_on?topmenu=시설소개')
 }else{
     console.log(req.body)
 }
