@@ -4,6 +4,9 @@ const userController = require('./userController.js')
 const multer = require('multer')
 const path = require('path')
 const { Submain, Facility } = require('../../models/index.js')
+const { route } = require('../index.js')
+
+
 
 
 const upload = multer({
@@ -49,6 +52,11 @@ router.get('/community_write',userController.community_write)
 router.post('/community_write',userController.community_write_post)
 // router.get('/category',userController.category_select)
 
-
-
+router.get('/course_write',userController.course_write)
+router.post('/course_write',userController.course_write_post)
+router.post('/course_form',userController.course_form)
+router.get('/employ',userController.add_employee)
+router.get('/portfolio',userController.add_portfolio)
+router.post('/employed_suc',userController.employed_suc)
+router.post('/portfolio_sub',userController.portfolio_suc)
 module.exports = router

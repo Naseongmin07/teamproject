@@ -15,6 +15,7 @@ module.exports = (req,res,next)=>{
         console.log('token is checked')
         let {userid,exp} = JSON.parse(Buffer.from(payload,'base64').toString())
         let nextDate = new Date().getTime()
+        return userid
         if(nextDate>exp){
             res.clearCookie('AccessToken')
             res.redirect('/?msg = token id expired')
@@ -35,4 +36,5 @@ function getSignature(header,payload){
                                                        .replace('=','')
                                                        .replace('=','')
     return signature
+    console.log(signature)
 }

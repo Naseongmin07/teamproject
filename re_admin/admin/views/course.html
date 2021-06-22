@@ -1,6 +1,7 @@
 {% extends 'topmenu.html' %}
 
 {% block middlecontent %}
+<a href="/admin/login_on/course_write"><button>글작성</button></a>
     <form action="/admin/login_on/course_form" method="post">
         <table>
             <th>번호</th>
@@ -10,9 +11,19 @@
             <th>진행여부</th>
             <th>수정</th>
             <th>삭제</th>
-            {% set item = result %}
-            {% for item in res %}
-
+            {% set items = result %}
+            {% for item in items %}
+            <tr>
+                <td>{{loop.index-1}}</td>
+                <td>{{res[loop.index-1].img}}</td>
+                <td>{{[loop.index-1].contents}}</td>
+                <td>{{[loop.index-1].coursetype}}</td>
+                <td>{{[loop.index-1].onoff}}</td>
+                <input type="submit" name="modify" value="수정">
+                <input type="submit" name="delete" value="삭제">
+                <input type="text" name="id" value="{{[loop.index-1].id}}">
+            </tr>
+            {% endfor %}
         </table>
     </form>
 {% endblock %}

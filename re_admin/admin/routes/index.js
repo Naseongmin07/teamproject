@@ -4,7 +4,7 @@ const auth = require('../middleware/auth.js')
 const indexRouter = require('./routers/index.js')
 
 router.use('/admin/login_on',indexRouter)
-router.use('/admin',(req,res)=>{
+router.use('/admin',auth,(req,res)=>{
     res.render('./login.html')
 })
 

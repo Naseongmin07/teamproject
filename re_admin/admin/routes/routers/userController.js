@@ -1,8 +1,9 @@
-const {Adminlist, Submain,User,Facility,Community} = require('../../models')
+const {Adminlist, Submain,User,Facility,Community,Course, Employed, Portfolio} = require('../../models')
 const pwHash = require('../../createHash.js')
 const ctoken = require('../../jwt.js')
 const {sequelize} = require('../../models/index.js')
 const { watch } = require('chokidar')
+const { renderString } = require('nunjucks')
 
 let admin_main = async (req,res)=>{
     let {main} = req.query
@@ -11,6 +12,7 @@ let admin_main = async (req,res)=>{
             case '관리자리스트':
                 let adminList = await Adminlist.findAll({})
                 res.render('./admin_list.html',{main,adminList})
+                console.log(req.cookies.AccessToken)
                 break;
             case '사이트환경설정':
                 res.render('./admin_list.html',{main})
@@ -53,14 +55,18 @@ let admin_main = async (req,res)=>{
                 res.render('./facility.html',{topmenu,subboard,onesubboard,result})
                 break;
             case '커뮤니티':
-                let resu = await Community.findAll({})
-                res.render('./community.html',{subboard,onesubboard,resu})
+                    resuu = await Community.findAll({})
+                res.render('./community.html',{subboard,onesubboard,resuu})
                 break;
             case '교육과정':
-                res.render('./course.html',{subboard,onesubboard})
+                let resu = await Course.findAll({})
+                res.render('./course.html',{subboard,onesubboard,resu})
                 break;
             case '취업정보':
-                res.render('./topmenu.html',{subboard,onesubboard})
+                let Employee = await Employed.findAll({})
+                let portfolio = await Portfolio.findAll({})
+                
+                res.render('./employ.html',{subboard,onesubboard,Employee,portfolio,submenu})
                 break;
             case '상담신청':
                 res.render('./topmenu.html',{subboard,onesubboard})
@@ -76,6 +82,7 @@ let main_form = async (req,res)=>{
     let idxx = req.body.idx
     let psww = req.body.psw
     let hashedpsw = pwHash(psww)
+    console.log(hashedpsw)
     try{
         let resu = await Adminlist.findOne({
             where:{
@@ -86,7 +93,9 @@ let main_form = async (req,res)=>{
         let token = ctoken(idxx)
         res.cookie('AccessToken',token,{})
         req.session.uid = {["local"]:resu.idx}
-        res.session.level = resu.level
+        req.session.level = resu.level
+        req.session.idx = resu.idx
+        //res.session.uid = resu.idx
         main = "관리자리스트"
         res.render('./admin_list.html',{resu,main})
     }catch(e){
@@ -316,6 +325,44 @@ let img_del = async (req,res) =>{
     res.redirect('/admin/login_on?topmenu=시설소개')
 }
 
+let course_form = async (req,res)=>{
+    res.redirect('/admin/login_on?topmenu=교육과정')
+}
+
+let course_write = (req,res)=>{
+    res.render('./course_write.html')
+} 
+
+let course_write_post = (req,res)=>{
+    res.redirect('/admin/login_on?topmenu=교육과정')
+}
+let add_employee = async (req,res)=>{
+    let Employee = await Employed.findAll({})
+    let subboard = await Submain.findAll({where:{mainBoard:'취업정보'}})
+    res.render('./employeewrite.html',{sub:'취업정보',subboard,Employee})
+}
+
+let add_portfolio = async (req,res)=>{
+    let portfolio = await Portfolio.findAll({})
+    let subboard = await Submain.findAll({where:{mainBoard:'취업정보'}})
+    res.render('./employeewrite.html',{sub:'포트폴리오',subboard,portfolio})
+}
+
+let employed_suc = async (req,res)=>{
+    let {userName,userIdx,courseName,count,contents,img,company} = req.body 
+    await Employed.create({userName,userIdx,courseName,count,contents,img,company})
+    let Employee = await Employed.findAll({})
+    console.log('------------------------------------')
+    console.log(Employee)
+    res.render('./employ.html',{submenu:'취업정보',Employee})
+}
+
+let portfolio_suc = async (req,res)=>{
+    let {userName,title,userIdx,contents,count,img} = req.body 
+    await Portfolio.create({userName,title,userIdx,contents,count,img})
+    let portfolio = await Portfolio.findAll({})
+    res.render('./employ.html',{submenu:'포트폴리오',portfolio})
+}
 module.exports = {
     admin_main,
     main_form,
@@ -325,6 +372,13 @@ module.exports = {
     user_list,
     community_write,
     community_write_post,
-    img_del
+    img_del,
+    course_form,
+    course_write,
+    course_write_post,
+    add_employee,
+    add_portfolio,
+    employed_suc,
+    portfolio_suc
     //category_select
 }

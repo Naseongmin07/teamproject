@@ -10,7 +10,11 @@ module.exports = class Course extends Sequelize.Model{
             },
             name:{
                 type:Sequelize.STRING(20),
-                allowNull:false
+                allowNull:true
+            },
+            img:{
+                type:Sequelize.TEXT,
+                allowNull:true
             },
             coursetype:{
                 type:Sequelize.STRING(20),
@@ -18,7 +22,7 @@ module.exports = class Course extends Sequelize.Model{
             },
             idx:{
                 type:Sequelize.STRING(20),
-                allowNull:false,
+                allowNull:true,
                 unique:true,
             },
             pay:{
@@ -66,7 +70,7 @@ module.exports = class Course extends Sequelize.Model{
             },
             onoff:{
                 type:Sequelize.BOOLEAN,
-                allowNull:false
+                allowNull:true
             }
         },{
             sequelize,

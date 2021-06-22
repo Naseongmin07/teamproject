@@ -1,0 +1,27 @@
+{% extends 'topmenu.html' %}
+
+{% block middlecontent %}
+{% if sub == '취업정보' %}
+<form action="/admin/login_on/employed_suc" method="POST">
+    이름 <input type="text" name="userName">
+    아이디 <input type="text" name="userIdx">
+    수강명 <input type="text" name="courseName">
+    조회수 <input type="text" name="count">
+    내용 <input type="text" name="contents">
+    이미지 <input type="file" name="img">
+    취업회사 <input type="text" name="company">
+    <input type="submit" value="새글작성">
+
+</form>
+{% elif sub == '포트폴리오' %}
+<form action="/admin/login_on/portfolio_suc" method="POST">
+    이름 <input type="text" name="userName">
+    제목 <input type="text" name="title">
+    아이디 <input type="text" name="userIdx">
+    내용 <input type="text" name="contents">
+    조회수 <input type="text" name="count">
+    이미지 <input type="text" name="img">
+    <input type="submit" value="새글작성">
+</form>
+{% endif %}
+{% endblock %}

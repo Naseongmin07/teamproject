@@ -1,0 +1,21 @@
+{% extends 'topmenu.html' %}
+
+{% block middlecontent %}
+<form action="/admin/login_on/course_write" method="POST">
+    강좌명 <input type="text" name="courseName">
+    강사명 <input type="text" name="name">
+    이미지 <input type="file" name="img">
+    수업분류 <input type="text" name="coursetype">
+    아이디 <input type="text" name="idx">
+    총인원 <input type="number" name="head_count">
+    시작일 <input type="date" name="startDate">
+    종류일 <input type="date" name="endDate">
+    내용 <input type="contents" name="contents">
+    시간 <input type="time" name="time">
+    태그 <input type="text" name="tag">
+    국비 <input type="text" name="support">
+    설명 <input type="text" name="descripttion">
+    진행여부 <input type="text" name="onoff">
+    <input type="submit" name="add" value="작성"> 
+</form>
+{% endblock %}
