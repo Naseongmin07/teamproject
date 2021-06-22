@@ -1,8 +1,32 @@
-{% extends './form.html' %}
+{% extends 'topmenu.html' %}
 
-{% block adminMenu %}
+{% block submenu %}
+                <ul>
+                    <li class="left_menu_m">
+                        <table class="left_menu_table_m">    
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <ul id="list_column_m">
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=관리자리스트">관리자리스트</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=사이트환경설정">사이트환경설정</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=게시판생성관리">게시판생성관리</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=게시판그룹관리">게시판그룹관리</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=팝업관리">팝업관리</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=메인비쥬얼보임">메인비쥬얼[보임]</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=메인비쥬얼숨김">메인비쥬얼[숨김]</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=사용자관리">사용자 관리</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+{% endblock %}
+{% block middlecontent %}
 <!-- 관리자리스트======================================================================= -->
-    {% if main == "관리자리스트" %}
+    {% if submenu == "관리자리스트" %}
         <div id="main_container_m">
             <div id="main_container_top_m">
                 <p>관리자리스트</p>
@@ -125,7 +149,7 @@
             </div>
         </div>
 <!-- 사이트환경설정============================================================================== -->
-    {% elif main=="사이트환경설정" %}
+    {% elif submenu=="사이트환경설정" %}
         <div id="website_basic_info">
             <div id="site_set_title">
                 <p>사이트기본환경설정</p>
@@ -193,7 +217,7 @@
             </form>
         </div>
 <!-- 게시판생성관리===================================================================== -->
-    {% elif main=="게시판생성관리" %}
+    {% elif submenu=="게시판생성관리" %}
         <div id="board_make_admin">
             <div>
                 <form action="/admin/login_on/admin_menu/board_make" method="POST" id="board_form">
@@ -305,8 +329,8 @@
                 </form>
             </div>
         </div>
-        <!-- 게시판그룹관리=================================================== -->
-    {% elif main=="게시판그룹관리" %}
+        <!-- 게시판그룹관리 -->
+    {% elif submenu=="게시판그룹관리" %}
         <div id="board_ground_manage">
             <table border="1">
                 <th>번호</th>
@@ -338,14 +362,14 @@
         <div id="selected_board_group">
 
         </div>
-    {% elif main=="팝업관리" %}
+    {% elif submenu=="팝업관리" %}
     팝업
-    {% elif main=="메인비쥬얼보임" %}
+    {% elif submenu=="메인비쥬얼보임" %}
     보임
-    {% elif main=="메인비쥬얼숨김" %}
+    {% elif submenu=="메인비쥬얼숨김" %}
     숨김
 <!-- 사용자관리리스트======================================================================= -->
-    {% elif main=="사용자관리" %}
+    {% elif submenu=="사용자관리" %}
         
         <div id="user_list_container">
             <div id="user_search">

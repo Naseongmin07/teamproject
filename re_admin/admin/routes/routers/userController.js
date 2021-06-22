@@ -6,50 +6,17 @@ const { watch } = require('chokidar')
 const { renderString } = require('nunjucks')
 
 let admin_main = async (req,res)=>{
-    let {main} = req.query
-    if(req.query.main){
-        switch(main){
-            case '관리자리스트':
-                let adminList = await Adminlist.findAll({})
-                res.render('./admin_list.html',{main,adminList})
-                console.log(req.cookies.AccessToken)
-                break;
-            case '사이트환경설정':
-                res.render('./admin_list.html',{main})
-                break;
-            case '게시판생성관리':
-                let boardres = await Submain.findAll({})
-                res.render('./admin_list.html',{main,boardres})
-                break;
-            case '게시판그룹관리':
-                let boardgroupres = await Submain.findAll({})
-                res.render('./admin_list.html',{main,boardgroupres})
-                break;
-            case '팝업관리':
-                res.render('./admin_list.html',{main})
-                break;
-            case '메인비주얼보임':
-                res.render('./admin_list.html',{main})
-                break;
-            case '메인비주얼숨김':
-                res.render('./admin_list.html',{main})
-                break;
-            case '메인비쥬얼숨김':
-                res.render('./admin_list.html',{main})
-                break;
-            case '사용자관리':
-                let resu = await User.findAll({})
-                res.render('./admin_list.html',{main,resu})
-                break;
-        }
-    }else if(req.query.topmenu){
-        let {topmenu,submenu} = req.query
-        console.log(submenu)
-        let subboard = await Submain.findAll({where:{mainBoard:`${topmenu}`}})
-        let onesubboard = await Submain.findAll({where:{subBoard:`${submenu}`}})
-        switch (topmenu){
+    let {topmenu,submenu} = req.query
+    let subboard = await Submain.findAll({where:{mainBoard:`${topmenu}`}})
+    let onesubboard = await Submain.findAll({where:{subBoard:`${submenu}`}})               
+        switch(topmenu){            
             case 'administrator':
-                res.render('./admin_list.html',{main:'관리자리스트'})
+                let adminList = await Adminlist.findAll({})
+                let boardres = await Submain.findAll({})
+                let boardgroupres = await Submain.findAll({})
+                let resu = await User.findAll({})
+                console.log(req.cookies.AccessToken)
+                res.render('./admin_list.html',{subboard,topmenu,submenu,adminList,boardres,boardgroupres,resu})
                 break;
             case '시설소개':
                 let result = await Facility.findAll({})
@@ -60,13 +27,12 @@ let admin_main = async (req,res)=>{
                 res.render('./community.html',{subboard,onesubboard,resuu})
                 break;
             case '교육과정':
-                let resu = await Course.findAll({})
-                res.render('./course.html',{subboard,onesubboard,resu})
+                let resuuu = await Course.findAll({})
+                res.render('./course.html',{subboard,onesubboard,resuuu})
                 break;
             case '취업정보':
                 let Employee = await Employed.findAll({})
-                let portfolio = await Portfolio.findAll({})
-                
+                let portfolio = await Portfolio.findAll({})                
                 res.render('./employ.html',{subboard,onesubboard,Employee,portfolio,submenu})
                 break;
             case '상담신청':
@@ -76,8 +42,8 @@ let admin_main = async (req,res)=>{
                 res.render('./topmenu.html',{subboard,onesubboard})
                 break;
         }
-    }
-}
+}  
+
 
 let board_group_get = async (req,res)=>{
     let {idxx} = req.query
@@ -103,8 +69,8 @@ let main_form = async (req,res)=>{
         req.session.level = resu.level
         req.session.idx = resu.idx
         //res.session.uid = resu.idx
-        main = "관리자리스트"
-        res.render('./admin_list.html',{resu,main})
+        topmenu = "administrator"
+        res.render('./admin_list.html',{resu,topmenu})
     }catch(e){
         console.log(e)
         res.send('해당하는 사용자가 존재하지 않습니다.')
@@ -114,7 +80,7 @@ let main_form = async (req,res)=>{
 let board_make_post = async (req,res)=>{
     let {tableName,mainBoard,subBoard,url,contentType,watchaut,writeaut,replyaut} = req.body
     await Submain.create({tableName,mainBoard,subBoard,url,contentType,watchaut,writeaut,replyaut}) 
-    res.redirect('/admin/login_on?main=게시판생성관리')
+    res.redirect('/admin/login_on?topmenu=administrator&submenu=게시판생성관리')
 }
 
 let board_manage_post = async (req,res)=>{
@@ -153,9 +119,9 @@ let board_manage_post = async (req,res)=>{
             }            
         }
     }catch(e){
-        res.redirect('/admin/login_on?main=게시판생성관리')
+        res.redirect('/admin/login_on?topmenu=administrator&submenu=게시판생성관리')
     }
-    res.redirect('/admin/login_on?main=게시판생성관리')
+    res.redirect('/admin/login_on?topmenu=administrator&submenu=게시판생성관리')
 }
 
 let admin_list = async (req,res)=>{
@@ -186,7 +152,7 @@ let admin_list = async (req,res)=>{
                 let {name,idx,psw,birth,courseName,level,tel,startDate,email,img} = req.body
                 psw = pwHash(psw)
                 await Adminlist.create({name,idx,psw,birth,courseName,level,tel,startDate,email,img})
-                res.redirect('/admin/login_on?main=관리자리스트')
+                res.redirect('/admin/login_on?topmenu=administrator&submenu=관리자리스트')
                 break;
             }catch(e){
                 res.render('./error.html',{error:'관리자아이디동일'})
@@ -198,7 +164,7 @@ let admin_list = async (req,res)=>{
                         idx:req.body.Idx
                     }
                 })
-                res.redirect('/admin/login_on?main=관리자리스트')
+                res.redirect('/admin/login_on?topmenu=administrator&submenu=관리자리스트')
             }else if(req.body.modify=='수정'){
                 let {Name,Level,Idx,Tel,Email,StartDate} = req.body
                 await Adminlist.update({
@@ -213,7 +179,7 @@ let admin_list = async (req,res)=>{
                         idx:req.body.Idx
                     }
                 })
-                res.redirect('/admin/login_on?main=관리자리스트')               
+                res.redirect('/admin/login_on?topmenu=administrator&submenu=관리자리스트')               
             }
     }
 }
@@ -227,7 +193,7 @@ let user_list = async (req,res)=>{
             try{
             let {userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg} = req.body
             await User.create({userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg})
-            res.redirect('/admin/login_on?main=사용자관리')
+            res.redirect('/admin/login_on?topmenu=administrator&submenu=사용자관리')
             break;
             }catch(e){
                 res.render('./error.html',{error:'잘못된사용자정보'})
@@ -283,7 +249,7 @@ let user_list = async (req,res)=>{
                                 id:idx
                             }
                         })
-                        res.redirect('/admin/login_on?main=사용자관리')
+                        res.redirect('/admin/login_on?topmenu=administrator&submenu=사용자관리')
                         //console.log(userEtc,ucreated_at,uImg,uTel,uBirth,uName,uCoursename,uAddress,uPaycheck)
                     }else if(req.body[i]=='삭제'){
                         idx = req.body.numbercheck[i]
@@ -292,7 +258,7 @@ let user_list = async (req,res)=>{
                                 id:idx
                             }
                         })
-                        res.redirect('/admin/login_on?main=사용자관리')
+                        res.redirect('/admin/login_on?topmenu=administrator&submenu=사용자관리')
                     }
                 }
                 break;
@@ -378,5 +344,4 @@ module.exports = {
     employed_suc,
     portfolio_suc,
     board_group_get
-    //category_select
 }
