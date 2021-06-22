@@ -35,7 +35,7 @@ module.exports = class Community extends Sequelize.Model{
             },
             img:{
                 type:Sequelize.TEXT,
-                allowNull:false
+                allowNull:true
             },
             enrollmentDate:{
                 type:Sequelize.DATE,

@@ -1,0 +1,37 @@
+{% extends 'topmenu.html' %}
+
+{% block middlecontent %}
+
+<div id="make_community">
+    <div id="community_form">
+        <form action="/admin/login_on/community_write" method='POST' id="write_new">
+            <label for="mainBoard">mainboard</label>
+            <input type="text" name="mainBoard">
+            <label for="subBoard">subboard</label>
+            <input type="text" name="subBoard">
+            <label for="title">title</label>
+            <input type="text" name="title">
+            <label for="contents">contents</label>
+            <label for="writer">작성자</label>
+            <input type="text" name="writer">
+            <label for="idx">등록자</label>
+            <input type="text" name="idx">
+            <input type="text" name="contents">
+            <label for="file">첨부파일</label>
+            <input type="file" name="file">
+            <label for="img">첨부이미지</label>
+            <input type="file" name="img">
+            <label for="writeaut">writeaut</label>
+            <input type="text" name="writeaut">
+            <label for="readaut">readaut</label>
+            <input type="text" name="readaut">
+            <label for="replyaut">replyaut</label>
+            <input type="text" name="replyaut">
+            <input type="text" name="id" value="{{id}}" style="display: none;">
+            <input type="number" name="count" value="0" style="display:block">
+            <input type="submit" value="추가 생성">
+        </form>
+    </div>
+</div>
+{% endblock %}
+

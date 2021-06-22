@@ -1,16 +1,51 @@
 {% extends 'topmenuform.html' %}
 
-{% block topmenu %}
-{{ onesubboard.subBoard }}
-{{ subboard[0].contentType }}
-{% if onesubboard.contentType == 1 %}
-    안녕하세요
+    {% block topmenu %}
+    <div><p>{{subboard[0].subBoard}}LIST</p></div>
+    {% endblock %}
+
+
+{% block middlecontent %}
+{% endblock %}
+
+{% block submenu %}
+
     {% set res = subboard %}
     {% for item in res %}
-    <li><a href="/admin/login_on?topmenu={{res[loop.index-1].mainBoard}}&submenu={{res[loop.index-1].subBoard}}">{{res[loop.index-1].subBoard}}</a></li>
+    <li><a href="/admin/login_on/?topmenu={{res[loop.index-1].mainBoard}}&submenu={{res[loop.index-1].subBoard}}">{{res[loop.index-1].subBoard}}</a></li>
     {% endfor %}
+    
+
+    
+{% endblock %}
+
+
+
+{% block maincontent %}
+
+{% if subboard.mainBoard == '시설소개' %}
+    <a href="/admin/login_on/image"><input type="button" value="이미지추가"></a>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <div id="faclity_image">
+            {% set items = result %}
+            {% for item in items %}
+            <div><img src="http://localhost:3000/{{items.image}}" alt="슬라이드이미지" style="width: 300px; height: 300px;"></div>
+            {% endfor %}
+        </div>
+        
+    </form>
+    {% set res = subboard %}
+    {% for item in res %}
+    <li><a href="">{{res[loop.index-1].contentType}}</a></li>
+    {% endfor %}
+    
+
 {% else %}
-    안녕못해요
+    {% set res = onesubboard %}
+    {% for item in res %}
+        {{ res[loop.index-1].subBoard }}
+    {% endfor %}
+    
 {% endif %}
     
 {% endblock %}

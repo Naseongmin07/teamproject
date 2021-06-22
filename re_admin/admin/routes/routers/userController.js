@@ -1,4 +1,4 @@
-const {Adminlist, Submain,User} = require('../../models')
+const {Adminlist, Submain,User,Facility,Community} = require('../../models')
 const pwHash = require('../../createHash.js')
 const ctoken = require('../../jwt.js')
 const {sequelize} = require('../../models/index.js')
@@ -40,35 +40,34 @@ let admin_main = async (req,res)=>{
                 break;
         }
     }else if(req.query.topmenu){
-        let {topmenu} = req.query
+        let {topmenu,submenu} = req.query
+        console.log(submenu)
+        let subboard = await Submain.findAll({where:{mainBoard:`${topmenu}`}})
+        let onesubboard = await Submain.findAll({where:{subBoard:`${submenu}`}})
         switch (topmenu){
             case 'administrator':
                 res.render('./admin_list.html',{main:'관리자리스트'})
                 break;
-            case `${topmenu}`:
-                let subboard = await Submain.findAll({where:{mainBoard:`${topmenu}`}})
-                let onesubboard = await Submain.findOne({where:{mainBoard:`${topmenu}`}})
-                console.log(onesubboard)
-                res.render('./topmenu.html',{topmenu,subboard,onesubboard})
-            // case '시설소개':
-            //     res.render('./topmenu.html',{topmenu})
-                
-            //     break;
-            // case '교육과정':
-            //     res.render('./topmenu.html',{topmenu})
-            //     break;
-            // case '취업정보':
-            //     res.render('./topmenu.html',{topmenu})
-            //     break;
-            // case '커뮤니티':
-            //     res.render('./topmenu.html',{topmenu})
-            // break;
-            // case '상담신청':
-            //     res.render('./topmenu.html',{topmenu})
-            //     break;
-            // case '방문자신청':
-            //     res.render('./topmenu.html',{topmenu})
-            //     break;
+            case '시설소개':
+                let result = await Facility.findAll({})
+                res.render('./facility.html',{topmenu,subboard,onesubboard,result})
+                break;
+            case '커뮤니티':
+                let resu = await Community.findAll({})
+                res.render('./community.html',{subboard,onesubboard,resu})
+                break;
+            case '교육과정':
+                res.render('./course.html',{subboard,onesubboard})
+                break;
+            case '취업정보':
+                res.render('./topmenu.html',{subboard,onesubboard})
+                break;
+            case '상담신청':
+                res.render('./topmenu.html',{subboard,onesubboard})
+                break;
+            case '방문자정보':
+                res.render('./topmenu.html',{subboard,onesubboard})
+                break;
         }
     }
 }
@@ -287,7 +286,35 @@ let user_list = async (req,res)=>{
     }
 }
 
+// let category_select = async (req,res)=>{
+//     let {topmenu,submenu} = req.query
+//     switch (topmenu){
+//         case '커뮤니티':
+//             let onesubboard = await Submain.findOne({where:{subBoard:submenu}})
+//             res.render('./topmenu.html',{onesubboard,topmenu,submenu})
+//             break
+//     }
+//     console.log(topmenu,submenu,'========================')
+    
+// }
+let community_write = async (req,res)=>{
+    res.render('./communitywrite.html')
+}
 
+let community_write_post = async (req,res)=>{
+    let {mainBoard,subBoard,title,contents,file,img,writeaut,readaut,replyaut,idx,writer} = req.body
+    await Community.create({idx,writer,mainBoard,subBoard,title,contents,file,img,writeaut,readaut,replyaut})
+    let resu = await Community.findAll({})
+    res.render('./community.html',{resu})
+}
+
+let img_del = async (req,res) =>{
+    console.log(req.body)
+    await Facility.destroy({where:{
+        id:req.body.id
+    }})
+    res.redirect('/admin/login_on?topmenu=시설소개')
+}
 
 module.exports = {
     admin_main,
@@ -295,5 +322,9 @@ module.exports = {
     board_make_post,
     board_manage_post,
     admin_list,
-    user_list
+    user_list,
+    community_write,
+    community_write_post,
+    img_del
+    //category_select
 }

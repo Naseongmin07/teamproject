@@ -113,3 +113,23 @@ a{
 #searched_form > div > input {
     border:0px solid;
 }
+#main_content_container_f{
+    margin:20px;
+    padding:0;
+    width:1000px;
+    height: 700px;
+    display: flex;
+    flex-direction: row;
+}
+#write_new{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    border:1px solid black;
+    width: 1300px;
+    height: 500px;
+}
+#community_show_m{
+    display: flex;
+    flex-direction: column;
+}

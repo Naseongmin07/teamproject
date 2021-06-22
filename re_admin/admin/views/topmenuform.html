@@ -7,6 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="/admin/css/form.css">
     <link rel="stylesheet" href="/admin/css/admin_list.css">
+    <link rel="stylesheet" href="/admin/css/topmenu.css">
+    <script type="text/javascript" src="/admin/js/index.js"></script>
 
     
 </head>
@@ -28,6 +30,10 @@
                 </ul>
             </div>
         </div>
+        <div id="show_list_container">
+            {% block topmenu %}
+            {% endblock %}
+        </div>
         <div id="contents_m">
             <div id="left_contents_container_m">
                 <ul>
@@ -44,20 +50,21 @@
                             <thead>
                                 <tr>
                                     <th>좌측메뉴</th>
-                                    
+                                    <div id="submenu_container">
+                                        {% block submenu %}
+                                        {% endblock %}
+                                     </div>  
                                 </tr>
                             </thead>                    
-                            <tbody>
-                                
-                            </tbody>
                         </table>
                     </li>
                 </ul>
             </div> 
-            <div id="admin_list_container">
-               {% block topmenu %}
-               {% endblock %}
-            </div>     
+            <div id="main_content_container_f">
+                {% block middlecontent %}
+                {% endblock %}
+
+            </div>   
         </div>    
     </div>
 

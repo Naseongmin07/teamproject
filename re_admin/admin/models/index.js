@@ -16,6 +16,7 @@ const Employed = require('./employed')
 const Portfolio = require('./portfolio.js')
 const Submain = require('./submain.js')
 const User = require('./user.js')
+const Facility = require('./facility.js')
 
  
 let sequelize;
@@ -49,6 +50,7 @@ db.Employed = Employed
 db.Portfolio = Portfolio
 db.Submain = Submain
 db.User = User
+db.Facility = Facility
 
 Adminlist.init(sequelize)
 Community.init(sequelize)
@@ -58,9 +60,11 @@ Employed.init(sequelize)
 Portfolio.init(sequelize)
 Submain.init(sequelize)
 User.init(sequelize)
+Facility.init(sequelize)
 
-Adminlist.associate(db)
-Community.associate(db)
+
+// Adminlist.associate(db)
+// Community.associate(db)
 
 
 

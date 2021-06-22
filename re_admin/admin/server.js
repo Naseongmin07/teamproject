@@ -9,6 +9,7 @@ const {sequelize} = require('./models')
 const cookieParser = require('cookie-parser')
 require('dotenv').config('env')
 
+
 const port = process.env.PORT||3001
 
 sequelize.sync({force:false})
@@ -22,6 +23,9 @@ sequelize.sync({force:false})
 app.set('view engine','html')
 nunjucks.configure('views',{express:app,watch:true})
 
+
+app.use('/uploads',express.static('uploads'))
+app.use(express.static('uploads/'))
 app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())

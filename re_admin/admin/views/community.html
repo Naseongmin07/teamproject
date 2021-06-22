@@ -1,0 +1,39 @@
+{% extends 'topmenu.html' %}
+
+{% block middlecontent %}
+<div id="community_show_m">
+    <a href="/admin/login_on/community_write"><button>글작성</button></a>
+    <table border="1">
+        <th>번호</th>
+        <th>메인게시판</th>
+        <th>서브게시판</th>
+        <th>제목</th>
+        <th>내용</th>
+        <th>등록자</th>
+        <th>작성자</th>
+        <th>이미지</th>
+        <th>작성일</th>
+        <th>첨부파일</th>
+        <th>숨김권한</th>
+        <th>댓글허용여부</th>
+    {% set res = resu %}
+    {% for item in res %}
+        <tr>
+            <td>{{[loop.index-1]}}</td>
+            <td>{{res[loop.index-1].mainBoard}}</td>
+            <td>{{res[loop.index-1].subBoard}}</td>
+            <td>{{res[loop.index-1].title}}</td>
+            <td>{{res[loop.index-1].contents}}</td>
+            <td>{{res[loop.index-1].idx}}</td>
+            <td>{{res[loop.index-1].writer}}</td>
+            <td>{{res[loop.index-1].img}}</td>
+            <td>{{res[loop.index-1].enrollmentDate}}</td>
+            <td>{{res[loop.index-1].file}}</td>
+            <td>{{res[loop.index-1].watchaut}}</td>
+            <td>{{res[loop.index-1].replyaut}}</td>
+
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}
