@@ -26,3 +26,15 @@
 #user_table_form td{
     width: 20px;
 }
+#admin_list_siteset{
+    width: 1000px;
+    height: 800px;
+}
+#admin_list_siteset p{
+    margin-top: 10px;
+}
+#admin_list_siteset label{
+    width: 110px;
+    height: 40px;
+}
+

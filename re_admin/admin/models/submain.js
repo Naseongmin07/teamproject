@@ -50,6 +50,11 @@ module.exports = class Submain extends Sequelize.Model{
                 type:Sequelize.BOOLEAN,
                 defaultValue:0,
                 allowNull:false
+            },
+            uni:{
+                type:Sequelize.STRING,
+                allowNull:true,
+                defaultValue:0
             }
         },{
             sequelize,

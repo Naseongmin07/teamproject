@@ -24,7 +24,7 @@ const upload = multer({
 
 
 
-
+router.post('/siteset',userController.siteset)
 
 router.get('/image',(req,res)=>{
     res.render('makeimg.html')

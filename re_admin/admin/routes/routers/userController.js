@@ -28,7 +28,14 @@ let admin_main = async (req,res)=>{
                 let boardgroupres = await Submain.findAll({})
                 let resu = await User.findAll({})
                 let main_img = await Main_visual.findAll({})
-                console.log(req.cookies.AccessToken)
+                //console.log(req.cookies.AccessToken)
+                // let {siteName,siteUrl,basicTitle,CEOEmail} = {
+                //         siteName: '경일게임아카데미',
+                //         siteUrl: 'www.com.www.com',
+                //         basicTitle: '경일게임아카데미에 오신 것을 환영합니다.',
+                //         CEOEmail: 'asdf@email.com'
+                // }===================================나중에 사이트 환경설정 db에 넣을지 말지에 따라
+                
                 res.render('./admin_list.html',{main_img,subboard,topmenu,submenu,adminList,boardres,boardgroupres,resu})
                 break;
             case '시설소개':
@@ -57,7 +64,17 @@ let admin_main = async (req,res)=>{
         }
 }  
 
-
+let siteset = (req,res)=>{
+    if(req.query.location=='basic_info'){
+    let {siteName,siteUrl,basicTitle,CEOEmail} = req.body
+    // ============================siteset db 추가할 경우 해당 내용 넣기
+    }else if(req.query.location=='company_info'){
+        let{number_1,number_2,number_3,CEOName,comTel,busAddress} = req.body
+    //// ============================siteset db 추가할 경우 해당 내용 넣기
+    }
+    console.log(req.body)
+    res.redirect('/admin/login_on?topmenu=administrator&submenu=사이트환경설정')
+}
 let board_group_get = async (req,res)=>{
     let {idxx} = req.query
     let selectedgroupres = await Submain.findAll({where:{subBoard:idxx}})
@@ -91,13 +108,13 @@ let main_form = async (req,res)=>{
 }
 
 let board_make_post = async (req,res)=>{
-    let {tableName,mainBoard,subBoard,url,contentType,watchaut,writeaut,replyaut} = req.body
-    await Submain.create({tableName,mainBoard,subBoard,url,contentType,watchaut,writeaut,replyaut}) 
+    let {tableName,mainBoard,subBoard} = req.body
+    await Submain.create({tableName,mainBoard,subBoard}) 
     res.redirect('/admin/login_on?topmenu=administrator&submenu=게시판생성관리')
 }
 
 let board_manage_post = async (req,res)=>{
-    console.log(req.cookies.AccessToken)
+    //console.log(req.cookies.AccessToken)
     try{
         let num = ((req.body.numbercheck).length)
         for(i=0;i<=num;i++){
@@ -151,14 +168,14 @@ let admin_list = async (req,res)=>{
                         name:req.body.value
                     }
                 })               
-                res.render('./admin_list.html',{resu,main,adminList})
+                res.render('./admin_list.html',{resu,topmenu:'administrator',submenu:'관리자리스트',adminList})
             }else if(req.body.search_condition_m=="class_name"){
                 let resu = await Adminlist.findOne({
                     where:{
                         idx:req.body.value
                     }
                 })
-                res.render('./admin_list.html',{resu,main,adminList})
+                res.render('./admin_list.html',{resu,main,adminList,topmenu:'administrator',submenu:'관리자리스트'})
             };
             break;
         case 'admin_add':
@@ -394,5 +411,6 @@ module.exports = {
     board_group_get,
     main_img,
     community_del,
-    visitor_info
+    visitor_info,
+    siteset
 }

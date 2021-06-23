@@ -32,7 +32,7 @@
                 <p>관리자리스트</p>
                 <form action="/admin/login_on/admin_list?location=search" method="POST">
                     <fieldset>
-                        검색조건 : 
+                        검색조건 :
                                 <select name="search_condition_m">
                                     <option value="name">이름</option>
                                     <option value="class_name">아이디</option>
@@ -150,71 +150,68 @@
         </div>
 <!-- 사이트환경설정============================================================================== -->
     {% elif submenu=="사이트환경설정" %}
-        <div id="website_basic_info">
-            <div id="site_set_title">
-                <p>사이트기본환경설정</p>
+        <div id="admin_list_siteset">
+            <div id="website_basic_info">
+                <div id="site_set_title">
+                    <p>사이트기본환경설정</p>
+                </div>
+                <form action="/admin/login_on/siteset?location=basic_info" method="POST" style="border:1px solid black">
+                    <ul>
+                        <li>
+                            <p>웹사이트 기본정보</p>
+                        </li>
+                        <li>
+                            <label for="site_name">사이트명</label>
+                            <input type="text" id="site_name" name="siteName" value="경일게임아카데미">
+                            <!-- {{resu.siteName}} -->
+                        </li>
+                        <li>
+                            <label for="site_url">사이트url</label>
+                            <input type="text" id="site_url" name="siteUrl" value="www.com.www.com">
+                            <!-- {{resu.siteName}} -->
+                        </li>
+                        <li>
+                            <label for="basic_title">기본타이틀</label>
+                            <input type="text" id="basic_title" name="basicTitle" value="경일게임아카데미에 오신 것을 환영합니다.">
+                            <!-- {{resu.siteName}} -->
+                        </li>
+                        <li>
+                            <label for="CEO_email">대표이메일</label>
+                            <input type="email" id="CEO_email" name="CEOEmail" value="asdf@email.com">
+                            <!-- {{resu.siteName}} -->
+                        </li>
+                        <input type="submit" value="수정">
+                    </ul>
+                </form>
             </div>
-            <form action="/admin/site_set" method="POST" style="border:1px solid black">
-                <ul>
-                    <li>
-                        <p>웹사이트 기본정보</p>
-                    </li>
-                    <li>
-                        <label for="site_name">사이트명</label>
-                        <input type="text" id="site_name" name="siteName" value="경일게임아카데미">
-                        <!-- {{resu.siteName}} -->
-                    </li>
-                    <li>
-                        <label for="site_url">사이트url</label>
-                        <input type="text" id="site_url" name="siteUrl" value="www.com.www.com">
-                        <!-- {{resu.siteName}} -->
-                    </li>
-                    <li>
-                        <label for="basic_title">기본타이틀</label>
-                        <input type="text" id="basic_title" name="basicTitle" value="경일게임아카데미에 오신 것을 환영합니다.">
-                        <!-- {{resu.siteName}} -->
-                    </li>
-                    <li>
-                        <label for="CEO_email">대표이메일</label>
-                        <input type="email" id="CEO_email" name="CEOEmail" value="경일.email">
-                        <!-- {{resu.siteName}} -->
-                    </li>
-                    <li>
-                        <span>게시판테이블 사용형태</span>
-                        <span>원테이블(하나의 Table을 사용합니다.) (초기 세팅시 지정됩니다. 변경하실 수 없습니다.)</span>
-                        <!-- {{resu.siteName}} -->
-                    </li>
-                    <input type="submit" value="수정">
-                </ul>
-            </form>
-        </div>
-        <div>
-            <form action="/admin/site_set" method="POST" style="border:1px solid black">
-                <ul>
-                    <li>
-                        <p>업체정보</p>
-                    </li>
-                    <li>
-                        <label for="bus_number">사업자 등록 번호</label>
-                        <input type="number" name="number_1" id="bus_number">
-                        <input type="number" name="number_2" id="bus_number">
-                        <input type="number" name="number_3" id="bus_number">
-                    </li>
-                    <li>
-                        <label for="CEO_name">대표자명</label>
-                        <input type="text" id="CEO_name" name="CEOName">
-                    </li>
-                    <li>
-                        <label for="con_tel">통신판매업 신고번호</label>
-                        <input type="text" id="con_tel" name="conTel">
-                    </li>
-                    <li>
-                        <label for="bus_address">사업장 주소</label>
-                        <input type="text" id="bud_address" name="busAddress">
-                    </li>
-                    <input type="submit" value="수정">
-                </ul>
-            </form>
+            <div>
+                <form action="/admin/login_on/site_set?location=company_info" method="POST" style="border:1px solid black">
+                    <ul>
+                        <li>
+                            <p>업체정보</p>
+                        </li>
+                        <li>
+                            <label for="bus_number">사업자 등록 번호</label>
+                            <input type="number" name="number_1" id="bus_number">
+                            <input type="number" name="number_2" id="bus_number">
+                            <input type="number" name="number_3" id="bus_number">
+                        </li>
+                        <li>
+                            <label for="CEO_name">대표자명</label>
+                            <input type="text" id="CEO_name" name="CEOName">
+                        </li>
+                        <li>
+                            <label for="con_tel">통신판매업 신고번호</label>
+                            <input type="text" id="con_tel" name="conTel">
+                        </li>
+                        <li>
+                            <label for="bus_address">사업장 주소</label>
+                            <input type="text" id="bud_address" name="busAddress">
+                        </li>
+                        <input type="submit" value="수정">
+                    </ul>
+                </form>
+            </div>
         </div>
 <!-- 게시판생성관리===================================================================== -->
     {% elif submenu=="게시판생성관리" %}
@@ -230,43 +227,26 @@
                         <td>테이블명</td>
                         <td>게시판명</td>
                         <td>그룹</td>
-                        <td>url</td>
-                        <td>content</td>
-                        <td>읽기권한</td>
-                        <td>쓰기권한</td>
-                        <td>댓글권한</td>
                         <tr>
                             <td>
                                 <input type="text" name="tableName">
                             </td>
                             <td>
                                 <input type="text" name="subBoard">
-                            </td>
-                            <td>
-                                <select name="mainBoard1" form="board_form">
                                 {% set res = boardres %}
                                 {% for item in res %}
-                                    <option value="{{res[loop.index].mainBoard}}">{{res[loop.index-1].mainBoard}}</option>
+                                <input type="number" name="uni" value="{{res[loop.index-1].uni}}" style="display:none">
                                 {% endfor %}
+                            </td>
+                            <td>
+                                <select name="mainBoard" form="board_form">
+                                    <option value="시설소개" selected>시설소개</option>
+                                    <option value="교육과정">교육과정</option>
+                                    <option value="취업정보">취업정보</option>
+                                    <option value="커뮤니티">커뮤니티</option>
+                                    <option value="상담신청">상담신청</option>
                                 </select>
-                                <input type="text" name="mainBoard">
                             </td>
-                                        
-                            <td>
-                                <input type="text" name="url">
-                            </td>
-                            <td>
-                                <input type="" name="contentType">
-                            </td>
-                            <td>
-                                <input type="checkbox" name="watchaut" value="1">
-                            </td>
-                            <td>
-                                <input type="checkbox" name="writeaut" value="1">
-                            </td>
-                            <td>
-                                <input type="checkbox" name="replyaut" value="1">
-                            </td>   
                         </tr>                
                     </table>
                     <input type="submit" value="게시판 생성">
@@ -281,7 +261,7 @@
                     <table border="1">                
                         <td>번호</td>
                         <td>테이블명</td>
-                        <td>게시판이름</td>
+                        <td>게시판명</td>
                         <td>읽기권한</td>
                         <td>쓰기권한</td>
                         <td>댓글권한</td>
@@ -293,7 +273,7 @@
                         {% for item in res %}
                         <tr>
                             <td>
-                                <input type="text" value="{{[loop.index-1]}}" name="number" >
+                                <input type="text" value="{{[loop.index]}}" name="number" >
                                 <input type="number" value="{{res[loop.index-1].id}}" name="numbercheck"  style="display:none">
                             </td>
                             <td>
@@ -334,9 +314,8 @@
         <div id="board_ground_manage">
             <table border="1">
                 <th>번호</th>
-                <th>서브게시판명</th>
+                <th>그룹</th>
                 <th>게시판타입</th>
-                <th>내용</th>
                 <th>수정일</th>
                 <th>url</th>
                 <th>읽기권한</th>
@@ -349,7 +328,6 @@
                     <td>{{loop.index}}</td>
                     <td><a href="/admin/login_on/board_group?idxx={{res[loop.index-1].subBoard}}">{{res[loop.index-1].subBoard}}</a></th>
                     <td>{{res[loop.index-1].contentType}}</td>
-                    <td>{{res[loop.index-1].content}}</td>
                     <td>{{res[loop.index-1].resetDate}}</td>
                     <td>{{res[loop.index-1].url}}</td>
                     <td>{{res[loop.index-1].watchaut}}</td>
