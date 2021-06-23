@@ -17,7 +17,7 @@ module.exports = class Community extends Sequelize.Model{
                 allowNull:false
             },
             contents:{
-                type:Sequelize.TEXT,
+                type:Sequelize.TEXT('long'),
                 allowNull:false
             },
             count:{

@@ -16,7 +16,7 @@
             <input type="text" name="writer">
             <label for="idx">등록자</label>
             <input type="text" name="idx">
-            <input type="text" name="contents">
+            <textarea name="contents" id="summernote"></textarea>
             <label for="file">첨부파일</label>
             <input type="file" name="file">
             <label for="img">첨부이미지</label>
@@ -31,6 +31,17 @@
             <input type="number" name="count" value="0" style="display:block">
             <input type="submit" value="추가 생성">
         </form>
+        <button id="saveBtn">버튼</button>
+        <script>
+            $(document).ready(function() {
+                $('#summernote').summernote();
+                var markupStr = $('#summernote').summernote('code');
+
+            });
+
+          
+        </script>
+
     </div>
 </div>
 {% endblock %}

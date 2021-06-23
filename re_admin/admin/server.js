@@ -23,10 +23,13 @@ sequelize.sync({force:false})
 app.set('view engine','html')
 nunjucks.configure('views',{express:app,watch:true})
 
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
+
 
 app.use('/uploads',express.static('uploads'))
 app.use(express.static('uploads/'))
-app.use(morgan('dev'))
+//app.use(morgan('dev'))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use(cookieParser(process.env.COOKIE_SECRET))

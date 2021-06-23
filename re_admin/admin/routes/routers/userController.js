@@ -1,4 +1,4 @@
-const {Adminlist, Submain,User,Facility,Community,Course, Employed, Portfolio,Main_visual} = require('../../models')
+const {Adminlist, Submain,User,Facility,Community,Course, Employed, Portfolio,Main_visual,Visitor} = require('../../models')
 const pwHash = require('../../createHash.js')
 const ctoken = require('../../jwt.js')
 const {sequelize} = require('../../models/index.js')
@@ -16,6 +16,7 @@ const upload = multer({
     })
 })
 
+
 let admin_main = async (req,res)=>{
     let {topmenu,submenu} = req.query
     let subboard = await Submain.findAll({where:{mainBoard:`${topmenu}`}})
@@ -31,15 +32,15 @@ let admin_main = async (req,res)=>{
                 res.render('./admin_list.html',{main_img,subboard,topmenu,submenu,adminList,boardres,boardgroupres,resu})
                 break;
             case '시설소개':
-                let result = await Facility.findAll({})
+                let result = await Facility.findAll({where:{subboard:`${submenu}`}})
                 res.render('./facility.html',{topmenu,subboard,onesubboard,result})
                 break;
             case '커뮤니티':
-                    resuu = await Community.findAll({})
+                    resuu = await Community.findAll({where:{subBoard:`${submenu}`}})
                 res.render('./community.html',{subboard,onesubboard,resuu})
                 break;
             case '교육과정':
-                let resuuu = await Course.findAll({})
+                let resuuu = await Course.findAll({where:{courseName:`${submenu}`}})
                 res.render('./course.html',{subboard,onesubboard,resuuu})
                 break;
             case '취업정보':
@@ -51,7 +52,7 @@ let admin_main = async (req,res)=>{
                 res.render('./topmenu.html',{subboard,onesubboard})
                 break;
             case '방문자정보':
-                res.render('./topmenu.html',{subboard,onesubboard})
+                res.render('./visitor.html',{subboard,onesubboard})
                 break;
         }
 }  
@@ -96,6 +97,7 @@ let board_make_post = async (req,res)=>{
 }
 
 let board_manage_post = async (req,res)=>{
+    console.log(req.cookies.AccessToken)
     try{
         let num = ((req.body.numbercheck).length)
         for(i=0;i<=num;i++){
@@ -244,7 +246,7 @@ let user_list = async (req,res)=>{
                         let uTel = req.body.uTel[i]
                         let uAddress = req.body.uAddress[i]
                         let userEtc = req.body.userEtc[i]
-                        let uImg = req.body.uImg[i]
+                        let uImg = req.body.uImg[i]                       
                         idx = req.body.numbercheck[i]
                         await User.update({
                             userName:uName,
@@ -255,7 +257,7 @@ let user_list = async (req,res)=>{
                             userTel:uTel,
                             userAddress:uAddress,
                             userEtc:userEtc,
-                            userImg:uImg
+                            userImg:uImg,                        
                         },{
                             where:{
                                 id:idx
@@ -275,6 +277,7 @@ let user_list = async (req,res)=>{
                 }
                 break;
             }catch(e){
+                console.log(e)
                 res.render('./error.html',{error:'잘못된사용자정보'})
             }            
     }
@@ -289,7 +292,8 @@ let community_write_post = async (req,res)=>{
     let {mainBoard,subBoard,title,contents,file,img,writeaut,readaut,replyaut,idx,writer} = req.body
     await Community.create({idx,writer,mainBoard,subBoard,title,contents,file,img,writeaut,readaut,replyaut})
     let resu = await Community.findAll({})
-    res.render('./community.html',{resu})
+    //res.render('./community.html',{resu})
+    res.redirect('/admin/login_on?topmenu=커뮤니티')
 }
 
 let img_del = async (req,res) =>{
@@ -308,8 +312,11 @@ let course_write = (req,res)=>{
     res.render('./course_write.html')
 } 
 
-let course_write_post = (req,res)=>{
-    res.redirect('/admin/login_on?topmenu=교육과정')
+let course_write_post = async (req,res)=>{
+    let {courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,time,tag,support,description,onoff} = req.body
+    console.log(courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,time,tag,support,description,onoff)
+    await Course.create({courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,time,tag,support,description,onoff})
+    res.redirect(`/admin/login_on?topmenu=교육과정&submenu=${courseName}`)
 }
 let add_employee = async (req,res)=>{
     let Employee = await Employed.findAll({})
@@ -346,6 +353,27 @@ let main_img = async (req,res)=>{
     res.redirect('/admin/login_on?topmenu=administrator&submenu=메인비쥬얼보임')
 }
 
+let community_del = async (req,res)=>{
+    await Community.destroy({where:{id:req.body.idd}})
+    let ressss = Community.findAll({})
+    
+    // await Community.destroy({where:{id:req.body.idd}})
+    res.redirect('/admin/login_on?topmenu=커뮤니티')
+}
+
+let visitor_info = async (req,res)=>{
+    let re = req.body.date
+    console.log('================',re,'==============')
+    let {currentURL,exURL,userAgent,userLanguage,webwidth,webHeight} = req.body
+    await Visitor.create({currentURL,exURL,userAgent,userLanguage,webwidth,webHeight})
+    let visitorres = await Visitor.findAll({
+        where: sequelize.where(sequelize.fn('date', sequelize.col('time')), '=', `${re}`)
+       
+    })
+    //console.log(visitorres)
+    res.render('./visitor_info.html',{visitorres})
+}
+
 module.exports = {
     admin_main,
     main_form,
@@ -364,5 +392,7 @@ module.exports = {
     employed_suc,
     portfolio_suc,
     board_group_get,
-    main_img
+    main_img,
+    community_del,
+    visitor_info
 }

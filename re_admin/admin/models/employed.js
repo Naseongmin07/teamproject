@@ -45,6 +45,10 @@ module.exports = class Employed extends Sequelize.Model{
                 allowNull:false,
                 defaultValue:0
             },
+            year:{
+                type:Sequelize.STRING(10),
+                allowNull:false
+            },
             replyaut:{
                 type:Sequelize.BOOLEAN,
                 allowNull:false,

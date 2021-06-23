@@ -12,6 +12,10 @@ module.exports = class Facility extends Sequelize.Model{
                 type:Sequelize.STRING(255),
                 allowNull:false
             },
+            subBoard:{
+                type:Sequelize.STRING(255),
+                allowNull:false
+            },
             date:{
                 type:Sequelize.DATE,
                 allowNull:false,

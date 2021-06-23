@@ -51,6 +51,7 @@ a{
     color:#535379;
 }
 #contents_m{
+    width: 800px;
     display: flex;
     flex-direction: row;
 }
@@ -116,7 +117,7 @@ a{
 #main_content_container_f{
     margin:20px;
     padding:0;
-    width:1000px;
+    width:700px;
     height: 700px;
     display: flex;
     flex-direction: row;

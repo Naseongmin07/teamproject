@@ -69,7 +69,7 @@ module.exports = class Course extends Sequelize.Model{
                 allowNull:true
             },
             onoff:{
-                type:Sequelize.BOOLEAN,
+                type:Sequelize.STRING(20),
                 allowNull:true
             }
         },{

@@ -18,6 +18,7 @@ const Submain = require('./submain.js')
 const User = require('./user.js')
 const Facility = require('./facility.js')
 const Main_visual = require('./mainvisual')
+const Visitor = require('./visitor')
 
  
 let sequelize;
@@ -53,6 +54,7 @@ db.Submain = Submain
 db.User = User
 db.Facility = Facility
 db.Main_visual = Main_visual
+db.Visitor = Visitor
 
 Adminlist.init(sequelize)
 Community.init(sequelize)
@@ -64,6 +66,7 @@ Submain.init(sequelize)
 User.init(sequelize)
 Facility.init(sequelize)
 Main_visual.init(sequelize)
+Visitor.init(sequelize)
 
 
 // Adminlist.associate(db)

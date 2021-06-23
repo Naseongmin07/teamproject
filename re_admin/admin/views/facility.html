@@ -2,6 +2,7 @@
 {% block middlecontent %}
     <form action="/admin/login_on/image" method="POST" enctype="multipart/form-data">
         <div>
+            <input type="text" name="subBoard">
             <input type="file" accept="image/*" name="img">
             <input type="text" name="url">
             <input type="submit" value="등록" name="enter">
@@ -10,7 +11,7 @@
     {% set item = result %}
     {% for item in item %}
     <form action="/admin/login_on/image_del" method="POST">
-        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지"></div>
+        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="300px" height="300px"></div>
         <div><a href="{{item.link}}">{{item.link}}</a></div>
         <input type="submit" name="del" value="삭제">
         <input type="text" name="id" value="{{item.id}}" style="display: none;">

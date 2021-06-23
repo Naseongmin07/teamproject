@@ -1,0 +1,14 @@
+{% extends 'topmenu.html'%}
+
+{% block middlecontent %}
+
+{% set res = visitorres %}
+{% for item in res %}
+    현재 페이지의 URL : {{res[loop.index-1].currentURL}}<br>
+    바로 전 페이지의 URL :{{res[loop.index-1].exURL}}<br>
+    사용자의 에이전트 : {{res[loop.index-1].userAgent}}<br>
+    사용자의 언어 : {{res[loop.index-1].userLanguage}}<br>
+    들어온 시간 : {{res[loop.index-1].time}}
+{% endfor %}
+
+{% endblock %}

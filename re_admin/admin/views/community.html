@@ -19,11 +19,13 @@
     {% set res = resuu %}
     {% for item in res %}
         <tr>
+        <form action="/admin/login_on/community_del" method="POST">
+            <td><input type="submit" name="remove" value="삭제"></td>
             <td>{{[loop.index-1]}}</td>
             <td>{{res[loop.index-1].mainBoard}}</td>
             <td>{{res[loop.index-1].subBoard}}</td>
             <td>{{res[loop.index-1].title}}</td>
-            <td>{{res[loop.index-1].contents}}</td>
+            <td id="summernote">{{res[loop.index-1].contents}}</td>
             <td>{{res[loop.index-1].idx}}</td>
             <td>{{res[loop.index-1].writer}}</td>
             <td>{{res[loop.index-1].img}}</td>
@@ -31,8 +33,22 @@
             <td>{{res[loop.index-1].file}}</td>
             <td>{{res[loop.index-1].watchaut}}</td>
             <td>{{res[loop.index-1].replyaut}}</td>
-
+            
+            <input type="text" name="idd" value="{{res[loop.index-1].id}}">
+                
+        </form>
         </tr>
+        <script>
+            $(document).ready(function() {
+                
+                var markupStr = $('#summernote').summernote('code');
+                document.getElementById('summernote').innerHTML(markupStr)
+                $('#summernote').summernote('destroy');
+
+            });
+
+          
+        </script>
     {% endfor %}
     </table>
 </div>
