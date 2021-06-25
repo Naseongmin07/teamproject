@@ -32,7 +32,8 @@ module.exports = class Course extends Sequelize.Model{
             },
             haed_count:{
                 type:Sequelize.INTEGER,
-                allowNull:true
+                allowNull:true,
+                defaultValue: 0
             },
             startDate:{
                 type:Sequelize.DATE,

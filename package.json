@@ -25,5 +25,13 @@
     "socket.io": "^4.1.2"
   },
   "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naseongmin07/teamproject.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Naseongmin07/teamproject/issues"
+  },
+  "homepage": "https://github.com/Naseongmin07/teamproject#readme",
   "description": ""
 }

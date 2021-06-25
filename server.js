@@ -15,7 +15,7 @@ const io = socket(server);
 const moment = require('moment')
 
 
-sequelize.sync({force: true})
+sequelize.sync({force: false})
 .then(()=>{
     console.log('suc')
 })

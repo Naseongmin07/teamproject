@@ -367,7 +367,7 @@ let hidden_img_del = async (req,res)=>{
 }
 
 let course_form = (req,res)=>{
-    console.log(req.body)
+    console.log(req.body,'-------------------------------------------')
     //res.redirect('/admin/login_on?topmenu=교육과정')
     res.render('./course_write.html')
 }
