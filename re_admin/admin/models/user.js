@@ -22,7 +22,7 @@ module.exports = class User extends Sequelize.Model{
                 allowNull:false,
             },
             paycheck:{
-                type:Sequelize.BOOLEAN,
+                type:Sequelize.STRING(5),
                 allowNull:false,
                 defaultValue:0
             },
@@ -62,10 +62,6 @@ module.exports = class User extends Sequelize.Model{
                 type:Sequelize.BOOLEAN,
                 allowNull:false
             },
-            portfolio:{
-                type:Sequelize.BOOLEAN,
-                allowNull:false
-            }
         },{
             sequelize,
             timestamps:false,

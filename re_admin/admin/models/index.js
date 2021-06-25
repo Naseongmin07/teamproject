@@ -17,9 +17,11 @@ const Portfolio = require('./portfolio.js')
 const Submain = require('./submain.js')
 const User = require('./user.js')
 const Facility = require('./facility.js')
-const Main_visual = require('./mainvisual')
+const Mainvisual = require('./mainvisual')
 const Visitor = require('./visitor')
-
+const Siteset = require('./siteset.js')
+const Coinfo = require('./company_info.js')
+const Main = require('./main.js')
  
 let sequelize;
 if (config.use_env_variable) {
@@ -53,8 +55,11 @@ db.Portfolio = Portfolio
 db.Submain = Submain
 db.User = User
 db.Facility = Facility
-db.Main_visual = Main_visual
+db.Mainvisual = Mainvisual
 db.Visitor = Visitor
+db.Siteset = Siteset
+db.Coinfo = Coinfo
+db.Main = Main
 
 Adminlist.init(sequelize)
 Community.init(sequelize)
@@ -65,9 +70,11 @@ Portfolio.init(sequelize)
 Submain.init(sequelize)
 User.init(sequelize)
 Facility.init(sequelize)
-Main_visual.init(sequelize)
+Mainvisual.init(sequelize)
 Visitor.init(sequelize)
-
+Siteset.init(sequelize)
+Coinfo.init(sequelize)
+Main.init(sequelize)
 
 // Adminlist.associate(db)
 // Community.associate(db)

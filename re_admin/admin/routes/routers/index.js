@@ -46,9 +46,11 @@ router.post('/image',upload.single('img'),async (req,res)=>{
 }
 })
 router.post('/image_del',userController.img_del)
-
+router.post('/main_image_del',userController.main_img_del)
+router.post('/hidden_main_img_del',userController.hidden_img_del)
 router.post('/main_img',upload.single('imgg'),userController.main_img)
-// /admin/login_on
+
+// /admin/login_on  
 router.get('/',userController.admin_main)
 router.post('/',userController.main_form)
 
@@ -72,6 +74,7 @@ router.post('/community_write',userController.community_write_post)
 // router.get('/category',userController.category_select)
 router.post('/community_del',userController.community_del)
 
+router.get('/course')
 router.get('/course_write',userController.course_write)
 router.post('/course_write',userController.course_write_post)
 router.post('/course_form',userController.course_form)
@@ -82,5 +85,5 @@ router.post('/portfolio_sub',userController.portfolio_suc)
 
 //==========================게시판그룹관리
 router.get('/board_group',userController.board_group_get)
-
+router.post('/mainboard_group',userController.mainboard_group)
 module.exports = router

@@ -52,7 +52,11 @@ module.exports = class Course extends Sequelize.Model{
                 type:Sequelize.STRING(255),
                 allowNull:true,
             },
-            time:{
+            starttime:{
+                type:Sequelize.TIME,
+                allowNull:true
+            },
+            endtime:{
                 type:Sequelize.TIME,
                 allowNull:true
             },

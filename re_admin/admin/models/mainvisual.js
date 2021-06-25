@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const moment = require('moment')
 
-module.exports = class main_visual extends Sequelize.Model{
+module.exports = class Mainvisual extends Sequelize.Model{
     static init(sequelize){
         return super.init({
             image:{
@@ -13,7 +13,7 @@ module.exports = class main_visual extends Sequelize.Model{
                 allowNull:false
             },
             watchaut:{
-                type:Sequelize.DATE,
+                type:Sequelize.BOOLEAN,
                 allowNull:true,
                 defaultValue:0
             },
@@ -24,6 +24,10 @@ module.exports = class main_visual extends Sequelize.Model{
                 get:function(){
                     return moment(this.getDataValue('date')).format('YYYY-MM-DD')
                 }
+            },
+            text:{
+                type:Sequelize.STRING(30),
+                allowNull:false
             }
         },{
             sequelize,

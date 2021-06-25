@@ -1,4 +1,4 @@
-const {Adminlist, Submain,User,Facility,Community,Course, Employed, Portfolio,Main_visual,Visitor} = require('../../models')
+const {Adminlist, Submain,User,Facility,Community,Course, Employed, Portfolio,Mainvisual,Visitor, Siteset, Coinfo,Main} = require('../../models')
 const pwHash = require('../../createHash.js')
 const ctoken = require('../../jwt.js')
 const {sequelize} = require('../../models/index.js')
@@ -20,57 +20,63 @@ const upload = multer({
 let admin_main = async (req,res)=>{
     let {topmenu,submenu} = req.query
     let subboard = await Submain.findAll({where:{mainBoard:`${topmenu}`}})
-    let onesubboard = await Submain.findAll({where:{subBoard:`${submenu}`}})               
+    let onesubboard = await Submain.findAll({where:{subBoard:`${submenu}`}})
+    if(req.query.submenu==undefined){
+        let totalcontents = await Community.findAll({})
+        console.log(totalcontents)
+    }
         switch(topmenu){            
             case 'administrator':
                 let adminList = await Adminlist.findAll({})
                 let boardres = await Submain.findAll({})
                 let boardgroupres = await Submain.findAll({})
                 let resu = await User.findAll({})
-                let main_img = await Main_visual.findAll({})
-                //console.log(req.cookies.AccessToken)
-                // let {siteName,siteUrl,basicTitle,CEOEmail} = {
-                //         siteName: '경일게임아카데미',
-                //         siteUrl: 'www.com.www.com',
-                //         basicTitle: '경일게임아카데미에 오신 것을 환영합니다.',
-                //         CEOEmail: 'asdf@email.com'
-                // }===================================나중에 사이트 환경설정 db에 넣을지 말지에 따라
-                
-                res.render('./admin_list.html',{main_img,subboard,topmenu,submenu,adminList,boardres,boardgroupres,resu})
+                let main_img = await Mainvisual.findAll({where:{watchaut:1}})
+                let hidden_img = await Mainvisual.findAll({where:{watchaut:0}})
+                let Coinfores = await Coinfo.findOne({where:{id:1}})
+                let Sitesetres = await Siteset.findOne({where:{id:1}})
+                let mainBoardtitle = await Main.findAll({})                
+                res.render('./admin_list.html',{topmenu,main_img,hidden_img,subboard,topmenu,submenu,adminList,boardres,boardgroupres,resu,Coinfores,Sitesetres,mainBoardtitle})
                 break;
             case '시설소개':
+                let facility_img = await Facility.findAll({})
                 let result = await Facility.findAll({where:{subboard:`${submenu}`}})
-                res.render('./facility.html',{topmenu,subboard,onesubboard,result})
+                res.render('./facility.html',{topmenu,facility_img,topmenu,subboard,onesubboard,result})
                 break;
             case '커뮤니티':
+                console.log(req.query.submenu,',============================')
+                //let totalres = await Community.findAll({})
+                
                     resuu = await Community.findAll({where:{subBoard:`${submenu}`}})
-                res.render('./community.html',{subboard,onesubboard,resuu})
+                res.render('./community.html',{subboard,onesubboard,resuu,topmenu})
                 break;
             case '교육과정':
-                let resuuu = await Course.findAll({where:{courseName:`${submenu}`}})
-                res.render('./course.html',{subboard,onesubboard,resuuu})
+                
+                let resuuu = await Course.findAll({})
+                res.render('./course.html',{topmenu,subboard,onesubboard,resuuu})
                 break;
             case '취업정보':
                 let Employee = await Employed.findAll({})
                 let portfolio = await Portfolio.findAll({})                
-                res.render('./employ.html',{subboard,onesubboard,Employee,portfolio,submenu})
+                res.render('./employ.html',{topmenu,subboard,onesubboard,Employee,portfolio,submenu})
                 break;
             case '상담신청':
-                res.render('./topmenu.html',{subboard,onesubboard})
+                res.render('./topmenu.html',{topmenu,subboard,onesubboard})
                 break;
             case '방문자정보':
-                res.render('./visitor.html',{subboard,onesubboard})
+                res.render('./visitor.html',{topmenu,subboard,onesubboard})
                 break;
         }
 }  
 
-let siteset = (req,res)=>{
+let siteset = async (req,res)=>{
     if(req.query.location=='basic_info'){
-    let {siteName,siteUrl,basicTitle,CEOEmail} = req.body
-    // ============================siteset db 추가할 경우 해당 내용 넣기
+        console.log(req.body)
+        let {siteName,siteUrl,title,CEOemail} = req.body
+        await Siteset.update({siteName,siteUrl,title,CEOemail},{where:{id:1}})
     }else if(req.query.location=='company_info'){
-        let{number_1,number_2,number_3,CEOName,comTel,busAddress} = req.body
-    //// ============================siteset db 추가할 경우 해당 내용 넣기
+        let{CRN,CEOName,Contel,CompanySite} = req.body
+        await Coinfo.update({CRN,CEOName,Contel,CompanySite},{where:{id:1}})
     }
     console.log(req.body)
     res.redirect('/admin/login_on?topmenu=administrator&submenu=사이트환경설정')
@@ -222,8 +228,8 @@ let user_list = async (req,res)=>{
     switch (location){
         case 'add_user':
             try{
-            let {userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg} = req.body
-            await User.create({userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,portfolio,userEtc,userImg})
+            let {userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,userEtc,userImg} = req.body
+            await User.create({userName,userIdx,userPsw,courseName,paycheck,userBirth,created_at,userTel,userAddress,employmentStatus,userEtc,userImg})
             res.redirect('/admin/login_on?topmenu=administrator&submenu=사용자관리')
             break;
             }catch(e){
@@ -237,14 +243,24 @@ let user_list = async (req,res)=>{
                        userName:req.body.value
                    }
                })
-                res.render('./admin_list.html',{searched,main})
-            }else if(req.body.search_condition_m=="course_name"){
+               if(searched.employmentStatus==0){
+                    res.render('./admin_list.html',{searched,main,topmenu:'administrator',submenu:'사용자관리',emlploy0:'checked'})
+               }else if(searched.employmentStatus==1){
+                res.render('./admin_list.html',{searched,main,topmenu:'administrator',submenu:'사용자관리',employ1:'checked'})
+               }
+               
+            }else if(req.body.search_condition_m=="courseName"){
                 let searched = await User.findOne({
                     where:{
                         courseName:req.body.value
                     }
                 })
-                res.render('./admin_list.html',{searched,main})
+                if(searched.employmentStatus==0){
+                    res.render('./admin_list.html',{searched,main,topmenu:'administrator',submenu:'사용자관리',emlploy0:'checked'})
+               }else if(searched.employmentStatus==1){
+                res.render('./admin_list.html',{searched,main,topmenu:'administrator',submenu:'사용자관리',employ1:'checked'})
+               }
+               
             };
             break;
         }catch(e){
@@ -308,21 +324,52 @@ let community_write = async (req,res)=>{
 let community_write_post = async (req,res)=>{
     let {mainBoard,subBoard,title,contents,file,img,writeaut,readaut,replyaut,idx,writer} = req.body
     await Community.create({idx,writer,mainBoard,subBoard,title,contents,file,img,writeaut,readaut,replyaut})
-    let resu = await Community.findAll({})
+    let resuuu = await Community.findAll({})
     //res.render('./community.html',{resu})
     res.redirect('/admin/login_on?topmenu=커뮤니티')
 }
 
 let img_del = async (req,res) =>{
-    console.log(req.body)
+    //console.log(req.body.id,'=======================================')
     await Facility.destroy({where:{
         id:req.body.id
     }})
     res.redirect('/admin/login_on?topmenu=시설소개')
 }
 
-let course_form = async (req,res)=>{
-    res.redirect('/admin/login_on?topmenu=교육과정')
+let main_img_del = async (req,res)=>{
+    console.log(req.body.del)
+    console.log(req.body.move)
+    if(req.body.del=="삭제"){
+        //console.log('삭제')
+        await Mainvisual.destroy({where:{
+            id:req.body.idx
+        }})
+    }else if(req.body.move=="이동"){
+        //console.log('이동')
+        await Mainvisual.update({watchaut:0},{where:{id:req.body.idx}})
+    }
+    
+    res.redirect('/admin/login_on?topmenu=administrator&submenu=메인비쥬얼보임')
+}
+let hidden_img_del = async (req,res)=>{
+    if(req.body.del=="삭제"){
+        //console.log('삭제')
+        await Mainvisual.destroy({where:{
+            id:req.body.idx
+        }})
+    }else if(req.body.move=="이동"){
+        //console.log('이동')
+        await Mainvisual.update({watchaut:1},{where:{id:req.body.idx}})
+    }
+    
+    res.redirect('/admin/login_on?topmenu=administrator&submenu=메인비쥬얼보임')
+}
+
+let course_form = (req,res)=>{
+    console.log(req.body)
+    //res.redirect('/admin/login_on?topmenu=교육과정')
+    res.render('./course_write.html')
 }
 
 let course_write = (req,res)=>{
@@ -330,9 +377,9 @@ let course_write = (req,res)=>{
 } 
 
 let course_write_post = async (req,res)=>{
-    let {courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,time,tag,support,description,onoff} = req.body
-    console.log(courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,time,tag,support,description,onoff)
-    await Course.create({courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,time,tag,support,description,onoff})
+    let {courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,starttime,endtime,tag,support,description,onoff} = req.body
+    console.log(courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,starttime,tag,support,description,onoff)
+    await Course.create({courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,starttime,endtime,tag,support,description,onoff})
     res.redirect(`/admin/login_on?topmenu=교육과정&submenu=${courseName}`)
 }
 let add_employee = async (req,res)=>{
@@ -365,8 +412,8 @@ let portfolio_suc = async (req,res)=>{
 
 let main_img = async (req,res)=>{
     let {url,watchaut} = req.body
-    let img = req.file.filename
-    await Main_visual.create({img,url,watchaut})
+    let image = req.file.filename
+    await Mainvisual.create({image,url,watchaut})
     res.redirect('/admin/login_on?topmenu=administrator&submenu=메인비쥬얼보임')
 }
 
@@ -380,7 +427,6 @@ let community_del = async (req,res)=>{
 
 let visitor_info = async (req,res)=>{
     let re = req.body.date
-    console.log('================',re,'==============')
     let {currentURL,exURL,userAgent,userLanguage,webwidth,webHeight} = req.body
     await Visitor.create({currentURL,exURL,userAgent,userLanguage,webwidth,webHeight})
     let visitorres = await Visitor.findAll({
@@ -389,6 +435,18 @@ let visitor_info = async (req,res)=>{
     })
     //console.log(visitorres)
     res.render('./visitor_info.html',{visitorres})
+}
+let mainboard_group = async (req,res)=>{
+    let mainboardtitle = req.body.mainBoard_select
+    if(req.body.search=="검색"){
+        let selectedSub = await Submain.findAll({where:{mainBoard:mainboardtitle}})
+        res.render('./admin_list.html',{topmenu:'administrator',submenu:'게시판그룹관리',selectedSub})
+    }else if(req.body.modify=="수정"){
+        let modifiedSub = await Submain.findAll({where:{mainBoard:mainboardtitle}})
+        res.render('./admin_list.html',{topmenu:'administrator',submenu:'게시판그룹관리',modifiedSub})
+    }
+    
+    
 }
 
 module.exports = {
@@ -412,5 +470,8 @@ module.exports = {
     main_img,
     community_del,
     visitor_info,
-    siteset
+    siteset,
+    mainboard_group,
+    main_img_del,
+    hidden_img_del
 }
