@@ -16,7 +16,8 @@ let category_list =
             {boardName: "커뮤니티", category:"교수칼럼", url:"/community/professor" },
             {boardName: "상담신청", category:"상담게시판", url:"/consult/consulting" },
             {boardName: "상담신청", category:"지원하기", url:"/consult/apply" },
-            {boardName: "상담신청", category:"자주묻는질문", url:"/consult/faq"}]
+            {boardName: "상담신청", category:"자주묻는질문", url:"/consult/faq"}
+        ]
 
 
 const header_menu_ul = document.querySelector('#header_menu_ul')
@@ -66,16 +67,36 @@ for(i=0; i<category_list.length;i++){
 }
 
 
-let headersnbbar = document.querySelector('#header_snb_bar') 
+const headersnbbar = document.querySelector('#header_snb_bar') 
+
+
+console.log(headersnbbar.classList)
+
+
+const headermenu = document.querySelector('#header_menu')
+
+
+let current_time
+
+
+
 
 snbbaronFn = function(){
-    
+
     headersnbbar.setAttribute('class','snbbaron')
+    let date = new Date()
+    current_time = date.getTime()
+
 }
 
 snbbaroutFn = function(){
 
-    headersnbbar.setAttribute('class','snbbarout')
+    let date = new Date()
+    if(date.getTime()- current_time > 50){
+
+        headersnbbar.setAttribute('class','snbbarout')
+    }
+
 }
 
 

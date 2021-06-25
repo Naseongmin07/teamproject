@@ -46,7 +46,7 @@
                     </div>
                     <div class="board_article">
                         <label>
-                            <input type="radio" name="agree" value="0" checked="true">
+                            <input class = "agreement" type="radio" name="agree" value="0" checked="true">
                             동의하지않습니다
                         </label>
                         <label>
@@ -62,13 +62,13 @@
                             <tr>
                                 <th>이름*</th>
                                 <td class="board_name">
-                                    <input type="text" name="name" style="width:100px;">
+                                    <input class = "input_name" type="text" name="name" style="width:100px;">
                                 </td>
                             </tr>
                             <tr>
                                 <th>성별*</th>
                                 <td class = "board_gender">
-                                    <input type="radio" name="gender" value="남">
+                                    <input class = "gender" type="radio" name="gender" value="남" checked>
                                     남
                                     <input type="radio" name="gender" value="여">
                                     여
@@ -77,16 +77,16 @@
                             <tr>
                                 <th>나이*</th>
                                 <td class = "board_age">
-                                    <input type="text" name="name" style="width:100px;">
+                                    <input class = "input_age" type="text" name="age" style="width:100px;">
                                     세
                                 </td>
                             </tr>
                             <tr>
                                 <th>이메일*</th>
                                 <td class = "board_email">
-                                    <input type="text" name="name" style="width:100px;">
+                                    <input class = "email_adress" type="text" name="email_adress" style="width:100px;">
                                     @
-                                    <input type="text" id="email_domain" name="name" style="width:100px;">
+                                    <input class = "email_domain" type="text" name="email_domain" style="width:100px;">
                                     <select id="email_select" onchange=onchangeFn()> 
                                         <option></option>
                                         <option>직접입력</option>
@@ -111,11 +111,11 @@
                             <tr>
                                 <th>전화번호*</th>
                                 <td class = "board_tel">
-                                    <input type="text" name="mobile1" style="width: 80px;">
+                                    <input class = "mobie" type="text" name="mobile" style="width: 80px;">
                                     -
-                                    <input type="text" name="mobile1" style="width: 100px;">
+                                    <input class = "mobie" type="text" name="mobile" style="width: 100px;">
                                     -
-                                    <input type="text" name="mobile1" style="width: 100px;">
+                                    <input class = "mobie" type="text" name="mobile" style="width: 100px;">
                                 </td>
                             </tr>
                             <tr>

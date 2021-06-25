@@ -50,6 +50,7 @@ const database = [{title:"blockchain", teacher: "asdf", Coursetype:"asdf", start
                     {title:"gamekrw", teacher: "asdf", Coursetype:"asdf", startDate: "2021-06-01", endDate: "2021-06-19", contents: "asdf"},
                     {title:"gameschedule", teacher: "asdf", Coursetype:"asdf", startDate: "2021-06-11", endDate: "2021-07-30", contents: "asdf"},
                     {title:"progammer", teacher: "asdf", Coursetype:"asdf", startDate: "2021-07-11", endDate: "2021-07-20", contents: "asdf"},
+                    {title:"K-DIGITAL-TRAINING", teacher: "asdf", Coursetype:"asdf", startDate: "2021-06-11", endDate: "2021-07-20", contents: "asdf"},
                 ]
 
 
@@ -224,7 +225,9 @@ function load_schedule(){
         "gameschedule": "yellowgreen",
         "progammer": "purple",
         "gameprogramming" : "black",
+        "K-DIGITAL-TRAINING" : "gray"
     }
+
     let p_index_list = rowindexing()
     database.forEach((v,i2)=>{
         let bar_color = target_color[v.title]

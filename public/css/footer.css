@@ -86,17 +86,3 @@
     margin-left: 35px;
 }
 
-
-.fixed_top{
-    float:right;
-    position:fixed;
-    left:1800px;
-    bottom: 50px;
-}
-
-.fixed_talk{
-    float:right;
-    position:fixed;
-    left:1800px;
-    bottom: 130px;
-}

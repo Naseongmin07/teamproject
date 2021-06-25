@@ -1,0 +1,84 @@
+{% extends 'topmenu.html' %}
+
+{% block middlecontent %}
+
+<div>
+<form action="/admin/login_on/course_write" method="POST">
+    <ul id="course_write_css">
+            <form action="">
+                <div>
+                    <label for="courseName">강좌명</label>
+                    <input type="text" id="courseName"name="courseName" value="블럭체인">
+                </div>
+                <div>
+                    <label for="tName">강사명</label>
+                    <input type="text" id="tName"name="name">
+                </div>
+                <div>
+                    <label for="file">이미지</label>
+                    <input type="text" id="img"name="img">
+                </div>
+                <div>
+                    <label for="CourseType">강좌그룹</label>
+                    <input type="text" id="CourseType" name="coursetype">
+                </div>
+                <div>
+                    <label for="idx">강사아이디</label>
+                    <input type="text" name="idx">
+                </div>
+                <div>
+                    <label for="pay">수강료</label>
+                    <input type="text" id="pay"name="pay">
+                </div>
+                <div>
+                    <label for="headCount">총인원</label>
+                    <input type="number" id="headCount" name="head_count">
+                </div>
+                <div>
+                    <label for="startDate">시작일</label>
+                    <input type="date" id="startDate" name="startDate">
+                </div>
+                <div>
+                    <label for="endDate">종류일</label>
+                    <input type="date" id="endDate" name="endDate">
+                </div>
+                <div>
+                    <label for="contents">내용</label>
+                    <input type="text" id="contents" name="contents">
+                </div>
+                <div>
+                    <label for="Time">교육시작시간</label>
+                    <input type="time" id="Time" name="starttime">
+                </div>
+                <div>
+                    <label for="Time">교육종료시간</label>
+                    <input type="time" id="Time" name="endtime">
+                </div>
+                <div>
+                    <label for="Tag">태그</label>
+                    <input type="text" id="tag" name="tag">
+                </div>
+                <div>
+                    <label for="Support">지원여부</label>
+                    <input type="text" id="Support" name="support">
+                </div>
+                <div>
+                    <label for="Description">설명</label>
+                    <input type="text" id="Description" name="description">
+                </div>
+                <div>
+                    <label for="onoff">모집현황</label>
+                    <input type="text" id="onoff" name="onoff">
+                </div>
+                <div>
+                    <input type="submit" name="add" value="작성">
+            </form>
+        </li>
+    </ul>
+        
+    
+    
+            
+
+</div>
+{% endblock %}

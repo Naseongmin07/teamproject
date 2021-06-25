@@ -116,15 +116,19 @@ a{
     color: #004385;
 }
 
+
+
 #header_snb_bar{
-    height: 0px;
     position:absolute;
     width: 1903px;;
     background: rgba(50,50,50,0.9);
     opacity: 80%;
     z-index: 50;
     overflow: hidden;
+    height:0px;
 }
+
+
 
 #snb_bar_image{
     width: 20%;

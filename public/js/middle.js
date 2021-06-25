@@ -1,17 +1,25 @@
-const banner_link = {
-    college: ["http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg","KYUNGIL TECHNICAL COLLEGE"],
-    curriculum: ["http://www.kiweb.or.kr/images/curriculum/sub_visual_bg.jpg","CURRICULUM"],
-    job: ["http://www.kiweb.or.kr/images/job/sub_visual_bg.jpg","JOB INFORMATION"],
-    community: ["http://www.kiweb.or.kr/images/community/sub_visual_bg.jpg","COMMUNITY"],
-    consult: ["http://www.kiweb.or.kr/images/consult/sub_visual_bg.jpg","CONSULTING"],
-}
-const page_list = {
-    college : {introduction :"인사말",history: "연혁",teachers: "교직원소개",interior: "시설소개",location: "오시는길"},
-    curriculum : {curriculum :"과정안내"},
-    job : {interview: "취업자인터뷰",recruit: "취업현황",portfolio: "포트폴리오"},
-    community : {notice: "공지사항",review: "수강후기", story: "KI이야기",reporter: "KI기자단",professor: "교수칼럼"},
-    consult : {consulting: "상담게시판",apply: "지원하기",faq: "자주묻는질문"},
-}
+
+
+const page_list = [
+    {boardName :'college' ,category: 'introduction', boardmenu : '인사말',bannerlink : "http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg", bannerlogo : "KYUNGIL TECHNICAL COLLEGE"},
+    {boardName :'college' ,category: 'history', boardmenu : '연혁' ,bannerlink : "http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg", bannerlogo : "KYUNGIL TECHNICAL COLLEGE"},
+    {boardName :'college' ,category: 'teachers', boardmenu : '교직원소개' ,bannerlink : "http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg", bannerlogo : "KYUNGIL TECHNICAL COLLEGE"},
+    {boardName :'college' ,category: 'interior', boardmenu : '시설소개' ,bannerlink : "http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg", bannerlogo : "KYUNGIL TECHNICAL COLLEGE"},
+    {boardName :'college' ,category: 'location', boardmenu : '오시는길' ,bannerlink : "http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg", bannerlogo : "KYUNGIL TECHNICAL COLLEGE"},
+    {boardName :'curriculum' ,category: 'curriculum', boardmenu : '과정안내' ,bannerlink : "http://www.kiweb.or.kr/images/curriculum/sub_visual_bg.jpg", bannerlogo: "CURRICULUM"},
+    {boardName :'job' ,category: 'interview', boardmenu : '취업자인터뷰' ,bannerlink : "http://www.kiweb.or.kr/images/job/sub_visual_bg.jpg" , bannerlogo: "JOB INFORMATION"},
+    {boardName :'job' ,category: 'recruit', boardmenu : '취업현황' ,bannerlink : "http://www.kiweb.or.kr/images/job/sub_visual_bg.jpg", bannerlogo: "JOB INFORMATION"},
+    {boardName :'job' ,category: 'portfolio', boardmenu : '포트폴리오' ,bannerlink : "http://www.kiweb.or.kr/images/job/sub_visual_bg.jpg", bannerlogo: "JOB INFORMATION"},
+    {boardName :'community' ,category: 'notice', boardmenu : '공지사항' ,bannerlink : "http://www.kiweb.or.kr/images/community/sub_visual_bg.jpg", bannerlogo: "COMMUNITY"},
+    {boardName :'community' ,category: 'review', boardmenu : '수강후기' ,bannerlink : "http://www.kiweb.or.kr/images/community/sub_visual_bg.jpg", bannerlogo: "COMMUNITY"},
+    {boardName :'community' ,category: 'story', boardmenu : 'KI이야기' ,bannerlink : "http://www.kiweb.or.kr/images/community/sub_visual_bg.jpg", bannerlogo: "COMMUNITY"},
+    {boardName :'community' ,category: 'reporter', boardmenu : 'KI기자단' ,bannerlink : "http://www.kiweb.or.kr/images/community/sub_visual_bg.jpg", bannerlogo: "COMMUNITY"},
+    {boardName :'community' ,category: 'professor', boardmenu : '교수칼럼' ,bannerlink : "http://www.kiweb.or.kr/images/community/sub_visual_bg.jpg", bannerlogo: "COMMUNITY"},
+    {boardName :'consult' ,category: 'consulting', boardmenu : '상담게시판' ,bannerlink : "http://www.kiweb.or.kr/images/consult/sub_visual_bg.jpg", bannerlogo: "CONSULTING"},
+    {boardName :'consult' ,category: 'apply', boardmenu : '지원하기' ,bannerlink : "http://www.kiweb.or.kr/images/consult/sub_visual_bg.jpg", bannerlogo: "CONSULTING"},
+    {boardName :'consult' ,category: 'faq', boardmenu : '자주묻는질문' ,bannerlink : "http://www.kiweb.or.kr/images/consult/sub_visual_bg.jpg", bannerlogo: "CONSULTING"},
+]
+
 
 
 let original_href = window.location.href
@@ -26,29 +34,51 @@ let href_split = new_href.split('/')
 let current_split = href_split[href_split.length-2]
 let current_split_page = href_split[href_split.length-1]
 
+
+
+let obj = new Object()
+let obj2 = new Object()
+
+
+page_list.forEach(v=>{
+    if(v.boardName == current_split){
+        let object_list = []
+        obj[v.category] = v.boardmenu
+        object_list.push(v.bannerlink)
+        object_list.push(v.bannerlogo)
+        obj2[v.category] = object_list
+    }
+})
+
+
+
 const middle_header = document.querySelector('#middle_header')
 const middle_header_content = document.querySelector('.middle_header_content')
 
-middle_header.style.backgroundImage = `url(${banner_link[current_split][0]})`
+
+
+
+middle_header.style.backgroundImage = `url(${obj2[current_split_page][0]})`
 middle_header.style.backgroundSize = 'cover'
-middle_header_content.innerHTML = `${banner_link[current_split][1]}`
+middle_header_content.innerHTML = `${obj2[current_split_page][1]}`
 
 
 const middle_ul = document.querySelector('.middle_ul')
-let current_page_list = page_list[current_split]
-let li
 
 
-let object_values = Object.values(current_page_list)
-let object_keys = Object.keys(current_page_list)
 let href_link
 
 
-for(i=0;i<object_keys.length;i++){
+object_keys = Object.keys(obj)
+object_values = Object.values(obj)
+
+
+
+for(i=0; i<object_keys.length; i++){
     a = document.createElement('a')
     href_link = `/${current_split}/${object_keys[i]}`
     a.href = href_link
-    li = document.createElement('li')
+    let li = document.createElement('li')
     li.innerHTML = object_values[i]
     li.classList.add(object_keys[i])
     a.appendChild(li)
@@ -57,17 +87,16 @@ for(i=0;i<object_keys.length;i++){
 
 
 const middle_right_header = document.querySelector('.middle_right_header')
-middle_right_header.innerHTML = page_list[current_split][current_split_page]
+middle_right_header.innerHTML = obj[current_split_page]
 
 
 const middle_left_header_title = document.querySelector('.middle_left_header_title')
-middle_left_header_title.innerHTML = banner_link[current_split][1]
+middle_left_header_title.innerHTML = obj2[current_split_page][1]
 
 
 current_menu = document.querySelector(`.${current_split_page }`)
 current_menu.style.color = '#006cdb'
 current_menu.style.borderBottom = '1px solid #006cdb'
-
 
 
 class createBoard{
@@ -204,10 +233,11 @@ class createBoard{
                 }
                 else{
                     tr = document.createElement('tr')
-                    let b = document.createElement('b')
+                    let span = document.createElement('span')
                     let td = document.createElement('td')
-                    b.innerHTML = column[i]
-                    td.appendChild(b)
+                    span.innerHTML = column[i]
+
+                    td.appendChild(span)
                     td.innerHTML = `: ${v[key[i]]}`
                     tr.appendChild(td)
                 }
@@ -228,12 +258,15 @@ class createBoard{
         if(this.board_type == "board"){
 
             table_result = this.createTable(db, new_page, this.column_key)
+            
         }else if(this.board_type =="interview"){
 
             table_result = this.createInterview(db, new_page, this.column_key)
+
         }else if(this.board_type == "portfolio"){
 
             table_result = this.createPortfolio(db, new_page, this.column_key)
+
         }
         let ul_result = this.createUl(db, new_page)
         let search = this.createSearch()
@@ -416,6 +449,7 @@ class createBoard{
 
         return search_ul
     }
+
 }
 
 
@@ -1301,11 +1335,7 @@ const column_key4 = {
 }
 
 
-function callback(){
-    let search_select = document.querySelector('.search_select')
-    let search_input = document.querySelector('.search_input')
-    
-}
+
 
 async function searchDB(){
     url = 'http://localhost3000/'
@@ -1319,25 +1349,21 @@ const middle_right_bottom = document.querySelector('.middle_right_bottom')
 if(href_split[href_split.length-2] == "community"|| href_split[href_split.length-1]=="faq"){
     let board = new createBoard(middle_right_bottom, database, column_key, 'board')
     board.init()
-
 }
 
 if(href_split[href_split.length-1]=="recruit"){
     let board = new createBoard(middle_right_bottom, database2, column_key2, 'board')
     board.init()
-
 }
 
 if(href_split[href_split.length-1]=="interview"){
     let board = new createBoard(middle_right_bottom, database3, column_key3, 'interview')
     board.init()
-
 }
 
 if(href_split[href_split.length-1]=="portfolio"){
     let board = new createBoard(middle_right_bottom, database4, column_key4, 'portfolio')
     board.init()
-
 }
 
 

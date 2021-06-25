@@ -1,0 +1,590 @@
+{% extends 'topmenu.html' %}
+
+{% block submenu %}
+                <ul>
+                    <li class="left_menu_m">
+                        <table class="left_menu_table_m">    
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <ul id="list_column_m">
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=관리자리스트">관리자리스트</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=사이트환경설정">사이트환경설정</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=게시판생성관리">게시판생성관리</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=게시판그룹관리">게시판그룹관리</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=팝업관리">팝업관리</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=메인비쥬얼보임">메인비쥬얼[보임]</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=메인비쥬얼숨김">메인비쥬얼[숨김]</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=사용자관리">사용자 관리</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+{% endblock %}
+{% block middlecontent %}
+<!-- 관리자리스트======================================================================= -->
+    {% if submenu == "관리자리스트" %}
+        <div id="main_container_m">
+            <div id="main_container_top_m">
+                <p>관리자리스트</p>
+                <form action="/admin/login_on/admin_list?location=search" method="POST">
+                    <fieldset>
+                        검색조건 :
+                                <select name="search_condition_m">
+                                    <option value="name">이름</option>
+                                    <option value="class_name">아이디</option>
+                                </select>
+                                <input type="text" name="value" >
+                        <input type="submit" value="검색" name="search">
+                        <input type="reset"  value="초기화" name="reset">
+                    </fieldset>
+                </form>
+            </div>
+            <div id="main_container_main_m">
+                <form action="/admin/login_on/admin_list?location=admin_add" method="post"  id="admin_add_form">
+                    <div>
+                        <label for="name" id="admin_label">이름</label>
+                        <input type="text" placeholder="이름" name="name" required>
+                    </div>
+                    <div>
+                        <label for="idx" id="admin_label">아이디</label>
+                        <input type="text" placeholder="아이디" name="idx" required>
+                    </div>
+                    <div>
+                        <label for="psw" id="admin_label">비밀번호</label>
+                        <input type="password" placeholder="비밀번호" name="psw" required>
+                    </div>
+                    <div>
+                        <label for="birth" id="admin_label">생년월인</label>
+                        <input type="date" placeholder="생년월일" name="birth" required>
+                    </div>
+                    <div>
+                        <label for="courseName" id="admin_label">직무</label>
+                        <input type="text" placeholder="직무" name="courseName" required>
+                    </div>
+                    <div>
+                        <label for="level" id="admin_label">관리자등급</label>
+                        <input type="text" placeholder="등급" name="level" required>
+                    </div>
+                    <div>
+                        <label for="Tel" id="admin_label">연락처</label>
+                        <input type="tel" placeholder="연락처" name="tel" required>
+                    </div>
+                    <div>
+                        <label for="startDate" id="admin_label">입사일</label>
+                        <input type="date" placeholder="입사일" name="startDate" required>
+                    </div>
+                    <div>
+                        <label for="Email" id="admin_label">이메알</label>
+                        <input type="email" placeholder="이메일" name="email" required>
+                    </div>
+                    <div>
+                        <label for="img" id="admin_label">사진</label>
+                        <input type="file" placeholder="image" name="img">
+                    </div>
+                    <div>
+                        <input type="submit" value="관리자 추가">
+                    </div>
+                </form>
+                <form action="/admin/login_on/admin_list?location=admin_manage" id="searched_form" method="POST">
+                        <div>
+                            <label for="number" id="admin_label">번호</label>
+                            <input type="number" value="{{resu.id}}" name="Id" id="admin_input" required>
+                        </div>
+                        <div>    
+                            <label for="name" id="admin_label">이름</label>
+                            <input type="text" value="{{resu.name}}" name="Name" id="admin_input" required>
+                        </div>
+                        <div>   
+                            <label for="level" id="admin_label">등급</label>
+                            <input type="text" value="{{resu.level}}" name="Level" id="admin_input" required>
+                        </div>
+                        <div>
+                            <label for="idx" id="admin_label">아이디</label>
+                            <input type="text" value="{{resu.idx}}" name="Idx" id="admin_input" required>
+                        </div>
+                        <div>    
+                            <label for="img" id="admin_label">연락처</label>
+                            <input type="tel" value="{{resu.tel}}" name="Tel" id="admin_input" required>
+                        </div>
+                        <div>    
+                            <label for="email" id="admin_label">이메일</label>
+                            <input type="email" value="{{resu.email}}" name="Email" id="admin_input" required>
+                        </div>
+                        <div>    
+                            <label for="startDate" id="admin_label">가입일</label>
+                            <input type="date" value="{{resu.birth}}" name="StartDate" id="admin_input" required>
+                        </div>
+                        <div class="submit">
+                            <input type="submit" value="삭제" name="delete" id="submit">
+                            <input type="submit" value="수정" name="modify" id="submit">
+                        </div>
+                </form>
+            </div>
+            <div id="main_container_sub_m">
+                <table border="1">
+                    <th>번호</th>
+                    <th>이름</th>
+                    <th>관리자등급</th>
+                    <th>아이디</th>
+                    <th>연락처</th>
+                    <th>이메일</th>
+                    <th>가입일</th>
+                    {% set res = adminList %}
+                    {% for item in res %}
+                    <tr>
+                        <td>{{res[loop.index-1].id}}</td>
+                        <td>{{res[loop.index-1].name}}</td>
+                        <td>{{res[loop.index-1].level}}</td>
+                        <td>{{res[loop.index-1].idx}}</td>
+                        <td>{{res[loop.index-1].tel}}</td>
+                        <td>{{res[loop.index-1].email}}</td>
+                        <td>{{res[loop.index-1].startDate}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+<!-- 사이트환경설정============================================================================== -->
+    {% elif submenu=="사이트환경설정" %}
+        <div id="admin_list_siteset">
+            <div id="website_basic_info">
+                <div id="site_set_title">
+                    <p>사이트기본환경설정</p>
+                </div>
+                <form action="/admin/login_on/siteset?location=basic_info" method="POST" style="border:1px solid black">
+                    <ul>
+                        <li>
+                            <p>웹사이트 기본정보</p>
+                        </li>
+                        <li>
+                            <label for="site_name">사이트명</label>
+                            <input type="text" id="site_name" name="siteName" value="{{Sitesetres.siteName}}">
+                            <!-- {{resu.siteName}} -->
+                        </li>
+                        <li>
+                            <label for="site_url">사이트url</label>
+                            <input type="text" id="site_url" name="siteUrl" value="{{Sitesetres.siteUrl}}">
+                            <!-- {{resu.siteName}} -->
+                        </li>
+                        <li>
+                            <label for="title">기본타이틀</label>
+                            <input type="text" id="title" name="title" value="{{Sitesetres.title}}">
+                            <!-- {{resu.siteName}} -->
+                        </li>
+                        <li>
+                            <label for="c_e_oemail">대표이메일</label>
+                            <input type="email" id="c_e_oemail" name="CEOemail" value="{{Sitesetres.CEOEmail}}">
+                            <!-- {{resu.siteName}} -->
+                        </li>
+                        <input type="submit" value="수정">
+                    </ul>
+                </form>
+            </div>
+            <div>
+                <form action="/admin/login_on/siteset?location=company_info" method="POST" style="border:1px solid black">
+                    <ul>
+                        <li>
+                            <p>업체정보</p>
+                        </li>
+                        <li>
+                            <label for="bus_number">사업자 등록 번호</label>
+                            <input type="text" name="CRN" id="bus_number" value="{{Coinfores.CRN}}">
+                        </li>
+                        <li>
+                            <label for="c_e_o_name">대표자명</label>
+                            <input type="text" id="c_e_o_name" name="CEOName" value="{{Coinfores.CEOName}}">
+                        </li>
+                        <li>
+                            <label for="contel">통신판매업 신고번호</label>
+                            <input type="text" id="contel" name="Contel" value="{{Coinfores.Contel}}">
+                        </li>
+                        <li>
+                            <label for="company_site">사업장 주소</label>
+                            <input type="text" id="company_site" name="CompanySite" value="{{Coinfores.CompanySite}}">
+                        </li>
+                        <input type="submit" value="수정">
+                    </ul>
+                </form>
+            </div>
+        </div>
+<!-- 게시판생성관리===================================================================== -->
+    {% elif submenu=="게시판생성관리" %}
+        <div id="board_make_admin">
+            <div>
+                <form action="/admin/login_on/admin_menu/board_make" method="POST" id="board_form">
+                    <input type="text"  name="form" value="board_form" style="display:none;">
+                    <div id = "top_title">
+                        <p>게시판 생성관리 - 원테이블을 사용합니다.</p>
+                    </div>
+                    <p>게시판 항목 생성하기 (하나의 테이블을 이용합니다.)</p>
+                    <table border="1">
+                        <td>테이블명</td>
+                        <td>게시판명</td>
+                        <td>그룹</td>
+                        <tr>
+                            <td>
+                                <input type="text" name="tableName">
+                            </td>
+                            <td>
+                                <input type="text" name="subBoard">
+                                {% set res = boardres %}
+                                {% for item in res %}
+                                <input type="number" name="uni" value="{{res[loop.index-1].uni}}" style="display:none">
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <select name="mainBoard" form="board_form">
+                                    <option value="시설소개" selected>시설소개</option>
+                                    <option value="교육과정">교육과정</option>
+                                    <option value="취업정보">취업정보</option>
+                                    <option value="커뮤니티">커뮤니티</option>
+                                    <option value="상담신청">상담신청</option>
+                                </select>
+                            </td>
+                        </tr>                
+                    </table>
+                    <input type="submit" value="게시판 생성">
+                </form>
+            </div>
+            <form action="make_board_detail">
+
+            </form>
+            <div>    
+                <form action="/admin/login_on/admin_menu/board_manage" method="POST" id="board_manage_form">
+                    <p>게시판 수정 관리</p>
+                    <table border="1">                
+                        <td>번호</td>
+                        <td>테이블명</td>
+                        <td>게시판명</td>
+                        <td>읽기권한</td>
+                        <td>쓰기권한</td>
+                        <td>댓글권한</td>
+                        <td>contentType</td>
+                        <td>그룹</td>
+                        <td>수정</td>
+                        <td>삭제</td>
+                        {% set res = boardres %}
+                        {% for item in res %}
+                        <tr>
+                            <td>
+                                <input type="text" value="{{[loop.index]}}" name="number" >
+                                <input type="number" value="{{res[loop.index-1].id}}" name="numbercheck"  style="display:none">
+                            </td>
+                            <td>
+                                <input type="text" value="{{res[loop.index-1].tableName}}" name="tableName">
+                            </td>
+                            <td>
+                                <input type="text" value="{{res[loop.index-1].subBoard}}" name="subBoard">
+                            </td>
+                            <td>
+                                <input type="text" value="{{res[loop.index-1].watchaut}}" name="watchaut">
+                            </td>
+                            <td>
+                                <input type="text" value="{{res[loop.index-1].writeaut}}" name="writeaut">
+                            </td>
+                            <td>
+                                <input type="text" value="{{res[loop.index-1].replyaut}}" name="replyaut">
+                            </td>
+                            <td>
+                                <input type="text" value="{{res[loop.index-1].contentType}}" name="content">
+                            </td>
+                            <td>
+                                <input type="text"  value="{{res[loop.index-1].mainBoard}}" name="mainBoard">
+                            </td>
+                            <td>                        
+                                <input type="submit" name="{{[loop.index-1]}}" value="수정">
+                            </td>
+                            <td>
+                                <input type="submit" name="{{[loop.index-1]}}" value="삭제">
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+        <!-- 게시판그룹관리 -->
+    {% elif submenu=="게시판그룹관리" %}
+
+        <div id="board_ground_manage">
+            <form action="/admin/login_on/mainboard_group" method="POST">
+                <select name="mainBoard_select" >
+                    <option value="시설소개">시설소개</option>
+                    <option value="교육과정">교육과정</option>
+                    <option value="커뮤니티">커뮤니티</option>
+                    <option value="상담신청">상담신청</option>
+                    <option value="취업정보">취업정보</option>
+                </select>
+                <input type="submit" value="검색" name="search">
+                <input type="submit" value="수정" name="modify">
+            </form>
+            <div>
+                <table border="1">
+                <th>번호</th>
+                <th>테이블명</th>
+                <th>그룹</th>
+                <th>게시판명</th>
+                <th>게시판타입</th>
+                <th>내용</th>
+                <th>수정일</th>
+                <th>url</th>
+                <th>읽기권한</th>
+                <th>쓰기권한</th>
+                <th>댓글권한</th>
+                </table>
+            </div>
+                {% set res = boardgroupres %}
+                {% for item in res %}
+                <tr>
+                    <td>{{loop.index}}</td>                    
+                    <td>{{res[loop.index-1].tableName}}</td>
+                    <td>{{res[loop.index-1].mainBoard}}</td>
+                    <td>{{res[loop.index-1].subBoard}}</td>
+                    <td>{{res[loop.index-1].contentType}}</td>
+                    <td>{{res[loop.index-1].content}}</td>
+                    <td>{{res[loop.index-1].resetDate}}</td>
+                    <td>{{res[loop.index-1].url}}</td>
+                    <td>{{res[loop.index-1].watchaut}}</td>
+                    <td>{{res[loop.index-1].writeaut}}</td>
+                    <td>{{res[loop.index-1].replyaut}}</td>
+                </tr>
+                {% endfor %}
+                {% set res = selectedSub %}
+                {% for item in res %}
+                <tr>
+                    <td>{{loop.index}}</td>                    
+                    <td>{{res[loop.index-1].tableName}}</td>
+                    <td>{{res[loop.index-1].mainBoard}}</td>
+                    <td>{{res[loop.index-1].subBoard}}</td>
+                    <td>{{res[loop.index-1].contentType}}</td>
+                    <td>{{res[loop.index-1].content}}</td>
+                    <td>{{res[loop.index-1].resetDate}}</td>
+                    <td>{{res[loop.index-1].url}}</td>
+                    <td>{{res[loop.index-1].watchaut}}</td>
+                    <td>{{res[loop.index-1].writeaut}}</td>
+                    <td>{{res[loop.index-1].replyaut}}</td>
+                </tr>
+                {% endfor %}
+                {% set res = modifiedSub %}
+                {% for item in res %}
+                <form action="/admin/login_on/board_group_modified">
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <input type="text" name="tablename" value="{{res[loop.index-1].tableName}}">
+                        <input type="text" name="mainboard" value="{{res[loop.index-1].mainBoard}}">
+                        <input type="text" name="subboard" value="{{res[loop.index-1].subBoard}}">
+                        <input type="text" name="contenttype" value="{{res[loop.index-1].contentType}}">
+                        <input type="text" name="content" value="{{res[loop.index-1].content}}">
+                        <input type="date" name="resetdate" value="{{res[loop.index-1].resetDate}}">
+                        <input type="text" name="url" value="{{res[loop.index-1].url}}">
+                        <input type="radio" name="watchaut" value=0 {{watchaut0}}>
+                        <input type="radio" name="watchaut" value=1 {{watchaut1}}>
+                        <input type="radio" name="writehaut" value=0 {{writeaut0}}>
+                        <input type="radio" name="writeaut" value=1 {{writeaut1}}>
+                        <input type="radio" name="repayaut" value=0 {{replyaut0}}>
+                        <input type="radio" name="repayaut" value=1 {{replyaut1}}>
+                    </tr>
+                </form>
+                {% endfor %}
+            </table>
+        </div>
+        <div id="selected_board_group">
+
+        </div>
+    {% elif submenu=="팝업관리" %}
+    팝업
+    {% elif submenu=="메인비쥬얼보임" %}
+    
+    <form action="/admin/login_on/main_img" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="file_img">이미지파일 선택</label>
+            <input type="file" id="file_img" accept="image/*" name="imgg">
+            <label for="url">url입력</label>
+            <input type="text" id="url" name="url">
+            <label for="text">text입력</label>
+            <input type="text" id="text" name="text">
+            <input type="submit" value="등록" name="enter">
+            <input type="text" value=1 name="watchaut" style="display: none;">
+        </div>
+    </form>
+    {% set res = main_img %}
+    {% for item in res %}
+    <form action="/admin/login_on/main_image_del" method="POST">
+        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="300px" height="300px"></div>
+        <div><a href="{{item.url}}">{{item.link}}</a></div>
+        <input type="text" name="text" value="{{item.text}}">
+        <input type="submit" name="del" value="삭제">
+        <input type="submit" name="move" value="이동">        
+        <input type="text" name="idx" value="{{item.id}}" style="display: none;">
+    </form>
+    {% endfor %}
+    {% elif submenu=="메인비쥬얼숨김" %}
+    
+    
+    <form action="/admin/login_on/main_img" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="file_img">이미지파일 선택</label>
+            <input type="file" accept="image/*" name="imgg">
+            <label for="url">url입력</label>
+            <input type="text" name="url">
+            <label for="text">text입력</label>
+            <input type="text" name="text">
+            <input type="submit" value="등록" name="enter">
+        </div>
+    </form>
+    {% set rese = hidden_img %}
+    {% for item in rese %}
+    <form action="/admin/login_on/hidden_main_img_del" method="POST">
+        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="300px" height="300px"></div>
+        <div><a href="{{item.url}}">{{item.link}}</a></div>
+        <input type="text" name="text" value="{{item.text}}">
+        <input type="submit" name="del" value="삭제">
+        <input type="submit" name="move" value="이동">
+        <input type="text" name="idx" value="{{item.id}}" style="display: none;">
+    </form>
+    {% endfor %}
+<!-- 사용자관리리스트======================================================================= -->
+    {% elif submenu=="사용자관리" %}
+        
+        <div id="user_list_container">
+            <div id="user_search">
+                <p>수강생리스트</p>
+                    <form action="/admin/login_on/user_list?location=search_user" method="POST">
+                        <fieldset>
+                            검색조건 : 
+                                    <select name="search_condition_m">
+                                        <option value="name">이름</option>
+                                        <option value="courseName">수강명</option>
+                                    </select>
+                                    <input type="text" name="value" >
+                            <input type="submit" value="검색" name="search">
+                            <input type="reset"  value="초기화" name="reset">
+                        </fieldset>
+                    </form>
+            </div>
+            <div id="user_add_container">
+                <form action="/admin/login_on/user_list?location=add_user" method="POST">
+                    <div>
+                        <label for="Name">이름</label>
+                        <input type="text" id="Name" name="userName" value="{{searched.userName}}">
+                    </div>
+                    <div>
+                        <label for="Id">아이디</label>
+                        <input type="text" id="Id" name="userIdx" value="{{searched.userIdx}}">
+                    </div>
+                    <div>
+                        <label for="Psw">비밀번호</label>
+                        <input type="password" id="Psw" name="userPsw" value="{{searched.userPsw}}">
+                    </div>
+                    <div>
+                        <label for="CourseName">수강명</label>
+                        <input type="text" id="CourseName" name="courseName" value="{{searched.courseName}}">
+                    </div>
+                    <div>
+                        <p>수강료<br> 지급상황</p>
+                        <input type="text" value="{{searched.paycheck}}" name="paycheck" value={{searched.paycheck}}>
+                    </div>
+                    <div>
+                        <label for="Birth">생년월일</label>
+                        <input type="date" id="Birth" name="userBirth" value="{{searched.userBirth}}">
+                    </div>
+                    <div>
+                        <label for="StartDate">등록일</label>
+                        <input type="date" id="StartDate" name="created_at" value="{{searched.created_at}}">
+                    </div>
+                    <div>
+                        <label for="Tel">연락처</label>
+                        <input type="tel" id="Tel" name="userTel" value="{{searched.userTel}}">
+                    </div>
+                    <div>
+                        <label for="Address">주소</label>
+                        <input type="text" id="Address" name="userAddress" value="{{searched.userAddress}}">
+                    </div>
+                    <div>
+                        <p>구직상황</p>
+                        <label for="Job_no">구직 진행중</label>
+                        <input type="radio" id="Job_ok" name="employmentStatus" value="0" {{employ0}}>
+                        <label for="Job_ok">구직 완료</label>
+                        <input type="radio" id="Job_no" name="employmentStatus" value="1" {{employ1}}>            
+                    </div>                    
+                    <div>
+                        <label for="Etc">기타사항</label>
+                        <input type="text" id="Etc" name="userEtc">
+                    </div>
+                    <div>
+                        <label for="Img">사진</label>
+                        <input type="file" id="Img" name="userImg">
+                    </div>
+                    <input type="submit" value="등록">    
+                </form>
+            </div>
+            <div id="user_table_form">
+                <form action="/admin/login_on/user_list?location=manage_user" method="POST">
+                    <table border="1">
+                        <th>번호</th>
+                        <th>이름</th>
+                        <th>수강명</th> 
+                        <th>수강료</th>
+                        <th>생년월일</th>
+                        <th>등록일</th>
+                        <th>연락처</th>
+                        <th>주소</th>
+                        <th>기타사항</th>
+                        <th>사진</th> 
+                        <th>수정</th>
+                        <th>삭제</th>                       
+                        
+                        {% set res = resu %}
+                        {% for item in res %}
+                            <tr>
+                                <td>
+                                    <input type="text" value="{{[loop.index-1]}}" name="number">
+                                    <input type="number" value="{{res[loop.index-1].id}}" name="numbercheck" style="display: none;">
+                                </td>
+                                <td>
+                                    <input type="text" name="uName" value="{{res[loop.index-1].userName}}">
+                                </td>                               
+                                <td>
+                                    <input type="text" name="uCoursename" value="{{res[loop.index-1].courseName}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="uPaycheck" value="{{res[loop.index-1].paycheck}}" >
+                                </td>
+                                <td>
+                                    <input type="date" name="uBirth" value="{{res[loop.index-1].userBirth}}">
+                                </td>
+                                <td>
+                                    <input type="date" name="ucreated_at" value="{{res[loop.index-1].created_at}}">
+                                </td>
+                                <td>
+                                    <input type="number" name="uTel" value="{{res[loop.index-1].userTel}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="uAddress" value="{{res[loop.index-1].userAddress}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="userEtc" value="{{res[loop.index-1].userEtc}}">
+                                </td>
+                                <td>
+                                    <input type="text" name="uImg" value="{{res[loop.index-1].userImg}}">
+                                </td>
+                                <td>                        
+                                    <input type="submit" name="{{[loop.index-1]}}" value="수정">
+                                </td>
+                                <td>
+                                    <input type="submit" name="{{[loop.index-1]}}" value="삭제">
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+    

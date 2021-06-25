@@ -4,82 +4,78 @@ const moment = require('moment')
 module.exports = class User extends Sequelize.Model{
     static init(sequelize){
         return super.init({
-            userid:{
-                type:Sequelize.STRING(30),
-                allowNull:false,
-                unique:true
-            },
-            userpw:{
-                type:Sequelize.STRING(30),
+            userName:{
+                type:Sequelize.STRING(20),
                 allowNull:false,
             },
-            class_team:{
-                type:Sequelize.STRING(30),
-                allowNull:true,
+            userIdx:{
+                type:Sequelize.STRING(20),
+                allowNull:false,
+                unique:true,
             },
-            pay:{
-                type:Sequelize.STRING(30),
-                allowNull:true,
+            userPsw:{
+                type:Sequelize.STRING(255),
+                allowNull:false,
             },
-            name:{
+            courseName:{
                 type:Sequelize.STRING(30),
                 allowNull:false,
             },
-            nickname:{
-                type:Sequelize.STRING(30),
-                allowNull:true,
+            paycheck:{
+                type:Sequelize.STRING(5),
+                allowNull:false,
+                defaultValue:0
             },
-            birth:{
+            userBirth:{
                 type:Sequelize.DATE,
                 allowNull:false,
+                get: function(){
+                    return moment(this.getDataValue('userBirth')).format('YYYY-MM-DD')
+                }
             },
-            gender:{
-                type:Sequelize.BOOLEAN,
-                allowNull:true
-            },
-            email:{
-                type:Sequelize.STRING(50),
-                allowNull:false
-            },
-            today:{
+            created_at:{
                 allowNull:false,
                 type:Sequelize.DATE,
                 defaultValue:Sequelize.NOW,
+                get: function(){
+                    return moment(this.getDataValue('created_at')).format('YYYY-MM-DD')
+                }
             },
-            tel:{
+            userTel:{
                 allowNull:false,
                 unique:true,
                 type:Sequelize.INTEGER
-
             },
-            img:{
+            userImg:{
                 type:Sequelize.TEXT,
-                allowNull:true          
+                allowNull:true
             },
-            etc:{
+            userEtc:{
                 type:Sequelize.TEXT,
-                allowNull:true  
+                allowNull:true
             },
-            onoff:{
+            userAddress:{
+                type:Sequelize.STRING(100),
+                allowNull:true
+            },
+            employmentStatus:{
                 type:Sequelize.BOOLEAN,
-                allowNull:true,
-                defaultValue:1
+                allowNull:false
             },
-            portfolio:{
-                type:Sequelize.TEXT,
-                allowNull:true  
-            },
-                     
         },{
             sequelize,
             timestamps:false,
             underscored:false,
-            modelName:'user',
+            modelName:'User',
             tableName:'users',
             paranoid:false,
             charset:'utf8',
             collate:'utf8_general_ci'
         });
     }
-    
+    static associate(db){
+        db.User.hasMany(db.portfolio,{foreignKey:'userIdx',sourceKey:'userIdx'})
+        db.User.belongsTo(db.Course,{foreignKey:'courseName',sourceKey:'courseName'})
+        db.User.belongsTo(db.Employed,{foreignKey:'userIdx',sourceKey:'userIdx'})
+    }
 }
