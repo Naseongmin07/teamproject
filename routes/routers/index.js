@@ -33,9 +33,9 @@ router.get('/image',(req,res)=>{
 router.post('/image',upload.single('img'),async (req,res)=>{
     if(req.body.name="enter"){
     let image = req.file.filename
-    let {subboard,title,url} = req.body
+    let {subboard,title,url,content} = req.body
     await Facility.create({
-        image,url,subboard,title
+        image,url,subboard,title,text:content
     })
     res.redirect(`/admin/login_on?topmenu=시설소개&submenu=${subboard}`)
 }else{

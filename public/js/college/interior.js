@@ -1,19 +1,22 @@
 const galleria_container = document.querySelector('#galleria-container')
 const max_image_length = 10
 
-let url_list = ["http://www.kiweb.or.kr/nBoard/upload/file/facility/1553579106_29784_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577488_79841_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577283_34775_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577270_50026_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577258_30028_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488807_60408_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488797_11767_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488700_57704_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488700_57704_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488674_92677_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488674_92677_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488674_92677_1.jpg",
-                "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488674_92677_1.jpg"]
+let image = document.querySelectorAll('#interiorimg')
+// let url_list = ["http://www.kiweb.or.kr/nBoard/upload/file/facility/1553579106_29784_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577488_79841_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577283_34775_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577270_50026_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577258_30028_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488807_60408_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488797_11767_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488700_57704_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488700_57704_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488674_92677_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488674_92677_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488674_92677_1.jpg",
+//                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1471488674_92677_1.jpg"]
+let url_list = image
+console.log(image)
             
 let galleria_main = document.querySelector('#galleria_main')
 

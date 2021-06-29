@@ -22,7 +22,6 @@ let admin_main = async (req,res)=>{
     let subboard = await Submain.findAll({where:{mainBoard:`${topmenu}`}})
     let onesubboard = await Submain.findAll({where:{subBoard:`${submenu}`}})
     
-    
     if(req.query.submenu==undefined){
         let totalcontents = await Community.findAll({})
         console.log(totalcontents)
@@ -40,9 +39,13 @@ let admin_main = async (req,res)=>{
                 res.render('./admin_list.html',{topmenu,main_img,hidden_img,subboard,topmenu,submenu,adminList,boardres,resu,Coinfores,Sitesetres,mainBoardtitle,want})
                 break;
             case '시설소개':
-                let facility_img = await Facility.findAll({})
-                let result = await Facility.findAll({where:{subboard:`${submenu}`}})
-                res.render('./facility.html',{topmenu,facility_img,topmenu,subboard,onesubboard,result})
+                if(submenu==undefined){
+                    let facility_img = await Facility.findAll({})
+                    res.render('./facility.html',{topmenu,facility_img,topmenu,subboard,onesubboard})
+                }else{
+                    let result = await Facility.findAll({where:{subboard:`${submenu}`}})
+                    res.render('./facility.html',{topmenu,topmenu,subboard,onesubboard,result})
+                }
                 break;
             case '커뮤니티':
                 resuu = await Community.findAll({where:{subBoard:`${submenu}`}})
@@ -493,9 +496,9 @@ let employed = async (req,res)=>{
 // }
 
 let main_img = async (req,res)=>{
-    let {url,watchaut,text} = req.body
+    let {url,watchaut,text,title,type} = req.body
     let image = req.file.filename
-    await Mainvisual.create({image,url,watchaut,text})
+    await Mainvisual.create({image,url,watchaut,text,title,type})
     res.redirect('/admin/login_on?topmenu=administrator&submenu=메인비쥬얼보임')
 }
 

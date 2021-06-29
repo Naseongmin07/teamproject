@@ -17,6 +17,14 @@ module.exports = class Mainvisual extends Sequelize.Model{
                 allowNull:true,
                 defaultValue:0
             },
+            type:{
+                type:Sequelize.STRING(255),
+                allowNull:true
+            },
+            title:{
+                type:Sequelize.STRING(255),
+                allowNull:true
+            },
             date:{
                 type:Sequelize.DATE,
                 allowNull:false,

@@ -26,6 +26,14 @@
     </div>
     <script type="text/javascript" src="/js/college/interior.js"></script>
     {% include "footer.html" %}
+    {% set res = interiorimg %}
+    <ul>
+        {% for item in res %}
+            <img id="interiorimg" src="http://localhost:3000/{{res[loop.index-1].image}}" alt="이미지없음">
+        {% endfor %}
+    </ul>
+    
+    
     
 </body>
 </html>

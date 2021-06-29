@@ -23,28 +23,21 @@
     <div id="contens">
         <div id="main-slide-wrap">
             <!-- 메인 슬라이드부분 -->
-            <div class="main-slide">
-                <div class="id on">
-                    <ul>
-                        
-                    </ul>
-                </div>
-
-            </div>
+            {% set res = banner %}
             <div class="main-slide">
                 <div class="id on">
                     <ul class="text">
-                        <p class="class">게임</p>
+                        <p class="class">{{banner[0].type}}</p>
                         <li class="local">
-                            <span></span> 게임기획반
+                            <span></span> {{banner[0].title}}
                         </li>
                         <li class="title">
                             <h4>
-                                게임기획을 위한 체계적인 교육
+                                {{banner[0].text}}
                             </h4>
                         </li>
                         <li class="date">
-                            2021.07.05(월)~12.27(월)
+                            {{banner[0].date}}
                         </li>
                         <li>
                             <button class="btn">자세히보기</button>
@@ -52,22 +45,22 @@
                     </ul>
                     <div class="photo">
                         <!-- -->
-                        <img class="img" src="/image/main/mainslide/mainslide_1.jpg">
+                        <img class="img" src="http://localhost:3000/{{banner[0].image}}">
                     </div>
                 </div>
                 <div class="id">
                     <ul class="text">
-                        <p class="class">게임</p>
+                        <p class="class">{{banner[1].type}}</p>
                         <li class="local">
-                            <span></span>게임원화
+                            <span></span>{{banner[1].title}}
                         </li>
                         <li class="title">
                             <h4>
-                                게임원화을 위한 체계적인 교육
+                                {{banner[1].text}}
                             </h4>
                         </li>
                         <li class="date">
-                            2021.08.05(월)~2022.01.27(월)
+                            {{banner[1].date}}
                         </li>
                         <li>
                             <button class="btn">자세히보기</button>
@@ -75,22 +68,22 @@
                     </ul>
                     <div class="photo">
                         <!-- -->
-                        <img class="img" src="/image/main/mainslide/mainslide_2.jpg">
+                        <img class="img" src="http://localhost:3000/{{banner[1].image}}">
                     </div>
                 </div>
                 <div class="id">
                     <ul class="text">
-                        <p class="class">게임</p>
+                        <p class="class">{{banner[2].type}}</p>
                         <li class="local">
-                            <span></span>게임코칭
+                            <span></span>{{banner[2].title}}
                         </li>
                         <li class="title">
                             <h4>
-                                프로게이머을 위한 체계적인 교육
+                                {{banner[2].text}}
                             </h4>
                         </li>
                         <li class="date">
-                            2021.07.05(월)~12.27(월)
+                            {{banner[2].date}}
                         </li>
                         <li>
                             <button class="btn">자세히보기</button>
@@ -98,22 +91,22 @@
                     </ul>
                     <div class="photo">
                         <!-- -->
-                        <img class="img" src="/image/main/mainslide/mainslide_3.jpg">
+                        <img class="img" src="http://localhost:3000/{{banner[2].image}}">
                     </div>
                 </div>
                 <div class="id">
                     <ul class="text">
-                        <p class="class">게임</p>
+                        <p class="class">{{banner[3].type}}</p>
                         <li class="local">
-                            <span></span> 게임기획반
+                            <span></span> {{banner[3].title}}
                         </li>
                         <li class="title">
                             <h4>
-                                게임기획을 위한 체계적인 교육
+                                {{banner[3].text}}
                             </h4>
                         </li>
                         <li class="date">
-                            2021.07.05(월)~12.27(월)
+                            {{banner[3].date}}
                         </li>
                         <li>
                             <button class="btn">자세히보기</button>
@@ -121,22 +114,22 @@
                     </ul>
                     <div class="photo">
                         <!-- -->
-                        <img class="img" src="/image/main/mainslide/mainslide_4.jpg">
+                        <img class="img" src="http://localhost:3000/{{banner[3].image}}">
                     </div>
                 </div>
                 <div class="id">
                     <ul class="text">
-                        <p class="class">게임</p>
+                        <p class="class">{{banner[4].type}}</p>
                         <li class="local">
-                            <span></span>게임기획반
+                            <span></span>{{banner[4].title}}
                         </li>
                         <li class="title">
                             <h4>
-                                게임기획을 위한 체계적인 교육
+                                {{banner[4].text}}
                             </h4>
                         </li>
                         <li class="date">
-                            2021.07.05(월)~12.27(월)
+                            {{banner[4].date}}
                         </li>
                         <li>
                             <button class="btn">자세히보기</button>
@@ -144,7 +137,7 @@
                     </ul>
                     <div class="photo">
                         <!-- -->
-                        <img class="img" src="/image/main/mainslide/mainslide_5.png">
+                        <img class="img" src="http://localhost:3000/{{banner[4].image}}">
                     </div>
                 </div>
             </div>
@@ -190,7 +183,7 @@
                                 <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
+                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[4].image}}">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
@@ -200,7 +193,7 @@
                                 <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
+                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[0].image}}">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
@@ -210,7 +203,7 @@
                                 <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
+                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[1].image}}">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
@@ -220,7 +213,7 @@
                                 <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
+                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[2].image}}">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
@@ -230,7 +223,7 @@
                                 <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
+                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[3].image}}">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
@@ -253,54 +246,54 @@
                                 <h2>공지사항</h2>
                             </div>
                             <div class="btm_name2">
-                                <h2>티켓오픈</h2>
+                                <h2>개강일</h2>
                             </div>
                         </div>
                         <img src="/image/main/bottom_img/sub_btm.png">
                         <ul class="sub_mf3">
-                            <li>2021 전당이온다
-                                <span>2021.06.18</span>
+                            <li>{{report[0].title}}
+                                <span>{{report[0].date}}</span>
                             </li>
-                            <li>예술의전당 하우스
-                                <span>2021.06.18</span>
+                            <li>{{report[1].title}}
+                                <span>{{report[1].date}}</span>
                             </li>
-                            <li>고객안내서비스 종료
-                                <span>2021.06.18</span>
+                            <li>{{report[2].title}}
+                                <span>{{report[2].date}}</span>
                             </li>
-                            <li>임대차 공고
-                                <span>2021.06.18</span>
+                            <li>{{report[3].title}}
+                                <span>{{report[3].date}}</span>
                             </li>
-                            <li>2021 예술의전당 6월 청년미술상
-                                <span>2021.06.18</span>
+                            <li>{{report[4].title}}
+                                <span>{{report[4].date}}</span>
                             </li>
-                            <li>사회적 거리두기0.5단계
-                                <span>2021.06.18</span>
+                            <li>{{report[5].title}}
+                                <span>{{report[5].date}}</span>
                             </li>
-                            <li>어린이라운지
-                                <span>2021.06.18</span>
+                            <li>{{report[6].title}}
+                                <span>{{report[6].date}}</span>
                             </li>
                         </ul>
                         <ul class="sub_mf4">
-                            <li>2021 경남도립극단
-                                <span>2021.06.18</span>
+                            <li>{{classOpen[0].title}}
+                                <span>{{classOpen[0].contents}}</span>
                             </li>
-                            <li>리틀뮤지션
-                                <span>2021.06.18</span>
+                            <li>{{classOpen[1].title}}
+                                <span>{{classOpen[1].contents}}</span>
                             </li>
-                            <li>에델 라인클랑 단독콘서트
-                                <span>2021.06.18</span>
+                            <li>{{classOpen[2].title}}
+                                <span>{{classOpen[2].contents}}</span>
                             </li>
-                            <li>연극 우산도둑
-                                <span>2021.06.18</span>
+                            <li>{{classOpen[3].title}}
+                                <span>{{classOpen[3].contents}}</span>
                             </li>
-                            <li>인형극 하얀산
-                                <span>2021.06.18</span>
+                            <li>{{classOpen[4].title}}
+                                <span>{{classOpen[4].contents}}</span>
                             </li>
-                            <li>코리안샴푸니오케스트라
-                                <span>2021.06.18</span>
+                            <li>{{classOpen[5].title}}
+                                <span>{{classOpen[5].contents}}</span>
                             </li>
-                            <li>윤동주,발을쏘다
-                                <span>2021.06.18</span>
+                            <li>{{classOpen[6].title}}
+                                <span>{{classOpen[6].contents}}</span>
                             </li>
                         </ul>
                     </div>
@@ -313,19 +306,19 @@
                         </div>
                         <ul>
                             <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm1.jpg">
+                                <img src="http://localhost:3000/{{bottomImg[0].image}}">
                             </li>
                             <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm2.jpg">
+                                <img src="http://localhost:3000/{{bottomImg[1].image}}">
                             </li>
                             <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm3.png">
+                                <img src="http://localhost:3000/{{bottomImg[2].image}}">
                             </li>
                             <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm4.jpg">
+                                <img src="http://localhost:3000/{{bottomImg[3].image}}">
                             </li>
                             <li>
-                                <img src="/image/main/bottom_img/sub_btm2/sub_btm5.jpg">
+                                <img src="http://localhost:3000/{{bottomImg[4].image}}">
                             </li>
                         </ul>
 
@@ -337,24 +330,24 @@
                         </div>
                         <div class="sub_tube_form">
                             <div class="sub_tube">
-                                <a href="#">예술의전당</a>
+                                <a href="#">{{banner[1].title}}</a>
                                 <span>
-                                    2021-05-05
-                                    <img src="/image/main/bottom_img/mqdefault.jpg">
+                                    {{banner[1].date}}
+                                    <img src="http://localhost:3000/{{bottomImg[5].image}}">
                                 </span>
                             </div>
                             <div class="sub_tube">
-                                <a href="#">요즘 예술가를 만나다 서예가 인중 이정화</a>
+                                <a href="#">{{banner[2].text}}</a>
                                 <span>
-                                    2021-05-05
-                                    <img src="/image/main/bottom_img/mqdefault (1).jpg">
+                                    {{banner[2].date}}
+                                    <img src="http://localhost:3000/{{bottomImg[6].image}}">
                                 </span>
                             </div>
                             <div class="sub_tube">
-                                <a href="#">[흥부]예술의전당 전격재능기부</a>
+                                <a href="#">{{banner[3].text}}</a>
                                 <span>
-                                    2021-05-05
-                                    <img src="/image/main/bottom_img/mqdefault (2).jpg">
+                                    {{banner[3].date}}
+                                    <img src="http://localhost:3000/{{bottomImg[5].image}}">
                                 </span>
                             </div>
                         </div>
