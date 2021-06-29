@@ -3,17 +3,21 @@
 {% block middlecontent %}
 {% if submenu == '취업정보' %}
 {% set res = Employee %}
+<div id="employ_css_m">
 <a href="/admin/login_on/employ?locate={{submenu}}"><button>추가등록</button></a>
 <table border="1">
-    <th>이름</th>
-    <th>아이디</th>
-    <th>강좌명</th>
-    <th>조회수</th>
-    <th>내용</th>
-    <th>이미지</th>
-    <th>취업회사</th>
-    <th>숨김여부</th>
-    <th>댓글여부</th>
+    <tr>
+        <th>이름</th>
+        <th>아이디</th>
+        <th>강좌명</th>
+        <th>조회수</th>
+        <th>내용</th>
+        <th>이미지</th>
+        <th>취업회사</th>
+        <th>숨김여부</th>
+        <th>댓글여부</th>
+
+    </tr>
 {% for item in res %}
     <tr>
         <td><a href="/admin/login_on/employ?{{res[loop.index-1].id}}"></a>{{res[loop.inedx-1].userName}}</td>
@@ -25,13 +29,23 @@
         <td>{{res[loop.index-1].company}}</td>
         <td>{{res[loop.index-1].watchaut}}</td>
         <td>{{res[loop.index-1].replyaut}}</td>
+        <form action="/admin/login_on/employ/manage" method="POST">
+        <td>
+            <input type="text" name="id" value="{{res[loop.index-1].id}}" style="display:none">
+            <input type="submit" name="modify" value="수정">
+            <input type="submit" name="remove" value="삭제">
+        </td>
+        
+        </form>
     </tr>
+</div>
 {% endfor %}
 </table border="1">
 {% elif submenu == '포트폴리오' %}
 {% set res =  portfolio %}
+<div id="employ_css_m">
 <a href="/admin/login_on/employ?locate={{submenu}}"><button>추가등록</button></a>
-<table>
+<table border="1">
     <th>이름</th>
     <th>아이디</th>
     <th>제목</th>
@@ -54,6 +68,7 @@
     </tr>
 {% endfor %}
 </table>
+</div>
 {% endif %}
 
 {% endblock %}

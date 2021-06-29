@@ -15,9 +15,11 @@
                     <input type="text" id="tName" name="name" value="{{res.name}}">
                 </div>
                 <div>
-                    <label for="file">이미지</label>
+                    <label for="img">이미지</label>
                     <img src="http://localhost:3000/{{res.img}}" alt="슬라이드이미지" width="150px" height="150px">
-                    <input type="file" id="img"  accept="image/*" name="courseimg">
+                    <img src="http://localhost:3000/{{res.contentimg}}" alt="슬라이드이미지" width="150px" height="150px">
+                    <input type="file" id="img" accept="image/*" name="courseimg" multiple>
+                    <input type="file" id="img" accept="image/*" name="courseimg" multiple>
                 </div>
                 <div>
                     <label for="CourseType">강좌그룹</label>
@@ -61,11 +63,11 @@
                 </div>
                 <div>
                     <label for="Support">지원여부</label>
-                    <input type="text" id="Support" name="support" value={{res.support}}>
+                    <input type="text" id="Support" name="support" value="{{res.support}}"">
                 </div>
                 <div>
                     <label for="Description">설명</label>
-                    <input type="text" id="Description" name="description" value="description">
+                    <input type="text" id="Description" name="description" value="{{res.description}}">
                 </div>
                 <div>
                     <label for="onoff">모집현황</label>

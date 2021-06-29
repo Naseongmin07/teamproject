@@ -13,6 +13,8 @@ const chatRouter = require('./chat/index.js')
 const indexRouter = require('./routers/index.js')
 const {Mainvisual, Community} = require('../models') 
 // const searchRouter = require('./search/index.js')
+const testRouter = require('./test/index.js')
+const logoRouter = require('./logo/index.js')
 
 
 router.use('/user',userRouter)
@@ -22,7 +24,9 @@ router.use('/consult',consultRouter)
 router.use('/curriculum',curriculumRouter)
 router.use('/job',jobRouter)
 router.use('/chat',chatRouter)
+router.use('/test',testRouter)
 router.use('/admin/login_on',indexRouter)
+router.use('/logo',logoRouter)
 router.use('/admin',(req,res)=>{
     console.log(req.sessionID)
     res.cookie('sessionID',req.sessionID,{httpOnly:true,secure:true,})

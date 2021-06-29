@@ -66,11 +66,12 @@ router.post('/community_del',userController.community_del)
 
 router.get('/course')
 router.get('/course_write',userController.course_write)
-router.post('/course_write',upload.single('courseimg'),userController.course_write_post)
+router.post('/course_write',upload.array('courseimg'),userController.course_write_post)
 router.post('/course_form',userController.course_form)
 router.get('/employ',userController.add_employee)
+router.post('/employ/manage',userController.manage_employee)
 
-router.post('/employed',upload.single('employimg'),userController.employed)
+router.post('/employed',upload.array('employimg'),userController.employed)
 
 
 

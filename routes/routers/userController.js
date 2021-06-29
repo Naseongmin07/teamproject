@@ -5,7 +5,7 @@ const {sequelize} = require('../../models/index.js')
 const { watch } = require('chokidar')
 const { renderString } = require('nunjucks')
 const multer = require('multer')
-const { findAll, findOne } = require('../../models/adminlist')
+//const { findAll, findOne } = require('../../models/adminlist')
 const upload = multer({
     storage:multer.diskStorage({
         destination:function(req,file,callback){
@@ -24,7 +24,8 @@ let admin_main = async (req,res)=>{
     
     if(req.query.submenu==undefined){
         let totalcontents = await Community.findAll({})
-        console.log(totalcontents)
+        //res.redirect(`/admin/login_on?topmenu=${topmenu}&submenu=${topmenu}`)
+        //console.log(totalcontents)
     }
         switch(topmenu){            
             case 'administrator':             
@@ -54,7 +55,7 @@ let admin_main = async (req,res)=>{
             case '교육과정':
                 
                 if(submenu==undefined){
-                    let resuuu = await Course.findAll({})
+                    let resuuu = await Course.findAll({})                   
                     res.render('./course.html',{topmenu,subboard,onesubboard,resuuu})
                 }else{
                     let resuuu = await Course.findAll({where:{coursetype:submenu}})
@@ -396,11 +397,13 @@ let hidden_img_del = async (req,res)=>{
 let course_form = async (req,res)=>{
     let num = ((req.body.numbercheck).length)
     for(i=0;i<=num;i++){
-        if(req.body[i]=='수정'){
-           
+        if(req.body[i]=='수정'){        
+            console.log('courseform 수정이지===============')   
             let idxx = req.body.number[i]
+            
             let coursemodify = await Course.findOne({where:{id:idxx}})
-            console.log(coursemodify)
+            //console.log(idxx,'=====================',coursemodify)
+            //console.log(coursemodify)
             res.render('./course_write.html',{coursemodify,write:'수정'})
         }else if(req.body[i]=="삭제"){
             let idxx = req.body.number[i]
@@ -416,14 +419,17 @@ let course_write = (req,res)=>{
 
 let course_write_post = async (req,res)=>{    
     let {courseName,name,coursetype,idx,head_count,startDate,endDate,contents,starttime,endtime,tag,support,description,onoff,add,idxx} = req.body
-    let img = req.file.filename
-    if(add=='수정'){
-        console.log(coursetype,'=============================')
-        console.log(courseimg,'courseimg====================================')
+    let img = req.files[0].filename    
+    let contentimg = req.files[1].filename
+    
+    
+    if(add=='수정'){   
+        console.log('수정이지=============================')     
         await Course.update({
             courseName,
             name,
             img,
+            contentimg,
             coursetype,
             idx,
             head_count,
@@ -441,12 +447,15 @@ let course_write_post = async (req,res)=>{
                 id:idxx
             }
         })
+        
         res.redirect(`/admin/login_on?topmenu=교육과정&submenu=${coursetype}`)
     }else if(add=='작성'){
-        await Course.create({courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,starttime,endtime,tag,support,description,onoff})
+        //let ress = await Course.findAll({})
+        //console.log(ress)
+        await Course.create({courseName,name,img,contentimg,coursetype,idx,head_count,startDate,endDate,contents,starttime,endtime,tag,support,description,onoff})
         res.redirect(`/admin/login_on?topmenu=교육과정`)
     }
-    console.log(req.body.add,'============================')
+    //console.log(req.body.add,'============================')
     
     //console.log(courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,starttime,tag,support,description,onoff)
     //await Course.create({courseName,name,img,coursetype,idx,head_count,startDate,endDate,contents,starttime,endtime,tag,support,description,onoff})
@@ -467,17 +476,35 @@ let add_employee = async (req,res)=>{
 let employed = async (req,res)=>{
     let {locate} = req.query
     if(locate=='취업정보'){
-        res.send('취업정보')
+        let {userName,userIdx,courseName,contents,count,company,year} = req.body
+        let img = req.files[0].filename
+        let contentimg = req.files[1].filename
+        await Employed.create({
+            userName,
+            userIdx,
+            courseName,
+            contents,
+            count,
+            img,
+            contentimg,
+            company,year
+        })
+        let Employee = await Portfolio.findAll({})
+        res.render('./employ.html',{topmenu:'취업정보',submenu:'취업정보',Employee})
+        res.redirect('/admin/login_on?topmenu=취업정보&submenu=포트폴리오')
     }else if(locate=='포트폴리오'){
         let {userName,userIdx,title,contents,count} = req.body
-        let img = req.file.filename
+        let img = req.files[0].filename
+        let contentimg = req.files[1].filename
+
         await Portfolio.create({
             userName,
             userIdx,
             title,
             contents,
             count,
-            img
+            img,
+            contentimg
         })
         let portfolio = await Portfolio.findAll({})
         res.redirect('/admin/login_on?topmenu=취업정보&submenu=포트폴리오')
@@ -494,7 +521,17 @@ let employed = async (req,res)=>{
 //     let portfolio = await Portfolio.findAll({})
 //     res.render('./employ.html',{submenu:'포트폴리오',portfolio})
 // }
-
+let manage_employee = async (req,res)=>{
+    let {id}=req.body
+    if(req.body.modify=='수정'){
+        let searchedemployres = await Employed.findOne({where:{id}})
+        res.render('./employeewrite.html',{topmenu:'취업정보',submenu:'취업정보',searchedemployres,sub:'취업정보',do:'수정'})
+    }else if(req.body.remove=='삭제'){
+        await Employed.destroy({where:{id}})        
+        res.redirect('/admin/login_on?topmenu=취업정보&submenu=취업정보')
+    }
+    
+}
 let main_img = async (req,res)=>{
     let {url,watchaut,text,title,type} = req.body
     let image = req.file.filename
@@ -588,5 +625,6 @@ module.exports = {
     main_img_del,
     hidden_img_del,
     user_modify,
-    board_group_modified
+    board_group_modified,
+    manage_employee
 }

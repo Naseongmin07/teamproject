@@ -203,3 +203,25 @@ socket.on('sendRoom', function(obj){
     user_div.appendChild(user_list)
   }
 })
+
+let element = document.querySelector("#chatRoom");
+element.scrollTop = element.scrollHeight;
+
+function updateScroll(){
+  let element = document.querySelector("#chatRoom");
+  element.scrollTop = element.scrollHeight;
+}
+//once a second
+setInterval(updateScroll,1000);
+
+var scrolled = false;
+function updateScroll(){
+    if(!scrolled){
+      let element = document.querySelector("#chatRoom");
+        element.scrollTop = element.scrollHeight;
+    }
+}
+
+$("#chatRoom").on('scroll', function(){
+    scrolled=true;
+});

@@ -16,6 +16,10 @@ module.exports = class Course extends Sequelize.Model{
                 type:Sequelize.TEXT,
                 allowNull:true
             },
+            contentimg:{
+                type:Sequelize.TEXT,
+                allowNull:true
+            },
             coursetype:{
                 type:Sequelize.STRING(20),
                 allowNull:true
@@ -23,14 +27,13 @@ module.exports = class Course extends Sequelize.Model{
             idx:{
                 type:Sequelize.STRING(20),
                 allowNull:true,
-                unique:true,
             },
             pay:{
                 type:Sequelize.INTEGER,
                 allowNull:true,
                 defaultValue:0
             },
-            haed_count:{
+            head_count:{
                 type:Sequelize.INTEGER,
                 allowNull:true
             },

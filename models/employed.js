@@ -31,6 +31,10 @@ module.exports = class Employed extends Sequelize.Model{
                 type:Sequelize.TEXT,
                 false:true
             },
+            contentimg:{
+                type:Sequelize.TEXT,
+                false:true
+            },
             company:{
                 type:Sequelize.STRING(50),
                 allowNull:false
