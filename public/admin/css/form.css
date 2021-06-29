@@ -171,7 +171,7 @@ a{
 #facility_form_m div{
     width:1200px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding:20px;
 }
 #board_make_admin{

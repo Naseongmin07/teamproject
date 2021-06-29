@@ -1,5 +1,9 @@
-let interview =(req,res)=>{
-    res.render('job/interview.html')
+const { Employed } = require("../../models")
+
+let interview =async (req,res)=>{
+    let interviewinfo = await Employed.findAll({})
+    console.log(interviewinfo[0].startDate)
+    res.render('job/interview.html',{interviewinfo})
 }
 
 let portfolio =(req,res)=>{

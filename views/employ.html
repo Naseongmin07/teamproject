@@ -32,7 +32,6 @@
         <form action="/admin/login_on/employ/manage" method="POST">
         <td>
             <input type="text" name="id" value="{{res[loop.index-1].id}}" style="display:none">
-            <input type="submit" name="modify" value="수정">
             <input type="submit" name="remove" value="삭제">
         </td>
         
@@ -65,6 +64,13 @@
         <td>{{res[loop.index-1].count}}</td>
         <td>{{res[loop.index-1].watchaut}}</td>
         <td>{{res[loop.index-1].replyaut}}</td>
+        <form action="/admin/login_on/portfolio/manage" method="POST">
+            <td>
+                <input type="text" name="id" value="{{res[loop.index-1].id}}" style="display:none">
+                <input type="submit" name="remove" value="삭제">
+            </td>
+            
+            </form>
     </tr>
 {% endfor %}
 </table>

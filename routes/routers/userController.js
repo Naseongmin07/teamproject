@@ -24,8 +24,7 @@ let admin_main = async (req,res)=>{
     
     if(req.query.submenu==undefined){
         let totalcontents = await Community.findAll({})
-        //res.redirect(`/admin/login_on?topmenu=${topmenu}&submenu=${topmenu}`)
-        //console.log(totalcontents)
+       
     }
         switch(topmenu){            
             case 'administrator':             
@@ -52,8 +51,7 @@ let admin_main = async (req,res)=>{
                 resuu = await Community.findAll({where:{subBoard:`${submenu}`}})
                 res.render('./community.html',{subboard,onesubboard,resuu,topmenu})
                 break;
-            case '교육과정':
-                
+            case '교육과정':                
                 if(submenu==undefined){
                     let resuuu = await Course.findAll({})                   
                     res.render('./course.html',{topmenu,subboard,onesubboard,resuuu})
@@ -469,7 +467,7 @@ let add_employee = async (req,res)=>{
         res.render('./employeewrite.html',{sub:'포트폴리오',subboard,portfolio})
     }else if(locate =='취업정보'){  
         let Employee = await Employed.findAll({})      
-        res.render('./employeewrite.html',{sub:'취업정보',subboard,Employee})
+        res.render('./employeewrite.html',{sub:'취업정보',subboard,Employee,do:'새글작성'})
     }
 }
 
@@ -490,9 +488,10 @@ let employed = async (req,res)=>{
             company,year
         })
         let Employee = await Portfolio.findAll({})
-        res.render('./employ.html',{topmenu:'취업정보',submenu:'취업정보',Employee})
+        //res.render('./employ.html',{topmenu:'취업정보',submenu:'취업정보',Employee})
         res.redirect('/admin/login_on?topmenu=취업정보&submenu=포트폴리오')
-    }else if(locate=='포트폴리오'){
+    }
+    else if(locate=='포트폴리오'){
         let {userName,userIdx,title,contents,count} = req.body
         let img = req.files[0].filename
         let contentimg = req.files[1].filename
@@ -521,6 +520,29 @@ let employed = async (req,res)=>{
 //     let portfolio = await Portfolio.findAll({})
 //     res.render('./employ.html',{submenu:'포트폴리오',portfolio})
 // }
+// let manage_employee = async (req,res)=>{
+//     let {id}=req.body
+//     if(req.body.modify=='수정'){
+//         let {userName,userIdx,courseName,contents,count,company,year} = req.body
+//         let img = req.files[0].filename
+//         let contentimg = req.files[1].filename
+//         await Employed.update({
+//             userName,
+//             userIdx,
+//             courseName,
+//             contents,
+//             count,
+//             img,
+//             contentimg,
+//             company,year
+//         })
+//         let searchedemployres = await Employed.findOne({where:{id}})
+//         res.render('./employeewrite.html',{topmenu:'취업정보',submenu:'취업정보',searchedemployres,sub:'취업정보',do:'수정'})
+//     }else if(req.body.remove=='삭제'){
+//         await Employed.destroy({where:{id}})        
+//         res.redirect('/admin/login_on?topmenu=취업정보&submenu=취업정보')
+//     }
+// }
 let manage_employee = async (req,res)=>{
     let {id}=req.body
     if(req.body.modify=='수정'){
@@ -528,6 +550,17 @@ let manage_employee = async (req,res)=>{
         res.render('./employeewrite.html',{topmenu:'취업정보',submenu:'취업정보',searchedemployres,sub:'취업정보',do:'수정'})
     }else if(req.body.remove=='삭제'){
         await Employed.destroy({where:{id}})        
+        res.redirect('/admin/login_on?topmenu=취업정보&submenu=취업정보')
+    }
+    
+}
+let manage_portfolio = async (req,res)=>{
+    let {id}=req.body
+    if(req.body.modify=='수정'){
+        let searchedemployres = await Portfolio.findOne({where:{id}})
+        res.render('./employeewrite.html',{topmenu:'취업정보',submenu:'취업정보',searchedemployres,sub:'취업정보',do:'수정'})
+    }else if(req.body.remove=='삭제'){
+        await Portfolio.destroy({where:{id}})        
         res.redirect('/admin/login_on?topmenu=취업정보&submenu=취업정보')
     }
     
@@ -626,5 +659,6 @@ module.exports = {
     hidden_img_del,
     user_modify,
     board_group_modified,
-    manage_employee
+    manage_employee,
+    manage_portfolio
 }

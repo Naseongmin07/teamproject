@@ -70,6 +70,7 @@ router.post('/course_write',upload.array('courseimg'),userController.course_writ
 router.post('/course_form',userController.course_form)
 router.get('/employ',userController.add_employee)
 router.post('/employ/manage',userController.manage_employee)
+router.post('/portfolio/manage',userController.manage_portfolio)
 
 router.post('/employed',upload.array('employimg'),userController.employed)
 
