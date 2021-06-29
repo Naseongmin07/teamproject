@@ -29,18 +29,15 @@ router.post('/siteset',userController.siteset)
 router.get('/image',(req,res)=>{
     res.render('makeimg.html')
 })
+
 router.post('/image',upload.single('img'),async (req,res)=>{
     if(req.body.name="enter"){
-        console.log(req.body.subBoard)
     let image = req.file.filename
-    let {subBoard} = req.body
-    let url =req.body.url
-    //let link = req.body.link
+    let {subboard,title,url} = req.body
     await Facility.create({
-        image,url,subBoard
+        image,url,subboard,title
     })
-    //res.render('./makeimg.html',{result})
-    res.redirect(`/admin/login_on?topmenu=시설소개&submenu=${subBoard}`)
+    res.redirect(`/admin/login_on?topmenu=시설소개&submenu=${subboard}`)
 }else{
     console.log(req.body)
 }
@@ -54,36 +51,29 @@ router.post('/main_img',upload.single('imgg'),userController.main_img)
 router.get('/',userController.admin_main)
 router.post('/',userController.main_form)
 
-//test================================================
-// router.get('/summernote',(req,res)=>{
-//     res.render('./test.html')
-// })
-// router.post('/test',(req,res)=>{
-//     console.log(req.body.test)
-//     res.send(req.body.test)
-// })
+
 
 router.post('/admin_menu/board_make',userController.board_make_post)
 router.post('/admin_menu/board_manage',userController.board_manage_post)
 router.post('/admin_list',userController.admin_list)
 
 router.post('/user_list',userController.user_list)
+router.post('user_list/location',userController.user_modify)
 router.get('/community_write',userController.community_write)
-router.post('/community_write',userController.community_write_post)
-//router.post('/community_del',userController.community_del)
-// router.get('/category',userController.category_select)
+router.post('/community_write',upload.single('com_img'),userController.community_write_post)
+
 router.post('/community_del',userController.community_del)
 
 router.get('/course')
 router.get('/course_write',userController.course_write)
-router.post('/course_write',userController.course_write_post)
+router.post('/course_write',upload.single('courseimg'),userController.course_write_post)
 router.post('/course_form',userController.course_form)
 router.get('/employ',userController.add_employee)
-router.get('/portfolio',userController.add_portfolio)
-router.post('/employed_suc',userController.employed_suc)
-router.post('/portfolio_sub',userController.portfolio_suc)
 
-//==========================게시판그룹관리
-router.get('/board_group',userController.board_group_get)
+router.post('/employed',upload.single('employimg'),userController.employed)
+
+
+
 router.post('/mainboard_group',userController.mainboard_group)
+router.post('/board_group_modified',userController.board_group_modified)
 module.exports = router

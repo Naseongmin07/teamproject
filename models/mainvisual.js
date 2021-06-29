@@ -25,6 +25,10 @@ module.exports = class Mainvisual extends Sequelize.Model{
                     return moment(this.getDataValue('date')).format('YYYY-MM-DD')
                 }
             },
+            textcontent:{
+                type:Sequelize.STRING(255),
+                allowNull:true,
+            },
             text:{
                 type:Sequelize.STRING(30),
                 allowNull:false

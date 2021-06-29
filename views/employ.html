@@ -3,7 +3,7 @@
 {% block middlecontent %}
 {% if submenu == '취업정보' %}
 {% set res = Employee %}
-<a href="/admin/login_on/employ"><button>추가등록</button></a>
+<a href="/admin/login_on/employ?locate={{submenu}}"><button>추가등록</button></a>
 <table border="1">
     <th>이름</th>
     <th>아이디</th>
@@ -30,7 +30,7 @@
 </table border="1">
 {% elif submenu == '포트폴리오' %}
 {% set res =  portfolio %}
-<a href="/admin/login_on/portfolio"><button>추가등록</button></a>
+<a href="/admin/login_on/employ?locate={{submenu}}"><button>추가등록</button></a>
 <table>
     <th>이름</th>
     <th>아이디</th>
@@ -47,7 +47,7 @@
         <td>{{res[loop.index-1].userIdx}}</td>
         <td>{{res[loop.index-1].title}}</td>
         <td>{{res[loop.index-1].contents}}</td>
-        <td>{{res[loop.index-1].img}}</td>
+        <td><img src="http://localhost:3000/{{res[loop.index-1].img}}" alt="이미지" width="100px" height="100px">{{res[loop.index-1].img}}</td>
         <td>{{res[loop.index-1].count}}</td>
         <td>{{res[loop.index-1].watchaut}}</td>
         <td>{{res[loop.index-1].replyaut}}</td>

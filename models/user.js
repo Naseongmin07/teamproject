@@ -60,7 +60,8 @@ module.exports = class User extends Sequelize.Model{
             },
             employmentStatus:{
                 type:Sequelize.BOOLEAN,
-                allowNull:false
+                allowNull:false,
+                defaultValue:0
             },
         },{
             sequelize,

@@ -1,9 +1,14 @@
 {% extends 'topmenu.html' %}
 {% block middlecontent %}
+<div id="facility_form_m">
     <form action="/admin/login_on/image" method="POST" enctype="multipart/form-data">
         <div>
-            <input type="text" name="subBoard">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title">
+            <label for="subboard">미니게시판선택</label>
+            <input type="text" id="subboard" name="subboard">
             <input type="file" accept="image/*" name="img">
+            <label for="url">url</label>
             <input type="text" name="url">
             <input type="submit" value="등록" name="enter">
         </div> 
@@ -16,5 +21,6 @@
         <input type="submit" name="del" value="삭제">
         <input type="text" name="id" value="{{item.id}}" style="display: none;">
     </form>
+</div>
     {% endfor %}
 {% endblock %}

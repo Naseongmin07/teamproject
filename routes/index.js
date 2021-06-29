@@ -9,6 +9,7 @@ const curriculumRouter = require('./curriculum/index.js')
 const jobRouter =require('./job/index.js')
 const chatRouter = require('./chat/index.js')
 const indexRouter = require('./routers/index.js')
+const {Mainvisual} = require('../models') 
 // const searchRouter = require('./search/index.js')
 
 
@@ -27,7 +28,11 @@ router.use('/admin',(req,res)=>{
 })
 // router.use('/search',searchRouter)
 
-router.get('/',(req,res)=>{
+router.get('/',async (req,res)=>{
+    let ress = await Mainvisual.findAll({where:{
+        watchaut:1
+    }})
+    console.log(ress)
     res.cookie('sessionID',req.sessionID,{httpOnly:true,secure:true,})
     res.render('main.html')
 })

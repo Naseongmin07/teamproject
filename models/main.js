@@ -11,7 +11,20 @@ module.exports = class Main extends Sequelize.Model{
                 type:Sequelize.STRING(30),
                 allowNull:false,
                 unique:true                
-            }            
+            },
+            watchaut:{
+                type:Sequelize.BOOLEAN,
+                allowNull:true,
+                defaultValue:0
+            },
+            startDate:{
+                allowNull:false,
+                type:Sequelize.DATE,
+                defaultValue:Sequelize.NOW,
+                get: function(){
+                    return moment(this.getDataValue('startDate')).format('YYYY-MM-DD')
+                }
+            },            
         },{
             sequelize,
             timestamps:false,
@@ -22,7 +35,5 @@ module.exports = class Main extends Sequelize.Model{
             charset:'utf8',
             collate:'utf8_general_ci'
         })
-    }
- 
-   
+    }   
 }

@@ -1,84 +1,83 @@
 {% extends 'topmenu.html' %}
 
 {% block middlecontent %}
+{% set res = coursemodify %}
 
 <div>
-<form action="/admin/login_on/course_write" method="POST">
-    <ul id="course_write_css">
-            <form action="">
+    <div id="course_write_css">
+         <form action="/admin/login_on/course_write" method="POST" enctype="multipart/form-data">
                 <div>
                     <label for="courseName">강좌명</label>
-                    <input type="text" id="courseName"name="courseName" value="블럭체인">
+                    <input type="text" id="courseName" name="courseName" value="{{res.courseName}}">
                 </div>
                 <div>
                     <label for="tName">강사명</label>
-                    <input type="text" id="tName"name="name">
+                    <input type="text" id="tName" name="name" value="{{res.name}}">
                 </div>
                 <div>
                     <label for="file">이미지</label>
-                    <input type="text" id="img"name="img">
+                    <img src="http://localhost:3000/{{res.img}}" alt="슬라이드이미지" width="150px" height="150px">
+                    <input type="file" id="img"  accept="image/*" name="courseimg">
                 </div>
                 <div>
                     <label for="CourseType">강좌그룹</label>
-                    <input type="text" id="CourseType" name="coursetype">
+                    <input type="text" id="CourseType" name="coursetype" value="{{res.coursetype}}">
                 </div>
                 <div>
                     <label for="idx">강사아이디</label>
-                    <input type="text" name="idx">
+                    <input type="text" name="idx" value="{{res.idx}}">
                 </div>
                 <div>
                     <label for="pay">수강료</label>
-                    <input type="text" id="pay"name="pay">
+                    <input type="text" id="pay"name="pay" value="{{res.pay}}">
                 </div>
                 <div>
                     <label for="headCount">총인원</label>
-                    <input type="number" id="headCount" name="head_count">
+                    <input type="number" id="headCount" name="head_count" value="{{res.head_count}}">
                 </div>
                 <div>
                     <label for="startDate">시작일</label>
-                    <input type="date" id="startDate" name="startDate">
+                    <input type="date" id="startDate" name="startDate" value="{{res.startDate}}">
                 </div>
                 <div>
                     <label for="endDate">종류일</label>
-                    <input type="date" id="endDate" name="endDate">
+                    <input type="date" id="endDate" name="endDate" value="{{res.endDate}}">
                 </div>
                 <div>
                     <label for="contents">내용</label>
-                    <input type="text" id="contents" name="contents">
+                    <input type="text" id="contents" name="contents" value="{{res.contents}}">
                 </div>
                 <div>
                     <label for="Time">교육시작시간</label>
-                    <input type="time" id="Time" name="starttime">
+                    <input type="time" id="Time" name="starttime" value="{{res.starttime}}">
                 </div>
                 <div>
                     <label for="Time">교육종료시간</label>
-                    <input type="time" id="Time" name="endtime">
+                    <input type="time" id="Time" name="endtime" value="{{res.endtime}}">
                 </div>
                 <div>
                     <label for="Tag">태그</label>
-                    <input type="text" id="tag" name="tag">
+                    <input type="text" id="tag" name="tag" value={{res.tag}}>
                 </div>
                 <div>
                     <label for="Support">지원여부</label>
-                    <input type="text" id="Support" name="support">
+                    <input type="text" id="Support" name="support" value={{res.support}}>
                 </div>
                 <div>
                     <label for="Description">설명</label>
-                    <input type="text" id="Description" name="description">
+                    <input type="text" id="Description" name="description" value="description">
                 </div>
                 <div>
                     <label for="onoff">모집현황</label>
-                    <input type="text" id="onoff" name="onoff">
+                    <input type="text" id="onoff" name="onoff" value="{{res.onoff}}">
                 </div>
                 <div>
-                    <input type="submit" name="add" value="작성">
-            </form>
-        </li>
-    </ul>
-        
-    
-    
-            
-
+                    <input type="submit" name="add" value="{{write}}">
+                    <input type="number" name="idxx" value="{{res.id}}" style="display:none">
+                </div>
+         </form>        
+    </div>
 </div>
+
+
 {% endblock %}

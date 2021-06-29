@@ -53,7 +53,15 @@ module.exports = class Employed extends Sequelize.Model{
                 type:Sequelize.BOOLEAN,
                 allowNull:false,
                 defaultValue:0
-            }
+            },
+            startDate:{
+                allowNull:false,
+                type:Sequelize.DATE,
+                defaultValue:Sequelize.NOW,
+                get: function(){
+                    return moment(this.getDataValue('startDate')).format('YYYY-MM-DD')
+                }
+            },
         },{
             sequelize,
             timestamps:false,

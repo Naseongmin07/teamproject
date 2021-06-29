@@ -1,16 +1,20 @@
+  
 {% extends 'errorform.html' %}
 
 {% block errorContent %}
 
     {% if error=="관리자아이디동일" %}
     동일한 관리자 아이디가 존재합니다.
-    <a href="/admin/login_on?main=관리자리스트">관리자 리스트로 돌아가기</a> 
+    <a href="/admin/login_on?topmenu=administrator&submenu=관리자리스트">관리자 리스트로 돌아가기</a> 
     {% elif error=="잘못된사용자정보" %}
     잘못된 정보를 입력하였습니다.
-    <a href="/admin/login_on?main=사용자관리">사용자관리로 돌아가기</a>
+    <a href="/admin/login_on?topmenu=administrator&submenu=시용자관리">사용자관리로 돌아가기</a>
     {% elif error=="잘못된사용자검색" %}
     해당 수강생은 존재하지 않습니다..
-    <a href="/admin/login_on?main=사용자관리">사용자관리로 돌아가기</a>
+    <a href="/admin/login_on?topmenu=administrator&submenu=사용자관리">사용자관리로 돌아가기</a>
+    {% elif error=="동일한이름게시판존재" %}
+    동일한 이름의 게시판이 이미 생성되어 있습니다. 
+    <a href="/admin/login_on?topmenu=administrator&submenu=게시판생성관리">게시판 생성관리로 돌아가기</a>
     {% endif %}
     
-{% endblock %}s
+{% endblock %}

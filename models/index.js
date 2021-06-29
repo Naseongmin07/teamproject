@@ -22,6 +22,7 @@ const Visitor = require('./visitor')
 const Siteset = require('./siteset.js')
 const Coinfo = require('./company_info.js')
 const Main = require('./main.js')
+const Popup = require('./popup.js')
  
 let sequelize;
 if (config.use_env_variable) {
@@ -60,7 +61,9 @@ db.Visitor = Visitor
 db.Siteset = Siteset
 db.Coinfo = Coinfo
 db.Main = Main
+db.Popup = Popup
 
+Popup.init(sequelize)
 Adminlist.init(sequelize)
 Community.init(sequelize)
 Course.init(sequelize)
