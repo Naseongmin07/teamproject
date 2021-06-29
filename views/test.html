@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/test.css">
+</head>
+<body class="container">
+    <div class="start">
+        <h1 class="mt-4 text-center">재미로 보는 나랑 어울리는 과정은?</h1>
+        <!-- <img src="https://static.wixstatic.com/media/9e04aa_8e303bdafe3d4124a0b819f55a130f3a~mv2.png/v1/fill/w_794,h_469,al_b,q_90,usm_0.66_1.00_0.01/9e04aa_8e303bdafe3d4124a0b819f55a130f3a~mv2.webp" style="width: 400px; float: left;" > -->
+        <!-- <img src="https://static.wixstatic.com/media/9e04aa_3c3a961ee26a4d05af0144464ed47ef2~mv2.jpg/v1/fill/w_992,h_465,al_t,q_85,usm_0.66_1.00_0.01/9e04aa_3c3a961ee26a4d05af0144464ed47ef2~mv2.webp" style="width: 400px; display: inline-block;"> -->
+        <img src="/image/test/0033_002.jpg" class="mt-3">
+        <button type="button" class="btn btn-outline-warning mt-4" onclick="start1()">테스트 시작하기</button>
+    </div>
+    <article class="question">
+          <div class="progress mt-5">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: calc(100/12*1%);" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        <h2 id="title" class="text-center mt-3">문제</h2>
+        <input id="type" type="hidden" value="EI">
+        <button id="A" type="button" class="btn btn-outline-warning mt-3"></button>
+        <button id="B" type="button" class="btn btn-outline-warning mt-3"></button>
+        
+    </article>
+    <article class="result">
+        <img id="img" class="rounded-circle mt-3" src="lion.jpg" alt="animal">
+        <h2 id="animal" class="text-center mt-3">동물이름</h2>
+        <h3 id="explain" class="text-center mt-1">설명</h3>
+        <!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="addthis_inline_share_toolbox share"></div>
+    </article>
+    <input type="hidden" id="EI" value="0">
+    <input type="hidden" id="SN" value="0">
+    <input type="hidden" id="TF" value="0">
+    <input type="hidden" id="JP" value="0">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        let num =1; 
+        let q = {
+            1: {"title":"약속, 다 잡았는데 어쩔 수 없지.집콕이 곧 안전이다. 근데, 나 집에서 뭐하지?","type":"EI","A":"집에 있는게 답답하다..친구들과 만나서 수다떨고 싶으니 줌으로 비대면 파티를연다","B":"집콕? 오히려 좋아. 집에서 조용히 못다한 게임을 밤새한다"},
+            2: {"title":"아무리 돌아도 그 곳이 그 곳 같아 못적지를 찾을 수 없다. 어떻게 해야할까?","type":"EI","A":"핸드폰으로 지도앱을 보고 움직인다.","B":"나의 느낌과 소울이 이쪽을 가리키고 있다 가보자"},
+            3: {"title":"그럴 의도는 아니였는데 대화하다가 상대방을 서운하게 했다! 나의 행동은?","type":"EI","A":"미안해, 말의 의도를 천천히 설명하면서 오해라고 말한다","B":"내가 진짜 그런 의도는 아니였어.화났어? 오늘 내가 치킨쏠게 콜?"},
+            4: {"title":"올해 계획, 계획했던 것보다 달성을 못할 것 같은데 이건 어떻게 조정해야할까?","type":"SN","A":"빠르게 판단하고 계획해 진행해야한다 비상소집 후 회의를 진행한다","B":"이렇게 될 줄 예상하고 있었어 우선 할 수 있는 것부터 실행해보고 방법을 물색한다"},
+            5: {"title":"이번년도 계획을 세워야지! 나는 어떤 계획을 세울까?","type":"SN","A":"적극적으로 강의, 강연을 다니며 지식을 흡수하고 인맥을 확장한다.","B":"독서와 명상을 통해 내면을 갈고닦고 게임을 한다 후..이번판 이기면 승급이다"},
+            6: {"title":"공부할게 너무 많아서 머리가 복잡하다 계획했던 일을 이번 주까지 끝내야하는데 할 수 있을까?","type":"SN","A":"기간을 조금 늘리더라도 정확하게 처리한다.","B":"빠르게 일을 끝내고 수정할 게 생기면 그때가서 처리한다."},
+            7: {"title":"연초라 내 의지가 끌어오른다 뭐라도 해야할 것 같은데, 어떡하지?","type":"TF","A":"투두리스트를 적어 하나씩 처리할 수 있도록 계획한다.","B":"우선 해봐야 도전하는 느낌도 난다! 당장 뭐라도 시작한다."},
+            8: {"title":"21년중 절반을 지나왔다만..내가 원하는 바를 이루지는 못했다 나느 어떻게 생각하는 타입일까?","type":"TF","A":"반년동안 수고했지만, 내가 원하는 결과는 얻지 못했어 마지막 반년동안 더 타이트하고 체계적으로 목표와 일정을 짜서 해결해내고 말거야","B":"비록 내가 원하는 바는 이루지 못했지만 오히려 좋아, 목표에 대한 변수를 파악하고 새로운 방향을 알아냈으니까"},
+            9: {"title":"승급한달전 팀에게 감사인사를 하고싶다. 하지만 예산은 한정되어있고 어떤 선물을 준비할까?","type":"TF","A":"비슷하나 가격대의 선물을 골라 모두에게 선물한다.","B":"가장 고마웠던 팀원에게 조용히 편지와 선물을 준비한다."},
+            10: {"title":"7월부터 연말까지 정말 새로운 사람이 되고싶다. 새로운 사람이 되기위한 계획을 세울때 내 스타일은?","type":"JP","A":"현실적으로 이룰 수 있는 계획들을 세워 진행한다.","B":"포부는 크면 클수록 좋아 계획은 최대한 크게 세운다."},
+            11: {"title":"친구가 학원을 고민하고 있다 다른사람의 계획에 있어 나의 반응은?","type":"JP","A":"경일은 어때? 거기가 꼰대 스타일인데 학원사람들 잘챙긴데 들었던 소문을 알려준다.","B":"고민을 들어주고 공감해준다."},
+            12: {"title":"자기계발 나는 어떤식으로 개발하는 스타일일까?","type":"JP","A":"우선 기초 이론부터 차근차근 배워서 성장해나가고 싶다 커리큘럼을 보고 꼼꼼하게 공부 계획을 세워나간다. ","B":"시도를 해봐야 내가 어떤 유형에 맞는 지 확인 가능하다고 생각하기 때문에 강의를 수강해본다."},
+        }
+        let result = {
+            "ENFJ":{"animal":"VR/AR 과정","explain":" VR/AR에 끌리고 있는 모습이 그려지네요 당장 VR/AR과정을 확인해보세요.!","img":"/image/test/VRAR.jpg"},
+            "ISFJ":{"animal":"게임원화","explain":" 밤의일족을 마음에 품고 계시는군요 게임원화 과정으로 내안에 흑염룡을 깨워보세요.!","img":"/image/test/게임원화.png"},
+            "INFJ":{"animal":"블록체인","explain":"비트코인 한번 도전??!","img":"/image/test/블록체인.jpg"},
+            "INTJ":{"animal":"게임기획","explain":"나만의 게임세계를 만들어 나가는 게임기획!","img":"/image/test/게임기획2.jpg"},
+            "ISTP":{"animal":"프로게이머","explain":"게임속 지배자가 되어보세요.!","img":"/image/test//프로게이머.jpg"},
+            "ISFP":{"animal":"게임프로그래밍","explain":"오류찾기 전까지 퇴근은 없다!","img":"/image/test/프로그래밍.jpg"},
+            "INFP":{"animal":"게임기획","explain":"나만의 게임세계를 만들어 나가는 게임기획!","img":"/image/test/게임기획.png"},
+            "INTP":{"animal":"게임원화","explain":"내안에 흑염룡이 나의 심미안을 자극 하는군 훗","img":"/image/test/게임원화2.jpg"},
+            "ESTP":{"animal":"블록체인","explain":"4차산업에 꼭 필요한 기술 지금바로 배우로가실? 가격 1400만임","img":"/image/test/블록체인2.jpg"},
+            "ESFP":{"animal":"VR/AR","explain":"가상공간을 현실처럼 만들기위한 과정 참여 하시겠습니까?","img":"/image/test/VRAR2.jpg"},
+            "ENFP":{"animal":"프로게이머","explain":"제2의 페이커는 당신입니다...아마도??","img":"/image/test/프로게이머2.jpg"},
+            "ENTP":{"animal":"게임프로그래밍","explain":"워라밸은 지켜줄 수 없습니다 우리에겐 감금만 있을뿐","img":"/image/test/프로그래밍2.jpg"},
+            "ENTJ":{"animal":"경일아카데미","explain":"당신은 학원에 필요한 인재상 학원 직원으로 일할 생각없나요?","img":"/image/test/경일1.jpg"},
+            // "ESFJ":{"animal":"진로고민 추천","explain":"우리 학원과는 어울리지 않는사람 다른진로를 알아보는건 어떨까요?","img":"/image/test/리븐.jpeg"},
+            "ESTJ":{"animal":"","explain":"돌아가라 애송아 너를 위한 과정은 없다.","img":"/image/test/애송이.jpg"}, 
+            "ISTJ":{"animal":"연예인","explain":"연예인 해볼생각 없나요? 그냥 한번 해본말이에요","img":"/image/test/연예인.png"},
+        }
+
+        // let start = document.querySelector('.start');
+        // let question = document.querySelector('.question');
+
+        function start1(){
+        //     start.classList.add('off');
+        //     question.classList.add('on');
+            $(".start").hide(); //테스트 시작 누르면 제목 가리기
+            $(".question").show(); //테스트 시작 누르면 제목 나오기
+            next();
+        }
+
+        // let a = document.querySelector('#A');
+        
+        // a.addEventListener('click',()=>{
+        //     let type = document.querySelector('#type');
+        //     let typeonoff = type ? value(parseInt(type)+1) : "";
+        //     console.log(typeonoff)
+            
+        // })
+        $("#A").click(function(){ //클릭 할때마다 밸류값 카운트
+         let type =  $("#type").val(); 
+         let preValue = $("#"+type).val();
+        //  console.log(preValue)
+         $("#"+type).val(parseInt(preValue)+1); 
+         next();
+        });
+        $("#B").click(function(){
+            next();
+        });
+        function next(){
+            if(num == 13){
+                $(".question").hide();
+                $(".result").show();
+                let mbti = "";
+                ($("#EI").val() <2) ? mbti+= "I" : mbti+="E";
+                ($("#SN").val() <2) ? mbti+= "N" : mbti+="S";
+                ($("#TF").val() <2) ? mbti+= "F" : mbti+="T";
+                ($("#JP").val() <2) ? mbti+= "P" : mbti+="J";
+
+                $("#img").attr("src",result[mbti]["img"]);
+                $("#animal").html(result[mbti]["animal"]);
+                $("#explain").html(result[mbti]["explain"]);
+            }else{
+                $(".progress-bar").attr("style",'width: calc(100/12*'+num+'%)');
+                $("#title").html(q[num]["title"]);
+                $("#type").val(q[num]["type"]);
+                $("#A").html(q[num]["A"]);
+                $("#B").html(q[num]["B"]);
+                num++;
+            }
+        }
+    </script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools --> <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-60d2edc929e52664"></script>
+</body>
+</html>
+
+<!-- 
+    E 외향형 / I 내향형  에너지방향
+    S 감각형 / N 직관형  인식 기능
+    T 사고형 / F 감정형  판단 기능
+    J 판단형 / P 인식형 생황 양식
+    판단형 체계적 정리정돈과 계획 인식형 자율적 상황에 맞추는 개방성
+ -->

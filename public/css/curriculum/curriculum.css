@@ -76,8 +76,8 @@
     display: inline-block;
     margin-right: 10px;
     padding: 7px 30px;
-    background: #006cdb;
-    border: 1px solid #006cdb;
+    background: rgb(223, 86, 86);
+    border: 1px solid rgb(223, 86, 86);
     border-radius: 6px;
     font-weight: bold;
     color: #fff;

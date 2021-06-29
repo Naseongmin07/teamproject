@@ -9,17 +9,54 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/header.css">
+    <!-- <link rel="stylesheet" href="/css/test.css"> -->
+
+   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> -->
+
+    <!-- <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+  /> -->
+    <script src="https://kit.fontawesome.com/1576d475b2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.3-web/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+
+    
+<style>
+    video{
+        position: relative;
+        z-index: 900;
+        max-width: 100%;  display: block; margin: 20px auto;
+    }
+</style>
 </head>
 
 <body>
 
+   
+
     {% include "header.html" %}
+    <video muted autoplay src="/11.mp4" id="io"></video>
     
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/jquery.vide.min.js"></script>
+    <div id="chat_768">
+        <a href="/chat/chat" class="a_768"
+            onclick="window.open(this.href, '_blank', 'width=500, height=600'); return false;">
+            <span style="color:#ffffff">
+                <i class="far fa-comment-dots fa-3x"></i>
+            </span>
+            <p>실시간 상담</p>
+        </a>
+    </div>
     <div id="chat">
-        <a href="/chat/chat"
+        <a href="/chat/chat" class="a_main"
         onclick="window.open(this.href, '_blank', 'width=500, height=500'); return false;">
     1:1 실시간 상담</a>
     </div>
+
+    
     <div id="contens">
         <div id="main-slide-wrap">
             <!-- 메인 슬라이드부분 -->
@@ -271,6 +308,24 @@
                             <li>어린이라운지
                                 <span>2021.06.18</span>
                             </li>
+                            <li>예술의전당 전시회
+                                <span>2021.06.18</span>
+                            </li>
+                            <li>소극장 대여공지
+                                <span>2021.06.18</span>
+                            </li>
+                            <li>커피 품절
+                                <span>2021.06.18</span>
+                            </li>
+                            <li>분수대 고장으로 점검
+                                <span>2021.06.18</span>
+                            </li>
+                            <li>주차장관련 공지사항
+                                <span>2021.06.18</span>
+                            </li>
+                            <li>운영관리 공지
+                                <span>2021.06.18</span>
+                            </li>
                         </ul>
                         <ul class="sub_mf4">
                             <li>2021 경남도립극단
@@ -327,27 +382,29 @@
                             <img src="/image/main/bottom_img/sub_btm3.png">
                             <h1>YouTube</h1>
                         </div>
-                        <div class="sub_tube_form">
-                            <div class="sub_tube">
-                                <a href="#">예술의전당</a>
-                                <span>
-                                    2021-05-05
-                                    <img src="/image/main/bottom_img/mqdefault.jpg">
-                                </span>
-                            </div>
-                            <div class="sub_tube">
-                                <a href="#">요즘 예술가를 만나다 서예가 인중 이정화</a>
-                                <span>
-                                    2021-05-05
-                                    <img src="/image/main/bottom_img/mqdefault (1).jpg">
-                                </span>
-                            </div>
-                            <div class="sub_tube">
-                                <a href="#">[흥부]예술의전당 전격재능기부</a>
-                                <span>
-                                    2021-05-05
-                                    <img src="/image/main/bottom_img/mqdefault (2).jpg">
-                                </span>
+                        <div class="sub_tube-form2">
+                            <div class="sub_tube_form">
+                                <div class="sub_tube">
+                                    <a href="#">예술의전당</a>
+                                    <span>
+                                        <p>2021-05-05</p>
+                                        <img src="/image/main/bottom_img/mqdefault.jpg">
+                                    </span>
+                                </div>
+                                <div class="sub_tube">
+                                    <a href="#">요즘 예술가를 만나다 서예가 인중 이정화</a>
+                                    <span>
+                                        <p>2021-05-05</p>
+                                        <img src="/image/main/bottom_img/mqdefault (1).jpg">
+                                    </span>
+                                </div>
+                                <div class="sub_tube">
+                                    <a href="#">[흥부]예술의전당 전격재능기부</a>
+                                    <span>
+                                        <p>2021-05-05</p>
+                                        <img src="/image/main/bottom_img/mqdefault (2).jpg">
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>

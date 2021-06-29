@@ -21,14 +21,15 @@ sequelize.sync({force: true})
     console.log(err)
 })
 
+app.use(express.static('/node_modules/socket.io/client-dist'))
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(express.json())
-
 app.use(cookieParser(process.env.COOKIE_SECRET))
 
-app.use(express.static('/node_modules/socket.io/client-dist'))
-app.set('view engine','html')
 
+
+app.set('view engine','html')
 
 app.use(express.static('public'))
 app.use(session({
@@ -146,6 +147,6 @@ io.sockets.on('connection', function(socket) {
   })
 
 
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log(`server start port ${port}`)
 })

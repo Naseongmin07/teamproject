@@ -394,4 +394,14 @@ var index = 0;
         })
     }
     subClick()
-   
+    window.onload = function(){
+        setTimeout(()=>{
+            window.open('/test/test', '_blank', 'width=700, height=700'); return false;
+        },12000)
+    }
+
+    setTimeout(()=>{
+        let io = document.querySelector('#io')
+        io.style.display = 'none';
+    },12000)
+       

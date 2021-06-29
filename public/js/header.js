@@ -5,7 +5,7 @@ let category_list =
             {boardName: "학교소개", category:"시설소개", url:"/college/interior" },
             {boardName: "학교소개", category:"오시는길", url:"/college/location" },
             {boardName: "교육과정", category:"과정안내", url:"/curriculum/curriculum" },
-            {boardName: "교육과정", category:"전체일정(달력)", url:"/scheduler" },
+            {boardName: "교육과정", category:"전체일정", url:"/scheduler" },
             {boardName: "취업정보", category:"취업자인터뷰", url:"/job/interview" },
             {boardName: "취업정보", category:"취업현황", url:"/job/recruit" },
             {boardName: "취업정보", category:"포트폴리오", url:"/job/portfolio" },

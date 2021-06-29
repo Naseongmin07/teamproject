@@ -8,6 +8,8 @@ const consultRouter = require('./consult/index.js')
 const curriculumRouter = require('./curriculum/index.js')
 const jobRouter =require('./job/index.js')
 const chatRouter = require('./chat/index.js')
+const testRouter = require('./test/index.js')
+const logoRouter = require('./logo/index.js')
 // const searchRouter = require('./search/index.js')
 
 
@@ -18,6 +20,8 @@ router.use('/consult',consultRouter)
 router.use('/curriculum',curriculumRouter)
 router.use('/job',jobRouter)
 router.use('/chat',chatRouter)
+router.use('/test',testRouter)
+router.use('/logo',logoRouter)
 // router.use('/search',searchRouter)
 
 router.get('/',(req,res)=>{

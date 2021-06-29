@@ -124,3 +124,4 @@ if(queryString==undefined){
     table.appendChild(sub_tr)
     board.appendChild(table)
 }
+
