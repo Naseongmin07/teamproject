@@ -23,17 +23,20 @@ const page_list = [
 
 
 let original_href = window.location.href
+console.log(1)
 let query_index = original_href.indexOf('?')
+console.log(2)
 let new_href 
 if (query_index!=-1){
    new_href = original_href.slice(0,query_index)
 }else{
     new_href = original_href
 }
+console.log(3)
 let href_split = new_href.split('/')
 let current_split = href_split[href_split.length-2]
 let current_split_page = href_split[href_split.length-1]
-
+console.log(4)
 
 
 let obj = new Object()
@@ -49,12 +52,11 @@ page_list.forEach(v=>{
         obj2[v.category] = object_list
     }
 })
-
+console.log(5)
 
 
 const middle_header = document.querySelector('#middle_header')
 const middle_header_content = document.querySelector('.middle_header_content')
-
 
 
 
@@ -71,7 +73,7 @@ let href_link
 
 object_keys = Object.keys(obj)
 object_values = Object.values(obj)
-
+console.log(6)
 
 
 for(i=0; i<object_keys.length; i++){
@@ -85,7 +87,7 @@ for(i=0; i<object_keys.length; i++){
     middle_ul.appendChild(a)
 }
 
-
+console.log(7)
 const middle_right_header = document.querySelector('.middle_right_header')
 middle_right_header.innerHTML = obj[current_split_page]
 
@@ -98,7 +100,7 @@ current_menu = document.querySelector(`.${current_split_page }`)
 current_menu.style.color = '#006cdb'
 current_menu.style.borderBottom = '1px solid #006cdb'
 
-
+console.log(8)
 class createBoard{
 
 
@@ -197,6 +199,8 @@ class createBoard{
                     td.addEventListener('click',(event)=>{
                         while (this.base_div.hasChildNodes()) 
                             {this.base_div.removeChild(this.base_div.firstChild)}
+                            this.base_div.innerHTML = v.contents
+                            window.location.href = `${window.location.href}?mode=view`
                         // this.base_div.appendChild(event.target.className)
                     })
                 }
@@ -1333,7 +1337,6 @@ const column_key4 = {
     이름: "name",
     조회수: "count",
 }
-
 
 
 
