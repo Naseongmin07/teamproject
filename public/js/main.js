@@ -404,4 +404,5 @@ var index = 0;
         let io = document.querySelector('#io')
         io.style.display = 'none';
     },12000)
-       
+
+

@@ -283,7 +283,7 @@ h3{
     background-color: #38b888;
     box-sizing: border-box;
 }
-.sub-form li > img{
+.sub-form li > a> img{
     width: 180px;
     height: 229px;
     /* border: 10px solid #FFBC42; */
@@ -292,10 +292,12 @@ h3{
     height: 370px; */
     /* filter:grayscale(.1) opacity(0.8) brightness(0.3); */
 }
-.sub-form li > img:hover{
+.sub-form li >a> img:hover{
     transform: scale(1.2);
-    transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;  
 }
+
+  
 .sub-form li > p{
     text-align: center;
     font-weight: bold;
@@ -381,7 +383,7 @@ h2:hover{
     font-size: 13px;
     color: #bbbbbb;
 }
-.sub-btm >ul>li{
+.sub-btm >ul>li>a{
     display:inline-block;
     width: 100%;
     height: 15px;
@@ -591,6 +593,7 @@ h2:hover{
       display: none;
   }
 
+  
 
 
 

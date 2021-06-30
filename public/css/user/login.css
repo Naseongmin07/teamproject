@@ -40,13 +40,13 @@
 }
 
 .login_submit{
-    background : rgb(137, 149, 255);
+    background : rgb(223 86 86);
     width: 300px;
     height: 40px;
 }
 
 .login_kakao{
-    background : yellow;
+    background : rgb(223 86 86);
     width: 300px;
     height: 40px;
 }

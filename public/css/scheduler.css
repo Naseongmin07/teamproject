@@ -81,7 +81,7 @@ ul,li{list-style:none;}
     overflow:hidden;
 }
 
-.swiper-slide > img:hover{
+.swiper-slide >a> img:hover{
     transform: scale(1.15);            /* 이미지 확대 */
     transition: transform .5s; 	/*  시간 설정  */
 }
