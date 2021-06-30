@@ -59,6 +59,19 @@ router.get('/',async (req,res)=>{
     res.cookie('sessionID',req.sessionID,{httpOnly:true,secure:true,})
     res.render('main.html',{banner,bottomImg,report,classOpen})
 })
+router.post('/',async (req,res)=>{
+    let banner = await Mainvisual.findAll({where:{
+        watchaut:1
+    }})
+    let bottomImg = await Mainvisual.findAll({where:{
+        watchaut:0
+    }})
+    let report = await Community.findAll({where:{subBoard:'공지사항'}})
+    let classOpen = await Community.findAll({where:{subBoard:'개강일'}})
+    console.log('http://localhost://',banner[0].image)
+    res.cookie('sessionID',req.sessionID,{httpOnly:true,secure:true,})
+    res.redirect('/')
+})
 router.get('/scheduler',(req,res)=>{
     res.render('scheduler.html')
 })

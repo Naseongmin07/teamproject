@@ -1,16 +1,20 @@
-const { Employed } = require("../../models")
+const { Employed, Portfolio } = require("../../models")
 
 let interview =async (req,res)=>{
-    let interviewinfo = await Employed.findAll({})
-    console.log(interviewinfo[0].startDate)
-    res.render('job/interview.html',{interviewinfo})
+    let interviewinfo = await Employed.findAll({
+        attributes:[]
+    })
+    
+    res.render('job/interview.html')
 }
 
-let portfolio =(req,res)=>{
-    res.render('job/portfolio.html')
+let portfolio =async(req,res)=>{
+    let portfoliores = await Portfolio.findAll({})
+    res.render('job/portfolio.html',)
 }
 
-let recruit =(req,res)=>{
+let recruit = async (req,res)=>{
+    let recruitres = await Employed.findAll({})
     res.render('job/recruit.html')
 }
 
