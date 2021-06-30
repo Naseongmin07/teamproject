@@ -1,5 +1,3 @@
-
-
 const page_list = [
     {boardName :'college' ,category: 'introduction', boardmenu : '인사말',bannerlink : "http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg", bannerlogo : "KYUNGIL TECHNICAL COLLEGE"},
     {boardName :'college' ,category: 'history', boardmenu : '연혁' ,bannerlink : "http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg", bannerlogo : "KYUNGIL TECHNICAL COLLEGE"},
@@ -23,17 +21,20 @@ const page_list = [
 
 
 let original_href = window.location.href
+console.log(1)
 let query_index = original_href.indexOf('?')
+console.log(2)
 let new_href 
 if (query_index!=-1){
    new_href = original_href.slice(0,query_index)
 }else{
     new_href = original_href
 }
+console.log(3)
 let href_split = new_href.split('/')
 let current_split = href_split[href_split.length-2]
 let current_split_page = href_split[href_split.length-1]
-
+console.log(4)
 
 
 let obj = new Object()
@@ -49,12 +50,11 @@ page_list.forEach(v=>{
         obj2[v.category] = object_list
     }
 })
-
+console.log(5)
 
 
 const middle_header = document.querySelector('#middle_header')
 const middle_header_content = document.querySelector('.middle_header_content')
-
 
 
 
@@ -71,7 +71,7 @@ let href_link
 
 object_keys = Object.keys(obj)
 object_values = Object.values(obj)
-
+console.log(6)
 
 
 for(i=0; i<object_keys.length; i++){
@@ -85,7 +85,7 @@ for(i=0; i<object_keys.length; i++){
     middle_ul.appendChild(a)
 }
 
-
+console.log(7)
 const middle_right_header = document.querySelector('.middle_right_header')
 middle_right_header.innerHTML = obj[current_split_page]
 
@@ -98,7 +98,7 @@ current_menu = document.querySelector(`.${current_split_page }`)
 current_menu.style.color = '#006cdb'
 current_menu.style.borderBottom = '1px solid #006cdb'
 
-
+console.log(8)
 class createBoard{
 
 
@@ -197,6 +197,8 @@ class createBoard{
                     td.addEventListener('click',(event)=>{
                         while (this.base_div.hasChildNodes()) 
                             {this.base_div.removeChild(this.base_div.firstChild)}
+                            this.base_div.innerHTML = v.contents
+                            window.location.href = `${window.location.href}?mode=view`
                         // this.base_div.appendChild(event.target.className)
                     })
                 }
@@ -453,13 +455,371 @@ class createBoard{
 }
 
 
-async function load_data() {
 
+
+
+const database = [{category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "1", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "1", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "1", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "1", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "1", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "1", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "1", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "1", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+                {category: "notice",id: "0", title: "제목", enrollDate:"2021-05-05", writer: "nms", contents: "asdf", count: "0" },
+]
+
+const column_key = {
+    번호 : "id",
+    제목 : "title",
+    등록일 : "enrollDate",
+    작성자 : "writer",
+    조회수 : "count"
 }
-
-
-
-
 
 
 const database2 = [{date:'2020-05-02', class:"게임 기획", jokey: "24기", name: "강희은", company: "모아이 게임즈"},
@@ -978,7 +1338,6 @@ const column_key4 = {
 
 
 
-
 async function searchDB(){
     url = 'http://localhost3000/'
     await fetch(url,option)
@@ -989,13 +1348,9 @@ const middle_right_bottom = document.querySelector('.middle_right_bottom')
 
 
 if(href_split[href_split.length-2] == "community"|| href_split[href_split.length-1]=="faq"){
-
-    function load_data(){
-        let board = new createBoard(middle_right_bottom, database, column_key, 'board')
-        board.init()
+    let board = new createBoard(middle_right_bottom, database, column_key, 'board')
+    board.init()
 }
-    }
-
 
 if(href_split[href_split.length-1]=="recruit"){
     let board = new createBoard(middle_right_bottom, database2, column_key2, 'board')
@@ -1011,18 +1366,3 @@ if(href_split[href_split.length-1]=="portfolio"){
     let board = new createBoard(middle_right_bottom, database4, column_key4, 'portfolio')
     board.init()
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,9 +1,9 @@
 const { Employed, Portfolio } = require("../../models")
 
 let interview =async (req,res)=>{
-    let interviewinfo = await Employed.findAll({
-        attributes:[]
-    })
+    // let interviewinfo = await Employed.findAll({
+    //     attributes:[]
+    // })
     
     res.render('job/interview.html')
 }

@@ -127,7 +127,7 @@ a{
     width: 1903px;;
     background: rgba(50,50,50,0.9);
     opacity: 80%;
-    z-index: 950;
+    z-index: 50;
     overflow: hidden;
 }
 

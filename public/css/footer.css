@@ -63,6 +63,7 @@
     padding: 0 10px;
 }
 
+
 #footer_bottom_container{
     position: relative;
     top: 20px;
@@ -116,6 +117,8 @@
     left:1800px;
     bottom: 130px;
 }
+
+
 
 
 
@@ -244,6 +247,7 @@
     .footer_bottom_content2{
         margin-left: 35px;
     }
+    
     
     .fixed_top{
         float:right;
