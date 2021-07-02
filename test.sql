@@ -14,8 +14,8 @@
 
 
 -- team 데이터베이스 구조 내보내기
-CREATE DATABASE IF NOT EXISTS `team` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `team`;
+CREATE DATABASE IF NOT EXISTS `teamproject1` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `teamproject1`;
 
 -- 테이블 team.adminlists 구조 내보내기
 CREATE TABLE IF NOT EXISTS `adminlists` (
