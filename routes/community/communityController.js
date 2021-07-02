@@ -1,46 +1,20 @@
-const { Community } = require("../../models")
-
 let notice =(req,res)=>{
     res.render('community/notice.html')
 }
 
-let professor =async (req,res)=>{
-    
-    // let professorres = await Community.findAll({
-    //     attributes = ['id', 'company', 'startDate', 'userIdx', 'count']
-    // },{
-    //     where:{
-    //         subBoard:'교수칼럼'
-    //     }
-    // })
-    
+let professor =(req,res)=>{
     res.render('community/professor.html')
 }
 
-let reporter = async (req,res)=>{
-    let reporterres = await Community.findAll({
-
-    },{where:{
-        subBoard:'공지사항'
-    }})
+let reporter =(req,res)=>{
     res.render('community/reporter.html')
 }
 
-let review = async (req,res)=>{
-    let reviewres = await Community.findAll({
-
-    },{where:{
-        subBoard:'수강후기'
-    }})
+let review =(req,res)=>{
     res.render('community/review.html')
 }
 
-let story = async (req,res)=>{
-    let storyres = await Community.findAll({
-
-    },{where:{
-        subBoard:'K이야기'
-    }})
+let story =(req,res)=>{
     res.render('community/story.html')
 }
 

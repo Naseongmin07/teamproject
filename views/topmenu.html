@@ -4,26 +4,16 @@
     <div><p>{{topmenu}}LIST</p></div>
     {% endblock %}
 
+
+
 {% block submenu %}
-                <ul>
-                    <li class="left_menu_m">
-                        <table class="left_menu_table_m">    
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <ul id="list_column_m">
-                                            {% set res = subboard %}
-                                            {% for item in res %}
-                                            <li><a href="/admin/login_on?topmenu={{res[loop.index-1].mainBoard}}&submenu={{res[loop.index-1].subBoard}}">{{res[loop.index-1].subBoard}}</a></li>
-                                            {% endfor %}   
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </li>
-                </ul>
+    {% set res = subboard %}
+    {% for item in res %}
+    <li><a href="/admin/login_on?topmenu={{res[loop.index-1].mainBoard}}&submenu={{res[loop.index-1].subBoard}}">{{res[loop.index-1].subBoard}}</a></li>
+    {% endfor %}   
 {% endblock %}
+
+
 
 
 {% block maincontent %}

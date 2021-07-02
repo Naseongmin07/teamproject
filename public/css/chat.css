@@ -7,7 +7,7 @@
 }
 #chatRoom{
     width: 100%;
-    height: 450px;
+    height: 500px;
     overflow: scroll;
     /* background-color: rgba(114, 112, 109, 0.822); */
 }
@@ -18,7 +18,7 @@
 #chatBtn{
     width: 20%;
     height: 30px;
-    background-color: #dedede;
+    background-color: beige;
     border: 1px solid #666;
 }
 .connect{
@@ -35,11 +35,8 @@
     margin-left: 10px;
     max-width: 240px;
     float: right;
-    /* background-color: rgb(245, 224, 107); */
-    border-radius: 5px;
-    border: 1px solid #fcbe32;
+    background-color: rgb(245, 224, 107);
 }
-
 .meday{
     float: right;
 }
@@ -47,15 +44,12 @@
     margin-right: 10px;
     max-width: 240px;
     float: left;
-    /* background-color: rgb(99, 174, 224); */
-    border-radius: 5px;
-    border: 1px solid #004e66;
+    background-color: rgb(99, 174, 224);
 }
 .day{
-    background-color: #ececec;
+    background-color: rgb(255, 204, 204);
     display: block;
     text-align: center;
-    border-radius: 5px;
 }
 #chatRoom > div{
     padding: 5px;
@@ -67,6 +61,7 @@
     padding: 7px 14px;
     border-radius: 15px;
 }
+
 #chatRoom > div{
     height: 30px;
     padding: 5px;

@@ -12,6 +12,7 @@
                                             <li><a href="/admin/login_on?topmenu=administrator&submenu=사이트환경설정">사이트환경설정</a></li>
                                             <li><a href="/admin/login_on?topmenu=administrator&submenu=게시판생성관리">게시판생성관리</a></li>
                                             <li><a href="/admin/login_on?topmenu=administrator&submenu=게시판그룹관리">게시판그룹관리</a></li>
+                                            <li><a href="/admin/login_on?topmenu=administrator&submenu=팝업관리">팝업관리</a></li>
                                             <li><a href="/admin/login_on?topmenu=administrator&submenu=메인비쥬얼보임">메인비쥬얼[보임]</a></li>
                                             <li><a href="/admin/login_on?topmenu=administrator&submenu=메인비쥬얼숨김">메인비쥬얼[숨김]</a></li>
                                             <li><a href="/admin/login_on?topmenu=administrator&submenu=사용자관리">사용자 관리</a></li>
@@ -45,27 +46,27 @@
             <div id="main_container_main_m">
                 <form action="/admin/login_on/admin_list?location=admin_add" method="post"  id="admin_add_form">
                     <div>
-                        <label for="name" class="admin_label">이름</label>
+                        <label for="name" id="admin_label">이름</label>
                         <input type="text" placeholder="이름" name="name" required>
                     </div>
                     <div>
-                        <label for="idx" class="admin_label">아이디</label>
+                        <label for="idx" id="admin_label">아이디</label>
                         <input type="text" placeholder="아이디" name="idx" required>
                     </div>
                     <div>
-                        <label for="psw" class="admin_label">비밀번호</label>
+                        <label for="psw" id="admin_label">비밀번호</label>
                         <input type="password" placeholder="비밀번호" name="psw" required>
                     </div>
                     <div>
-                        <label for="birth" class="admin_label">생년월인</label>
+                        <label for="birth" id="admin_label">생년월인</label>
                         <input type="date" placeholder="생년월일" name="birth" required>
                     </div>
                     <div>
-                        <label for="courseName" class="admin_label">직무</label>
+                        <label for="courseName" id="admin_label">직무</label>
                         <input type="text" placeholder="직무" name="courseName" required>
                     </div>
                     <div>
-                        <label for="level" class="admin_label">관리자등급</label>
+                        <label for="level" id="admin_label">관리자등급</label>
                         <input type="text" placeholder="등급" name="level" required>
                     </div>
                     <div>
@@ -73,53 +74,53 @@
                         <input type="tel" placeholder="연락처" name="tel" required>
                     </div>
                     <div>
-                        <label for="startDate" class="admin_label">입사일</label>
+                        <label for="startDate" id="admin_label">입사일</label>
                         <input type="date" placeholder="입사일" name="startDate" required>
                     </div>
                     <div>
-                        <label for="Email" class="admin_label">이메알</label>
+                        <label for="Email" id="admin_label">이메알</label>
                         <input type="email" placeholder="이메일" name="email" required>
                     </div>
                     <div>
-                        <label for="img" class="admin_label">사진</label>
+                        <label for="img" id="admin_label">사진</label>
                         <input type="file" placeholder="image" name="img">
                     </div>
-                    <div id="adminlistBtn_m">
+                    <div>
                         <input type="submit" value="관리자 추가">
                     </div>
                 </form>
                 <form action="/admin/login_on/admin_list?location=admin_manage" id="searched_form" method="POST">
                         <div>
-                            <label for="number" class="admin_label">번호</label>
-                            <input type="number" value="{{resu.id}}" name="Id" class="admin_input" required>
+                            <label for="number" id="admin_label">번호</label>
+                            <input type="number" value="{{resu.id}}" name="Id" id="admin_input" required>
                         </div>
                         <div>    
-                            <label for="name" class="admin_label">이름</label>
-                            <input type="text" value="{{resu.name}}" name="Name" class="admin_input" required>
+                            <label for="name" id="admin_label">이름</label>
+                            <input type="text" value="{{resu.name}}" name="Name" id="admin_input" required>
                         </div>
                         <div>   
-                            <label for="level" class="admin_label">등급</label>
-                            <input type="text" value="{{resu.level}}" name="Level" class="admin_input" required>
+                            <label for="level" id="admin_label">등급</label>
+                            <input type="text" value="{{resu.level}}" name="Level" id="admin_input" required>
                         </div>
                         <div>
-                            <label for="idx" class="admin_label">아이디</label>
-                            <input type="text" value="{{resu.idx}}" name="Idx" class="admin_input" required>
+                            <label for="idx" id="admin_label">아이디</label>
+                            <input type="text" value="{{resu.idx}}" name="Idx" id="admin_input" required>
                         </div>
                         <div>    
-                            <label for="img" class="admin_label">연락처</label>
-                            <input type="tel" value="{{resu.tel}}" name="Tel" class="admin_input" required>
+                            <label for="img" id="admin_label">연락처</label>
+                            <input type="tel" value="{{resu.tel}}" name="Tel" id="admin_input" required>
                         </div>
                         <div>    
-                            <label for="email" class="admin_label">이메일</label>
-                            <input type="email" value="{{resu.email}}" name="Email" class="admin_input" required>
+                            <label for="email" id="admin_label">이메일</label>
+                            <input type="email" value="{{resu.email}}" name="Email" id="admin_input" required>
                         </div>
                         <div>    
-                            <label for="startDate" class="admin_label">가입일</label>
-                            <input type="date" value="{{resu.birth}}" name="StartDate" class="admin_input" required>
+                            <label for="startDate" id="admin_label">가입일</label>
+                            <input type="date" value="{{resu.birth}}" name="StartDate" id="admin_input" required>
                         </div>
                         <div class="submit">
-                            <input type="submit" value="삭제" name="delete" class="submit">
-                            <input type="submit" value="수정" name="modify" class="submit">
+                            <input type="submit" value="삭제" name="delete" id="submit">
+                            <input type="submit" value="수정" name="modify" id="submit">
                         </div>
                 </form>
             </div>
@@ -214,7 +215,7 @@
     {% elif submenu=="게시판생성관리" %}
         <div id="board_make_admin">
             <div>
-                <form action="/admin/login_on/admin_menu/board_make?page=2&limit=5" method="POST" id="board_form">
+                <form action="/admin/login_on/admin_menu/board_make" method="POST" id="board_form">
                     <input type="text"  name="form" value="board_form" style="display:none;">
                     <div id = "top_title">
                         <p>게시판 생성관리 - 원테이블을 사용합니다.</p>
@@ -242,7 +243,6 @@
                                     <option value="취업정보">취업정보</option>
                                     <option value="커뮤니티">커뮤니티</option>
                                     <option value="상담신청">상담신청</option>
-                                    <option value="직접입력">직접입력<input type="text" name="main_board_name"></option>
                                 </select>
                             </td>
                         </tr>                
@@ -256,7 +256,7 @@
             <div>    
                 <form action="/admin/login_on/admin_menu/board_manage" method="POST" id="board_manage_form">
                     <p>게시판 수정 관리</p>
-                    <table border="1">             
+                    <table border="1">                
                         <td>번호</td>
                         <td>테이블명</td>
                         <td>게시판명</td>
@@ -309,7 +309,7 @@
         </div>
         <!-- 게시판그룹관리 -->
     {% elif submenu=="게시판그룹관리" %}
-        
+
         <div id="board_ground_manage">
             <form action="/admin/login_on/mainboard_group" method="POST">
                 <select name="mainBoard_select" >
@@ -324,145 +324,129 @@
             </form>
             <div>
                 <table border="1">
-                    <td>번호</td>
-                    <td>테이블명</td>
-                    <td>그룹</td>
-                    <td>게시판명</td>
-                    <td>게시판타입</td>
-                    <td>수정일</td>
-                    <td>url</td>
-                    <td>읽기권한</td>
-                    <td>쓰기권한</td>
-                    <td>댓글권한</td>
-
-                    
-
-                    {% set res = modifiedSub %}
-                    {% for item in res %}
-                    <form action="/admin/login_on/board_group_modified" id="modify_board_mm" method="POST">
-                        <tr>
-                            <td>{{loop.index}}</td>
-                            <td><input  style = "border:0px solid" type="text" name="tablename" value="{{res[loop.index-1].tableName}}"></td>
-                            <td><input  style = "border:0px solid" type="text" name="mainboard" value="{{res[loop.index-1].mainBoard}}"></td>
-                            <td><input  style = "border:0px solid" type="text" name="subboard" value="{{res[loop.index-1].subBoard}}"></td>
-                            <td><input  style = "border:0px solid" type="text" name="contenttype" value="{{res[loop.index-1].contentType}}"></td>
-                            <td><input  style = "border:0px solid" type="date" name="resetdate" value="{{res[loop.index-1].resetDate}}"></td>
-                            <td><input  style = "border:0px solid" type="text" name="url" value="{{res[loop.index-1].url}}"></td>
-                            <td><input  style = "border:0px solid" type="radio" name="Watchaut" value="0" {{watchaut0}}><input type="radio" name="watchaut" value="1" {{watchaut1}}></td>
-                            <td><input  style = "border:0px solid" type="radio" name="Writehaut" value="0" {{writeaut0}}><input type="radio" name="writeaut" value="1" {{writeaut1}}></td>
-                            <td><input  style = "border:0px solid" type="radio" name="Replyaut" value="0" {{replyaut0}}><input type="radio" name="repayaut" value="1" {{replyaut1}}></td>
-                            <td>
-                                <input  style = "border:0px solid" type="submit" name="modify" value="수정">
-                                <input  style = "border:0px solid; display:none" type="text" name="id" value="{{res[loop.index-1].id}}">
-                            </td>
-                            <td><input  style = "border:0px solid" type="submit" name="delete" value="삭제"></td>
-                            
-                        </tr>
-                    </form>
-                    {% endfor %}
-                    
-
-                   
-                        
-
-            
-                    {% set res = boardres %}
-                    
-                    {% for item in res %}
+                <th>번호</th>
+                <th>테이블명</th>
+                <th>그룹</th>
+                <th>게시판명</th>
+                <th>게시판타입</th>
+                <th>내용</th>
+                <th>수정일</th>
+                <th>url</th>
+                <th>읽기권한</th>
+                <th>쓰기권한</th>
+                <th>댓글권한</th>
+                </table>
+            </div>
+                {% set res = boardgroupres %}
+                {% for item in res %}
+                <tr>
+                    <td>{{loop.index}}</td>                    
+                    <td>{{res[loop.index-1].tableName}}</td>
+                    <td>{{res[loop.index-1].mainBoard}}</td>
+                    <td>{{res[loop.index-1].subBoard}}</td>
+                    <td>{{res[loop.index-1].contentType}}</td>
+                    <td>{{res[loop.index-1].content}}</td>
+                    <td>{{res[loop.index-1].resetDate}}</td>
+                    <td>{{res[loop.index-1].url}}</td>
+                    <td>{{res[loop.index-1].watchaut}}</td>
+                    <td>{{res[loop.index-1].writeaut}}</td>
+                    <td>{{res[loop.index-1].replyaut}}</td>
+                </tr>
+                {% endfor %}
+                {% set res = selectedSub %}
+                {% for item in res %}
+                <tr>
+                    <td>{{loop.index}}</td>                    
+                    <td>{{res[loop.index-1].tableName}}</td>
+                    <td>{{res[loop.index-1].mainBoard}}</td>
+                    <td>{{res[loop.index-1].subBoard}}</td>
+                    <td>{{res[loop.index-1].contentType}}</td>
+                    <td>{{res[loop.index-1].content}}</td>
+                    <td>{{res[loop.index-1].resetDate}}</td>
+                    <td>{{res[loop.index-1].url}}</td>
+                    <td>{{res[loop.index-1].watchaut}}</td>
+                    <td>{{res[loop.index-1].writeaut}}</td>
+                    <td>{{res[loop.index-1].replyaut}}</td>
+                </tr>
+                {% endfor %}
+                {% set res = modifiedSub %}
+                {% for item in res %}
+                <form action="/admin/login_on/board_group_modified">
                     <tr>
-                        <td>{{loop.index}}</td>                    
-                        <td>{{res[loop.index-1].tableName}}</td>
-                        <td>{{res[loop.index-1].mainBoard}}</td>
-                        <td>{{res[loop.index-1].subBoard}}</td>
-                        <td>{{res[loop.index-1].contentType}}</td>
-                        <td>{{res[loop.index-1].resetDate}}</td>
-                        <td>{{res[loop.index-1].url}}</td>
-                        <td>{{res[loop.index-1].watchaut}}</td>
-                        <td>{{res[loop.index-1].writeaut}}</td>
-                        <td>{{res[loop.index-1].replyaut}}</td>
+                        <td>{{loop.index}}</td>
+                        <input type="text" name="tablename" value="{{res[loop.index-1].tableName}}">
+                        <input type="text" name="mainboard" value="{{res[loop.index-1].mainBoard}}">
+                        <input type="text" name="subboard" value="{{res[loop.index-1].subBoard}}">
+                        <input type="text" name="contenttype" value="{{res[loop.index-1].contentType}}">
+                        <input type="text" name="content" value="{{res[loop.index-1].content}}">
+                        <input type="date" name="resetdate" value="{{res[loop.index-1].resetDate}}">
+                        <input type="text" name="url" value="{{res[loop.index-1].url}}">
+                        <input type="radio" name="watchaut" value=0 {{watchaut0}}>
+                        <input type="radio" name="watchaut" value=1 {{watchaut1}}>
+                        <input type="radio" name="writehaut" value=0 {{writeaut0}}>
+                        <input type="radio" name="writeaut" value=1 {{writeaut1}}>
+                        <input type="radio" name="repayaut" value=0 {{replyaut0}}>
+                        <input type="radio" name="repayaut" value=1 {{replyaut1}}>
                     </tr>
-                    {% endfor %}
-                    {% set res = selectedSub %}
-                    {% for item in res %}
-                    <tr>
-                        <td>{{loop.index}}</td>                    
-                        <td>{{res[loop.index-1].tableName}}</td>
-                        <td>{{res[loop.index-1].mainBoard}}</td>
-                        <td>{{res[loop.index-1].subBoard}}</td>
-                        <td>{{res[loop.index-1].contentType}}</td>
-                        <td>{{res[loop.index-1].resetDate}}</td>
-                        <td>{{res[loop.index-1].url}}</td>
-                        <td>{{res[loop.index-1].watchaut}}</td>
-                        <td>{{res[loop.index-1].writeaut}}</td>
-                        <td>{{res[loop.index-1].replyaut}}</td>
-                    </tr>
-                    {% endfor %}
-                    
+                </form>
+                {% endfor %}
             </table>
         </div>
         <div id="selected_board_group">
 
         </div>
-    </div>   
     {% elif submenu=="팝업관리" %}
     팝업
     {% elif submenu=="메인비쥬얼보임" %}
-    <div id="main_visual_mm">
-        <form action="/admin/login_on/main_img" method="POST" enctype="multipart/form-data">
-            <div>
-                <label for="file_img">이미지파일 선택</label>
-                <input type="file" id="file_img" accept="image/*" name="imgg">
-                <label for="url">url입력</label>
-                <input type="text" id="url" name="url">
-                <label for="title">title</label>
-                <input type="text" id="title" name="title">
-                <label for="type">type</label>
-                <input type="text" id="type" name="type">
-                <label for="text">설명</label>
-                <input type="text" id="text" name="text">
-                <input type="submit" value="등록" name="enter">
-                <input type="text" value=1 name="watchaut" style="display: none;">
-            </div>
-        </form>
-        {% set res = main_img %}
-        {% for item in res %}
-        <form action="/admin/login_on/main_image_del" method="POST">
-            <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="300px" height="300px"></div>
-            <div><a href="{{item.url}}">{{item.link}}</a></div>
-            <input type="text" name="text" value="{{item.text}}">
-            <input type="submit" name="del" value="삭제">
-            <input type="submit" name="move" value="이동">        
-            <input type="text" name="idx" value="{{item.id}}" style="display: none;">
-        </form>
-        {% endfor %}
-    </div>
-       
-        {% elif submenu=="메인비쥬얼숨김" %}
-    <div id="main_visual_mm">   
-        
-        <form action="/admin/login_on/main_img" method="POST" enctype="multipart/form-data">
-            <div>
-                <label for="file_img">이미지파일 선택</label>
-                <input type="file" accept="image/*" name="imgg">
-                <label for="url">url입력</label>
-                <input type="text" name="url">
-                <label for="text">text입력</label>
-                <input type="text" name="text">
-                <input type="submit" value="등록" name="enter">
-            </div>
-        </form>
-        {% set rese = hidden_img %}
-        {% for item in rese %}
-        <form action="/admin/login_on/hidden_main_img_del" method="POST">
-            <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="300px" height="300px"></div>
-            <div><a href="{{item.url}}">{{item.link}}</a></div>
-            <input type="text" name="text" value="{{item.text}}">
-            <input type="submit" name="del" value="삭제">
-            <input type="submit" name="move" value="이동">
-            <input type="text" name="idx" value="{{item.id}}" style="display: none;">
-        </form>
-        {% endfor %}
-    </div>    
+    
+    <form action="/admin/login_on/main_img" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="file_img">이미지파일 선택</label>
+            <input type="file" id="file_img" accept="image/*" name="imgg">
+            <label for="url">url입력</label>
+            <input type="text" id="url" name="url">
+            <label for="text">text입력</label>
+            <input type="text" id="text" name="text">
+            <input type="submit" value="등록" name="enter">
+            <input type="text" value=1 name="watchaut" style="display: none;">
+        </div>
+    </form>
+    {% set res = main_img %}
+    {% for item in res %}
+    <form action="/admin/login_on/main_image_del" method="POST">
+        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="300px" height="300px"></div>
+        <div><a href="{{item.url}}">{{item.link}}</a></div>
+        <input type="text" name="text" value="{{item.text}}">
+        <input type="submit" name="del" value="삭제">
+        <input type="submit" name="move" value="이동">        
+        <input type="text" name="idx" value="{{item.id}}" style="display: none;">
+    </form>
+    {% endfor %}
+    {% elif submenu=="메인비쥬얼숨김" %}
+    
+    
+    <form action="/admin/login_on/main_img" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="file_img">이미지파일 선택</label>
+            <input type="file" accept="image/*" name="imgg">
+            <label for="url">url입력</label>
+            <input type="text" name="url">
+            <label for="text">text입력</label>
+            <input type="text" name="text">
+            <input type="submit" value="등록" name="enter">
+        </div>
+    </form>
+    {% set rese = hidden_img %}
+    {% for item in rese %}
+    <form action="/admin/login_on/hidden_main_img_del" method="POST">
+        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="300px" height="300px"></div>
+        <div><a href="{{item.url}}">{{item.link}}</a></div>
+        <input type="text" name="text" value="{{item.text}}">
+        <input type="submit" name="del" value="삭제">
+        <input type="submit" name="move" value="이동">
+        <input type="text" name="idx" value="{{item.id}}" style="display: none;">
+    </form>
+    {% endfor %}
 <!-- 사용자관리리스트======================================================================= -->
     {% elif submenu=="사용자관리" %}
         
@@ -556,10 +540,9 @@
                         
                         {% set res = resu %}
                         {% for item in res %}
-                          
                             <tr>
                                 <td>
-                                    <input type="text" value="{{[loop.index]}}" name="number">
+                                    <input type="text" value="{{[loop.index-1]}}" name="number">
                                     <input type="number" value="{{res[loop.index-1].id}}" name="numbercheck" style="display: none;">
                                 </td>
                                 <td>

@@ -1,3 +1,5 @@
+
+
 ul,li{list-style:none;}
 
 #wrap{
@@ -79,7 +81,7 @@ ul,li{list-style:none;}
     overflow:hidden;
 }
 
-.swiper-slide >a> img:hover{
+.swiper-slide > img:hover{
     transform: scale(1.15);            /* 이미지 확대 */
     transition: transform .5s; 	/*  시간 설정  */
 }
@@ -382,10 +384,14 @@ ul,li{list-style:none;}
     background: black;
 }
 
+.K-DIGITAL-TRAINING{
+    background: gray;
+}
+
 #legend > ul > li{
     width: 200px;
 }
 
 .label_name{
-    width: 200px;
+    width: 400px;
 }

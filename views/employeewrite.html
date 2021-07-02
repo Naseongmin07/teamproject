@@ -1,70 +1,27 @@
 {% extends 'topmenu.html' %}
 
 {% block middlecontent %}
-
 {% if sub == '취업정보' %}
-<div id="employed_form_m">
-    <table border="1">
-        <tr>
-            <th>이름</th>
-            <th>아이디</th>
-            <th>수강명</th>
-            <th>조회수</th>
-            <th>내용</th>
-            <th>이미지1</th>
-            <th>이미지2</th>
-            <th>취업회사</th>
-            <th>기수</th>
-        </tr>
-        <tr>
-            <form action="/admin/login_on/employed?locate={{sub}}" method="POST" enctype="multipart/form-data">
-                <td><input type="text" name="userName" style="border: 0px solid" value="{{searchedemployres.userName}}"></td>
-                <td><input type="text" name="userIdx" style="border: 0px solid" value="{{searchedemployres.userIdx}}"></td>
-                <td><input type="text" name="courseName" style="border: 0px solid" value="{{searchedemployres.courseName}}"></td>
-                <td><input type="text" name="count" style="border: 0px solid" value="{{searchedemployres.count}}"></td>
-                <td><input type="text" name="contents" style="border: 0px solid" value="{{searchedemployres.contents}}"></td>
-                <td>
-                    <input type="file" name="employimg" accept="image/*" multiple>
-                    <img src="http://localhost:3000/{{searchedemployres.img}}" width="50px" height="100px">
-                </td>
-                <td>    
-                    <input type="file" name="employimg" accept="image/*" multiple>
-                    <img src="http://localhost:3000/{{searchedemployres.contentimg}}" width="50px" height="100px">
-                </td>
-                <td><input type="text" name="company" value="{{searchedemployres.company}}"></td>
-                <td><input type="text" name="year" value="{{searchedemployres.year}}"></td>
+<form action="/admin/login_on/employed_suc" method="POST">
+    이름 <input type="text" name="userName">
+    아이디 <input type="text" name="userIdx">
+    수강명 <input type="text" name="courseName">
+    조회수 <input type="text" name="count">
+    내용 <input type="text" name="contents">
+    이미지 <input type="file" name="img">
+    취업회사 <input type="text" name="company">
+    <input type="submit" value="새글작성">
 
-                <td><input type="submit" value="{{do}}"></td>
-            </form>
-
-        </tr>
-    </table>
-</div>
+</form>
 {% elif sub == '포트폴리오' %}
-<div id="employed_form_m">
-    <table border="1">
-        <th>이름</th>
-        <th>아이디</th>
-        <th>제목</th>
-        <th>내용</th>
-        <th>조회수</th>
-        <th>이미지</th>
-        <tr>
-            <form action="/admin/login_on/employed?locate={{sub}}" method="POST" enctype="multipart/form-data">
-                <td><input type="text" name="userName" style="border: 0px solid"></td>
-                <td><input type="text" name="userIdx" style="border: 0px solid"></td>
-                <td><input type="text" name="title" style="border: 0px solid"></td>
-                <td><input type="text" name="contents" style="border: 0px solid"></td>
-                <td><input type="text" name="count" style="border: 0px solid"></td>
-                <td>
-                    <input type="file" name="employimg" accept="image/*" multiple>
-                    <input type="file" name="employimg" accept="image/*" multiple>
-                </td>
-                <td><input type="submit" value="새글작성"></td>
-            </form>
-        </tr>
-    </table>
-</div>
+<form action="/admin/login_on/portfolio_suc" method="POST">
+    이름 <input type="text" name="userName">
+    제목 <input type="text" name="title">
+    아이디 <input type="text" name="userIdx">
+    내용 <input type="text" name="contents">
+    조회수 <input type="text" name="count">
+    이미지 <input type="text" name="img">
+    <input type="submit" value="새글작성">
+</form>
 {% endif %}
-
 {% endblock %}

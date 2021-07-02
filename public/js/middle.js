@@ -1,3 +1,5 @@
+
+
 const page_list = [
     {boardName :'college' ,category: 'introduction', boardmenu : '인사말',bannerlink : "http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg", bannerlogo : "KYUNGIL TECHNICAL COLLEGE"},
     {boardName :'college' ,category: 'history', boardmenu : '연혁' ,bannerlink : "http://www.kiweb.or.kr/images/college/sub_visual_bg.jpg", bannerlogo : "KYUNGIL TECHNICAL COLLEGE"},
@@ -1366,3 +1368,18 @@ if(href_split[href_split.length-1]=="portfolio"){
     let board = new createBoard(middle_right_bottom, database4, column_key4, 'portfolio')
     board.init()
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

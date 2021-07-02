@@ -1,5 +1,4 @@
 const express = require('express')
-const { route } = require('./user')
 const path = require('path')
 const multer = require('multer')
 const router = express.Router()
@@ -15,6 +14,7 @@ const {Mainvisual, Community} = require('../models')
 // const searchRouter = require('./search/index.js')
 const testRouter = require('./test/index.js')
 const logoRouter = require('./logo/index.js')
+
 
 
 router.use('/user',userRouter)

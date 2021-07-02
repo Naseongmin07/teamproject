@@ -4,38 +4,53 @@
 
 <div id="make_community">
     <div id="community_form">
-        <form action="/admin/login_on/community_write" method="POST" id="write_new" enctype="multipart/form-data">
+        <form action="/admin/login_on/community_write" method='POST' id="write_new">
             <label for="mainBoard">mainboard</label>
-            <input type="text" name="mainBoard" value="{{modifiedres.mainBoard}}">
+            <input type="text" name="mainBoard">
             <label for="subBoard">subboard</label>
-            <input type="text" name="subBoard" value="{{modifiedres.subBoard}}">
+            <input type="text" name="subBoard">
             <label for="title">title</label>
-            <input type="text" name="title" value="{{modifiedres.title}}">
-            <label for="writer">작성자</label>
-            <input type="text" name="writer" value="{{modifiedres.writer}}">
-            <label for="idx">등록자</label>
-            <input type="text" name="idx" value="{{modifiedres.idx}}">
+            <input type="text" name="title">
             <label for="contents">contents</label>
-            <textarea name="contents" id="contents" cols="30" rows="10">{{modifiedres.contents}}</textarea>
+            <label for="writer">작성자</label>
+            <input type="text" name="writer">
+            <label for="idx">등록자</label>
+            <input type="text" name="idx">
+            <textarea name="contents" id="summernote"></textarea>
+            <label for="file">첨부파일</label>
+            <input type="file" name="file">
             <label for="img">첨부이미지</label>
-            <input type="file" name="com_img" accept="image/*" value="{{modifiedres.img}}">
-            기존이미지 <img src="http://localhost:3000/{{modifiedres.img}}"  alt="이미지" style="width: 100px; height: 100px;">
+            <input type="file" name="img">
             <label for="writeaut">writeaut</label>
-            <input type="text" name="writeaut" value="{{modifiedres.writeaut}}">
+            <input type="text" name="writeaut">
             <label for="readaut">readaut</label>
-            <input type="text" name="readaut" value="{{modifiedres.readaut}}">
+            <input type="text" name="readaut">
             <label for="replyaut">replyaut</label>
-            <input type="text" name="replyaut" value="{{modifiedres.replyaut}}">
-            <input type="text" name="idd" value="{{modifiedres.id}}" style="display: none;">
+            <input type="text" name="replyaut">
             <input type="text" name="id" value="{{id}}" style="display: none;">
-            {% if modifiedres %}
-            <input type="submit" name="modify" value="수정">
-            {% else %}
-            <input type="submit" name="neww" value="추가생성">
-            {% endif %}
+            <input type="number" name="count" value="0" style="display:block">
+            <input type="submit" value="추가 생성">
         </form>
-       
+        <button id="saveBtn">버튼</button>
+        <script>
+            $(document).ready(function() {
+                $('#summernote').summernote();
+                var markupStr = $('#summernote').summernote('code');
+
+            });
+
+            $('#summernote').summernote({
+                height:300,
+                minHeight:null,
+                maxHeight:null,
+                focus:true,
+                lang:'ko-KR'
+            })
+
+          
+        </script>
 
     </div>
 </div>
 {% endblock %}
+

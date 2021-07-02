@@ -11,23 +11,21 @@
             <th>진행여부</th>
             <th>수정</th>
             <th>삭제</th>
-            <a href="/admin/login_on/course_write">글작성</a>
+            <a href="/admin/login_on/course_write"><button>글작성</button></a>
             {% set items = resuuu %}
             {% for item in items %}
             <tr>
                 <td>{{[loop.index-1]}}</td>
-                <td>{{resuuu[loop.index-1].contents}}</td>
+                <td><a href="/admin/login_on/course?{{resuuu[loop.index-1].id}}">{{resuuu[loop.index-1].contents}}</a></td>
                 <td>{{resuuu[loop.index-1].contents}}</td>
                 <td>{{resuuu[loop.index-1].coursetype}}</td>
                 <td>{{resuuu[loop.index-1].onoff}}</td>
-                <td><input type="submit" name="{{[loop.index-1]}}" value="수정"></td>
-                <input type="number" name="numbercheck" value="{{loop.index-1}}" style="display:none">
-                <input type="number" name="number" value="{{resuuu[loop.index-1].id}}" style="display:none">
-                <td><input type="submit" name="{{[loop.index-1]}}" value="삭제"></td>
+                <td><input type="submit" name="modify" value="수정"></td>
+                <td><input type="submit" name="delete" value="삭제"></td>
             </tr>
             {% endfor %}
 
-            
         </table>
     </form>
+
 {% endblock %}

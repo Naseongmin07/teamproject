@@ -12,25 +12,18 @@ ul li{
 a{
     text-decoration: none;
 }
-
-
 #top_m{
     display: flex;
     justify-content: center;
 }
 #top_contents_container{
-    width: 100%;
-    margin-top: 20px;
-    padding-top: 15px;
-    height: 50px;
-    background-color: #e6f2ff;
+    width: 1920px;
+    background-color: #b3b3cb;
     display: flex;
     flex-direction: row;
 }
 #logo{
     display: flex;
-    color:#48486a;
-    font-weight: 600;
     justify-content: center;
     width:400px;
 }
@@ -58,7 +51,7 @@ a{
     color:#535379;
 }
 #contents_m{
-    width: 1200px;
+    width: 800px;
     display: flex;
     flex-direction: row;
 }
@@ -67,22 +60,15 @@ a{
     height: 100px;
     display: flex;
     flex-direction: column;
-    background-color: #e6f3ff;
     justify-content: space-around;
-    border: 2px solid #b3daff;
+    border: 1px solid #333333;
 }
 .manager_mode_m>p>a{
-    padding-top: 5px;
-    margin-top: 5px;
-    color:#48486a;
-    font-size: 13px;
-    font-weight: 600;
-
+    padding: 0;
+    margin: 0;
 }
 .left_menu_m{
     margin-top: 30px;
-    background-color:#e6f3ff ;
-    border: 2px solid #b3daff;
  
 }
 .left_menu_m>table>thead>tr>th{
@@ -100,90 +86,68 @@ a{
 }
 #main_container_m{
     height: 700px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+    margin-left: 50px;
 }
-
-#adminlistBtn_m input{
-    margin-left: 100px;
-    margin-top: 27px;
+#admin_add_form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 300px;
+    width: 800px;
+    margin-bottom:40px ;
 }
 #main_container_main_m form{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 1200px;
-    box-sizing: border-box;
-    border-top:2px solid #b3daff;
+    width: 800px;
+    border:1px solid black;
 }
 #searched_form div, #admin_add_form>div{
-    width: 220px;
+    width: 200px;
     padding: 10px;
 }
-
 #searched_form > div > input {
     border:0px solid;
 }
 #main_content_container_f{
-    margin:30px;
-    width:1200px;
-    height:700px;
-    border: 2px solid #b3daff;
+    margin:10px;
+    padding:20px;
+    width:1000px;
+    height: 700px;
     display: flex;
-    flex-direction: column;
+    margin-left: 300px;
+    flex-direction: row;
 }
 #write_new{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    border:1px solid #b3daff;
-    width: 1200px;
-    height: 800px;
+    border:1px solid black;
+    width: 1300px;
+    height: 500px;
 }
 #community_show_m{
     display: flex;
     flex-direction: column;
 }
 #make_community{
-    margin-top: 30px;
-    width: 100%;
-    height: 1200px;
+    margin-top: 50px;
+    width: 800px;
+    height: 800px;
     box-sizing: border-box;
 }
 #course_write_css label{
-    border: 1px solid #b3daff;;
+    border: 1px solid black;;
     width:100px;
     text-align: center;
 }
 #course_write_css input{
     width: 230px;
 }
-#main_visual_mm > form{
-    width: 1200px;
-}
-#main_visual_mm label {
-    margin-bottom: 20px;
-}
-#main_visual_mm input{
-    margin-bottom: 20px;
-}
-#facility_form_m div{
-    width:100%;
-    display: inline-block;
-    flex-direction: column;
-}
-#board_make_admin{
-    width: 1200px;
-}
-#top1{
-    width:100%;
-    display: flex;
-    flex-direction: column;
-}
-#top{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: left;
-}
+
+

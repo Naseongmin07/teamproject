@@ -16,27 +16,30 @@
                 <ul>
                     <li><img src="http://www.kiweb.or.kr/images/main_new/logo_bottom_2018.png"></li>
                     <li>
-                        <form class="login_form" action="/user/login" method="GET">
+                        <form class = "login_form">
                             <ul>
                                 <li>
-                                    <input type="userid" placeholder="아이디를 입력하세요" name="userid" required>
+                                    <input class = "userid" type="text" placeholder="아이디를 입력하세요" name="userid" required>
                                 </li>
                                 <li>
-                                    <input type="password" placeholder="비밀번호를 입력하세요" name="psw" required>
+                                    <input class = "userpw" type="password" placeholder="비밀번호를 입력하세요" name="psw" required>
                                 </li>
-                                <li><input type = "submit" class="login_submit" value = "Sign in"></li>
+                                <li><button id="login_button">로그인</button></li>
                             </ul>
                         </form>
+                        <li><button class="login_kakao"><a href="/user/auth/kakao">카카오 로그인</a></button></li>
+                        <li><button class="login_google">Sign with Google</button></li>
                     </li>
                     <li>
                         <ul class = "login_ul">
-                            <li><a href="#">Forgot password?</a></li>
-                            <li>New to Linkedin?    <a href="#">Join now</a></li>
+                            <li><a href="/user/searchidpw">Forgot password?</a></li>
+                            <li>New to Linkedin?    <a href="/user/join">Join now</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
+        <script type="text/javascript" src = "/js/user/login.js"></script>
     {% include "footer.html" %}
 </body>
 </html>

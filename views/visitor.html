@@ -6,7 +6,7 @@
     }
   </style>
   
-  <form action="/admin/login_on/visitor_info" method="POST" id="submitform" name="form_submit">
+  <form action="/admin/login_on/visitor_info" method="POST" id="submitform">
   <div id="window-info">
       <input type="date" name="date">
       <input type="text" id="w-i-href" name="currentURL" style="display: none;">
@@ -16,7 +16,12 @@
       <input type="text" id="w-i-width" name="webwidth" style="display: none;">
       <input type="text" id="w-i-height" name="webHeight" style="display: none;">
      <input type="submit" value="제출" >
-  
+    <!-- <div>현재 페이지의 URL: <span id="w-i-href"></span></div>
+    <div>바로 전 페이지의 URI: <span id="w-i-referrer"></span></div>
+    <div>사용자의 에이전트: <span id="w-i-userAgent"></span></div>
+    <div>사용자의 언어: <span id="w-i-language"></span></div>
+    <div>웹 브라우저 창의 폭(너비): <span id="w-i-width"></span></div>
+    <div>웹 브라우저 창의 높이: <span id="w-i-height"></span></div> -->
   </div>
 </form>
   
@@ -29,8 +34,11 @@
     document.getElementById('w-i-language').value = window.navigator.language;
     document.getElementById('w-i-width').value = window.screen.width;
     document.getElementById('w-i-height').value = window.screen.height;
-
-  
+    
+    
+    // window.onload = function(){
+    //     document.getElementById('submitform').submit()
+    // }
   
   </script>
 {% endblock %}

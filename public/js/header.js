@@ -5,7 +5,7 @@ let category_list =
             {boardName: "학교소개", category:"시설소개", url:"/college/interior" },
             {boardName: "학교소개", category:"오시는길", url:"/college/location" },
             {boardName: "교육과정", category:"과정안내", url:"/curriculum/curriculum" },
-            {boardName: "교육과정", category:"전체일정", url:"/scheduler" },
+            {boardName: "교육과정", category:"전체일정(달력)", url:"/scheduler" },
             {boardName: "취업정보", category:"취업자인터뷰", url:"/job/interview" },
             {boardName: "취업정보", category:"취업현황", url:"/job/recruit" },
             {boardName: "취업정보", category:"포트폴리오", url:"/job/portfolio" },
@@ -16,7 +16,8 @@ let category_list =
             {boardName: "커뮤니티", category:"교수칼럼", url:"/community/professor" },
             {boardName: "상담신청", category:"상담게시판", url:"/consult/consulting" },
             {boardName: "상담신청", category:"지원하기", url:"/consult/apply" },
-            {boardName: "상담신청", category:"자주묻는질문", url:"/consult/faq"}]
+            {boardName: "상담신청", category:"자주묻는질문", url:"/consult/faq"}
+        ]
 
 
 const header_menu_ul = document.querySelector('#header_menu_ul')
@@ -66,14 +67,36 @@ for(i=0; i<category_list.length;i++){
 }
 
 
-let headersnbbar = document.querySelector('#header_snb_bar') 
+const headersnbbar = document.querySelector('#header_snb_bar') 
+
+
+console.log(headersnbbar.classList)
+
+
+const headermenu = document.querySelector('#header_menu')
+
+
+let current_time
+
+
+
 
 snbbaronFn = function(){
-    
+
     headersnbbar.setAttribute('class','snbbaron')
+    let date = new Date()
+    current_time = date.getTime()
+
 }
 
 snbbaroutFn = function(){
 
-    headersnbbar.setAttribute('class','snbbarout')
+    let date = new Date()
+    if(date.getTime()- current_time > 50){
+
+        headersnbbar.setAttribute('class','snbbarout')
+    }
+
 }
+
+

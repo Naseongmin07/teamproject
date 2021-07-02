@@ -9,83 +9,34 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/header.css">
-    <script src="https://kit.fontawesome.com/1576d475b2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.3-web/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-<style>
-    video{
-        position: relative;
-        z-index: 900;
-        max-width: 100%;  display: block; margin: 20px auto;
-    }
-</style>
 </head>
 
 <body>
 
     {% include "header.html" %}
     
-    <video muted autoplay src="/11.mp4" id="io"></video>
-    
-    <script src="js/jquery-2.2.4.min.js"></script>
-    <script src="js/jquery.vide.min.js"></script>
-    <div id="chat_768">
-        <a href="/chat/chat" class="a_768"
-            onclick="window.open(this.href, '_blank', 'width=500, height=600'); return false;">
-            <span style="color:#ffffff">
-                <i class="far fa-comment-dots fa-3x"></i>
-            </span>
-            <p>실시간 상담</p>
-        </a>
-    </div>
     <div id="chat">
-        <a href="/chat/chat" class="a_main"
-        onclick="window.open(this.href, '_blank', 'width=500, height=500'); return false;">
+        <a href="/chat/chat/?admin=false"
+        onclick="window.open(this.href, '_blank', 'width=500, height=600'); return false;">
     1:1 실시간 상담</a>
     </div>
-
-    
     <div id="contens">
         <div id="main-slide-wrap">
             <!-- 메인 슬라이드부분 -->
-            {% set res = banner %}
             <div class="main-slide">
                 <div class="id on">
                     <ul class="text">
-                        <p class="class">{{banner[0].type}}</p>
+                        <p class="class">게임</p>
                         <li class="local">
-                            <span></span> {{banner[0].title}}
+                            <span></span> 게임기획반
                         </li>
                         <li class="title">
                             <h4>
-                                {{banner[0].text}}
+                                게임기획을 위한 체계적인 교육
                             </h4>
                         </li>
                         <li class="date">
-                            {{banner[0].date}}
-                        </li>
-                        <li>
-                            <button class="btn" onclick="location.href='http://localhost:3000/curriculum/curriculum'">자세히보기</button>
-                        </li>
-                    </ul>
-                    <div class="photo">
-                        <!-- -->
-                        <img class="img" src="http://localhost:3000/{{banner[0].image}}">
-                    </div>
-                </div>
-                <div class="id">
-                    <ul class="text">
-                        <p class="class">{{banner[1].type}}</p>
-                        <li class="local">
-                            <span></span>{{banner[1].title}}
-                        </li>
-                        <li class="title">
-                            <h4>
-                                {{banner[1].text}}
-                            </h4>
-                        </li>
-                        <li class="date">
-                            {{banner[1].date}}
+                            2021.07.05(월)~12.27(월)
                         </li>
                         <li>
                             <button class="btn">자세히보기</button>
@@ -93,22 +44,22 @@
                     </ul>
                     <div class="photo">
                         <!-- -->
-                        <img class="img" src="http://localhost:3000/{{banner[1].image}}">
+                        <img class="img" src="/image/main/mainslide/mainslide_1.jpg">
                     </div>
                 </div>
                 <div class="id">
                     <ul class="text">
-                        <p class="class">{{banner[2].type}}</p>
+                        <p class="class">게임</p>
                         <li class="local">
-                            <span></span>{{banner[2].title}}
+                            <span></span>게임원화
                         </li>
                         <li class="title">
                             <h4>
-                                {{banner[2].text}}
+                                게임원화을 위한 체계적인 교육
                             </h4>
                         </li>
                         <li class="date">
-                            {{banner[2].date}}
+                            2021.08.05(월)~2022.01.27(월)
                         </li>
                         <li>
                             <button class="btn">자세히보기</button>
@@ -116,22 +67,22 @@
                     </ul>
                     <div class="photo">
                         <!-- -->
-                        <img class="img" src="http://localhost:3000/{{banner[2].image}}">
+                        <img class="img" src="/image/main/mainslide/mainslide_2.jpg">
                     </div>
                 </div>
                 <div class="id">
                     <ul class="text">
-                        <p class="class">{{banner[3].type}}</p>
+                        <p class="class">게임</p>
                         <li class="local">
-                            <span></span> {{banner[3].title}}
+                            <span></span>게임코칭
                         </li>
                         <li class="title">
                             <h4>
-                                {{banner[3].text}}
+                                프로게이머을 위한 체계적인 교육
                             </h4>
                         </li>
                         <li class="date">
-                            {{banner[3].date}}
+                            2021.07.05(월)~12.27(월)
                         </li>
                         <li>
                             <button class="btn">자세히보기</button>
@@ -139,22 +90,22 @@
                     </ul>
                     <div class="photo">
                         <!-- -->
-                        <img class="img" src="http://localhost:3000/{{banner[3].image}}">
+                        <img class="img" src="/image/main/mainslide/mainslide_3.jpg">
                     </div>
                 </div>
                 <div class="id">
                     <ul class="text">
-                        <p class="class">{{banner[4].type}}</p>
+                        <p class="class">게임</p>
                         <li class="local">
-                            <span></span>{{banner[4].title}}
+                            <span></span> 게임기획반
                         </li>
                         <li class="title">
                             <h4>
-                                {{banner[4].text}}
+                                게임기획을 위한 체계적인 교육
                             </h4>
                         </li>
                         <li class="date">
-                            {{banner[4].date}}
+                            2021.07.05(월)~12.27(월)
                         </li>
                         <li>
                             <button class="btn">자세히보기</button>
@@ -162,7 +113,30 @@
                     </ul>
                     <div class="photo">
                         <!-- -->
-                        <img class="img" src="http://localhost:3000/{{banner[4].image}}">
+                        <img class="img" src="/image/main/mainslide/mainslide_4.jpg">
+                    </div>
+                </div>
+                <div class="id">
+                    <ul class="text">
+                        <p class="class">게임</p>
+                        <li class="local">
+                            <span></span>게임기획반
+                        </li>
+                        <li class="title">
+                            <h4>
+                                게임기획을 위한 체계적인 교육
+                            </h4>
+                        </li>
+                        <li class="date">
+                            2021.07.05(월)~12.27(월)
+                        </li>
+                        <li>
+                            <button class="btn">자세히보기</button>
+                        </li>
+                    </ul>
+                    <div class="photo">
+                        <!-- -->
+                        <img class="img" src="/image/main/mainslide/mainslide_5.png">
                     </div>
                 </div>
             </div>
@@ -202,53 +176,53 @@
         <div id="main-bg">
             <div class="sub-top sub">
                 <div class="sub-slide">
-                    <h3 onclick="location.href='http://localhost:3000/curriculum/curriculum'">블럭체인/게임기획/프로그래밍</h4>
+                    <h3>공연/음악/전시/강좌</h4>
                         <ul class="sub-form">
                             <li>
-                                <h6 onclick="location.href='http://localhost:3000/curriculum/curriculum'">게임</h6>
+                                <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[4].image}}" onclick="location.href='http://localhost:3000/curriculum/curriculum'">
+                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
                                 </p>
                             </li>
                             <li>
-                                <h6 onclick="location.href='http://localhost:3000/curriculum/curriculum'">게임</h6>
+                                <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[0].image}}" onclick="location.href='http://localhost:3000/curriculum/curriculum'">
+                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
                                 </p>
                             </li>
                             <li>
-                                <h6 onclick="location.href='http://localhost:3000/curriculum/curriculum'">게임</h6>
+                                <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[1].image}}" onclick="location.href='http://localhost:3000/curriculum/curriculum'">
+                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
                                 </p>
                             </li>
                             <li>
-                                <h6 onclick="location.href='http://localhost:3000/curriculum/curriculum'">게임</h6>
+                                <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[2].image}}" onclick="location.href='http://localhost:3000/curriculum/curriculum'">
+                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
                                 </p>
                             </li>
                             <li>
-                                <h6 onclick="location.href='http://localhost:3000/curriculum/curriculum'">게임</h6>
+                                <h6>게임</h6>
                                 <div class="background-right"></div>
                                 <div class="background-left"></div>
-                                <img class="sub-img" src="http://localhost:3000/{{bottomImg[3].image}}" onclick="location.href='http://localhost:3000/curriculum/curriculum'">
+                                <img class="sub-img" src="/image/main/sub_slide/mainslide_1.jpg">
                                 <p>
                                     <span>2020</span>
                                     게임아카데미
@@ -271,54 +245,54 @@
                                 <h2>공지사항</h2>
                             </div>
                             <div class="btm_name2">
-                                <h2>개강일</h2>
+                                <h2>티켓오픈</h2>
                             </div>
                         </div>
                         <img src="/image/main/bottom_img/sub_btm.png">
                         <ul class="sub_mf3">
-                            <li onclick="location.href='http://localhost:3000/community/notice'" >{{report[0].title}}
-                                <span>{{report[0].date}}</span>
+                            <li>2021 전당이온다
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/community/notice'" >{{report[1].title}}
-                                <span>{{report[1].date}}</span>
+                            <li>예술의전당 하우스
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/community/notice'" >{{report[2].title}}
-                                <span>{{report[2].date}}</span>
+                            <li>고객안내서비스 종료
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/community/notice'" >{{report[3].title}}
-                                <span>{{report[3].date}}</span>
+                            <li>임대차 공고
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/community/notice'" >{{report[4].title}}
-                                <span>{{report[4].date}}</span>
+                            <li>2021 예술의전당 6월 청년미술상
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/community/notice'" >{{report[5].title}}
-                                <span>{{report[5].date}}</span>
+                            <li>사회적 거리두기0.5단계
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/community/notice'" >{{report[6].title}}
-                                <span>{{report[6].date}}</span>
+                            <li>어린이라운지
+                                <span>2021.06.18</span>
                             </li>
                         </ul>
                         <ul class="sub_mf4">
-                            <li onclick="location.href='http://localhost:3000/scheduler'" >{{classOpen[0].title}}
-                                <span>{{classOpen[0].contents}}</span>
+                            <li>2021 경남도립극단
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/scheduler'">{{classOpen[1].title}}
-                                <span>{{classOpen[1].contents}}</span>
+                            <li>리틀뮤지션
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/scheduler'">{{classOpen[2].title}}
-                                <span>{{classOpen[2].contents}}</span>
+                            <li>에델 라인클랑 단독콘서트
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/scheduler'">{{classOpen[3].title}}
-                                <span>{{classOpen[3].contents}}</span>
+                            <li>연극 우산도둑
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/scheduler'">{{classOpen[4].title}}
-                                <span>{{classOpen[4].contents}}</span>
+                            <li>인형극 하얀산
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/scheduler'">{{classOpen[5].title}}
-                                <span>{{classOpen[5].contents}}</span>
+                            <li>코리안샴푸니오케스트라
+                                <span>2021.06.18</span>
                             </li>
-                            <li onclick="location.href='http://localhost:3000/scheduler'">{{classOpen[6].title}}
-                                <span>{{classOpen[6].contents}}</span>
+                            <li>윤동주,발을쏘다
+                                <span>2021.06.18</span>
                             </li>
                         </ul>
                     </div>
@@ -331,19 +305,19 @@
                         </div>
                         <ul>
                             <li>
-                                <img src="http://localhost:3000/{{bottomImg[0].image}}">
+                                <img src="/image/main/bottom_img/sub_btm2/sub_btm1.jpg">
                             </li>
                             <li>
-                                <img src="http://localhost:3000/{{bottomImg[1].image}}">
+                                <img src="/image/main/bottom_img/sub_btm2/sub_btm2.jpg">
                             </li>
                             <li>
-                                <img src="http://localhost:3000/{{bottomImg[2].image}}">
+                                <img src="/image/main/bottom_img/sub_btm2/sub_btm3.png">
                             </li>
                             <li>
-                                <img src="http://localhost:3000/{{bottomImg[3].image}}">
+                                <img src="/image/main/bottom_img/sub_btm2/sub_btm4.jpg">
                             </li>
                             <li>
-                                <img src="http://localhost:3000/{{bottomImg[4].image}}">
+                                <img src="/image/main/bottom_img/sub_btm2/sub_btm5.jpg">
                             </li>
                         </ul>
 
@@ -353,63 +327,61 @@
                             <img src="/image/main/bottom_img/sub_btm3.png">
                             <h1>YouTube</h1>
                         </div>
-                        <div class="sub_tube-form2" >
-                            <div class="sub_tube_form">
-                                <div class="sub_tube">
-                                    <a href="#">{{banner[1].title}}</a>
-                                    <span>
-                                        {{banner[1].date}}
-                                        <img src="http://localhost:3000/{{bottomImg[5].image}}">
-                                    </span>
-                                </div>
-                                <div class="sub_tube">
-                                    <a href="#">{{banner[2].text}}</a>
-                                    <span>
-                                        {{banner[2].date}}
-                                        <img src="http://localhost:3000/{{bottomImg[6].image}}">
-                                    </span>
-                                </div>
-                                <div class="sub_tube">
-                                    <a href="#">{{banner[3].text}}</a>
-                                    <span>
-                                        {{banner[3].date}}
-                                        <img src="http://localhost:3000/{{bottomImg[5].image}}">
-                                    </span>
-                                </div>
+                        <div class="sub_tube_form">
+                            <div class="sub_tube">
+                                <a href="#">예술의전당</a>
+                                <span>
+                                    2021-05-05
+                                    <img src="/image/main/bottom_img/mqdefault.jpg">
+                                </span>
+                            </div>
+                            <div class="sub_tube">
+                                <a href="#">요즘 예술가를 만나다 서예가 인중 이정화</a>
+                                <span>
+                                    2021-05-05
+                                    <img src="/image/main/bottom_img/mqdefault (1).jpg">
+                                </span>
+                            </div>
+                            <div class="sub_tube">
+                                <a href="#">[흥부]예술의전당 전격재능기부</a>
+                                <span>
+                                    2021-05-05
+                                    <img src="/image/main/bottom_img/mqdefault (2).jpg">
+                                </span>
                             </div>
                         </div>
                     </div>
                     <div class="sub-btm4 ">
                         <ul>
                             <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon01.png"  onclick="location.href='http://localhost:3000/scheduler'">
+                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon01.png">
                                 </span>
-                                <span class="img_name"  onclick="location.href='http://localhost:3000/scheduler'">개강날짜</span>
+                                <span class="img_name">개강날짜</span>
                             </li>
                             <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon02.png"  onclick="location.href='http://localhost:3000/college/interior'">
+                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon02.png">
                                 </span>
-                                <span class="img_name" onclick="location.href='http://localhost:3000/college/interior'">공간안내</span>
+                                <span class="img_name">공간안내</span>
                             </li>
                             <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon03.png" onclick="location.href='http://localhost:3000/college/location'">
+                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon03.png">
                                 </span>
-                                <span class="img_name" onclick="location.href='http://localhost:3000/college/location'">교통주차</span>
+                                <span class="img_name">교통주차</span>
                             </li>
                             <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon05.png" onclick="location.href='http://localhost:3000/job/portfolio'">
+                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon05.png">
                                 </span>
-                                <span class="img_name" onclick="location.href='http://localhost:3000/job/portfolio'">포트폴리오</span>
+                                <span class="img_name">포트폴리오</span>
                             </li>
                             <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon06.png" onclick="location.href='http://localhost:3000/consult/consulting'">
+                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon06.png">
                                 </span>
-                                <span class="img_name" onclick="location.href='http://localhost:3000/consult/consulting'">1:1문의</span>
+                                <span class="img_name">1:1문의</span>
                             </li>
                             <li class="btm4 sa">
-                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon07.png" onclick="location.href='http://localhost:3000/scheduler'">
+                                <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon07.png">
                                 </span>
-                                <span class="img_name" onclick="location.href='http://localhost:3000/scheduler'">이벤트</span>
+                                <span class="img_name">이벤트</span>
                             </li>
                             <li class="btm4 sa">
                                 <span class="btm4_img"><img src="/image/main/bottom_img/mf-rt-r_icon08.png">
@@ -424,8 +396,6 @@
     </div>
     <script type="text/javascript" src="/js/main.js"></script>
     {% include "footer.html" %}
-    
-  
 </body>
 
 </html>

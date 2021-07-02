@@ -1,11 +1,5 @@
-const {Course} = require('../../models')
-
-
-
-let curriculum = async (req,res)=>{
-    let curriculumres = await Course.findAll({})
-    console.log(curriculumres)
-    res.render('curriculum/curriculum.html',{curriculumres})
+let curriculum =(req,res)=>{
+    res.render('curriculum/curriculum.html')
 }
 
 

@@ -30,7 +30,7 @@
     font-size: 12px;
 }
 
-#tel > h3 {
+#tel_div > h3 {
     font-size: 12px;
 }
 
@@ -47,7 +47,7 @@
     height: 35px;
 }
 
-#tel > input{
+#tel{
     height: 35px;
     width: 117px;
 }
@@ -74,4 +74,19 @@
 
 #join-content > form{
     margin-top: 30px;
+}
+
+.useridcheck{
+    display: inline-block;
+    width: 70px;
+    margin-top: 5px;
+    border:1px solid skyblue;
+    background : rgba(0,0,0,0);
+    color: skyblue;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.idchecktext{
+    margin-left: 10px;
 }

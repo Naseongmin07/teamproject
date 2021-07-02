@@ -1,7 +1,6 @@
 const galleria_container = document.querySelector('#galleria-container')
 const max_image_length = 10
 
-// let image = document.querySelectorAll('')
 let url_list = ["http://www.kiweb.or.kr/nBoard/upload/file/facility/1553579106_29784_1.jpg",
                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577488_79841_1.jpg",
                 "http://www.kiweb.or.kr/nBoard/upload/file/facility/1553577283_34775_1.jpg",
