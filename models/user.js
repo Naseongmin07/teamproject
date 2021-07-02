@@ -44,7 +44,7 @@ module.exports = class User extends Sequelize.Model{
             userTel:{
                 allowNull:false,
                 unique:true,
-                type:Sequelize.INTEGER
+                type:Sequelize.STRING(30)
             },
             userImg:{
                 type:Sequelize.TEXT,

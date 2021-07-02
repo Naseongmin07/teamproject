@@ -6,7 +6,7 @@
     }
   </style>
   
-  <form action="/admin/login_on/visitor_info" method="POST" id="submitform" name="form_submit" style="display:none">
+  <form action="/admin/login_on/visitor_info" method="POST" id="submitform" name="form_submit">
   <div id="window-info">
       <input type="date" name="date">
       <input type="text" id="w-i-href" name="currentURL" style="display: none;">
@@ -22,7 +22,7 @@
   
   <script>
     
-    function visitor_info  (){
+    
     document.getElementById('w-i-href').value = window.location.href;
     document.getElementById('w-i-referrer').value = window.document.referrer;
     document.getElementById('w-i-userAgent').value = window.navigator.userAgent;
@@ -30,16 +30,7 @@
     document.getElementById('w-i-width').value = window.screen.width;
     document.getElementById('w-i-height').value = window.screen.height;
 
-  }
-    window.onload = ()=>{
-      visitor_info();
-      document.forms['form_submit'].submit();
-    }
-
-    // visitor_info()
-    // window.onload = function(){
-    //     document.getElementById('submitform').submit()
-    // }
+  
   
   </script>
 {% endblock %}

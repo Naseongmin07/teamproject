@@ -1,6 +1,7 @@
 {% extends 'topmenu.html' %}
 {% block middlecontent %}
 <div id="facility_form_m">
+    <div id="top1">
     <form action="/admin/login_on/image" method="POST" enctype="multipart/form-data">
         <div>
             <label for="title">제목</label>
@@ -13,26 +14,29 @@
             <label for="url">url</label>
             <input type="text" name="url">
             <input type="submit" value="등록" name="enter">
-        </div> 
+        </div>
     </form>
-    {% set res = facility_img %}
-    {% for item in res %}
-    <form action="/admin/login_on/image_del" method="POST">
-        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="300px" height="300px"></div>
-        <div><a href="{{item.url}}">{{item.url}}</a></div>
+    </div>
+    <div id="top">
+        {% set res = facility_img %}
+        {% for item in res %}
+        <form action="/admin/login_on/image_del" method="POST">
+            <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="200px" height="200px"></div>
+            <!-- <div><a href="{{item.url}}">{{item.url}}</a></div> -->
+            <input type="submit" name="del" value="삭제">
+            <input type="text" name="id" value="{{item.id}}" style="display: none;">
+        </form>
+
+        {% endfor %}
+        {% set ress = result %}
+        {% for item in ress %}
+         <form action="/admin/login_on/image_del" method="POST">
+        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="200px" height="200px"></div>
+        <!-- <div><a href="{{item.url}}">{{item.url}}</a></div> -->
         <input type="submit" name="del" value="삭제">
         <input type="text" name="id" value="{{item.id}}" style="display: none;">
-    </form>
+        </form>
+    </div>
 </div>
-    {% endfor %}
-    {% set res = result %}
-    {% for item in res %}
-    <form action="/admin/login_on/image_del" method="POST">
-        <div><img src="http://localhost:3000/{{item.image}}" alt="슬라이드이미지" width="300px" height="300px"></div>
-        <div><a href="{{item.url}}">{{item.url}}</a></div>
-        <input type="submit" name="del" value="삭제">
-        <input type="text" name="id" value="{{item.id}}" style="display: none;">
-    </form>
-</div>
-    {% endfor %}
-{% endblock %}
+        {% endfor %}
+        {% endblock %}

@@ -131,7 +131,7 @@ a{
     height:700px;
     border: 2px solid #b3daff;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 #write_new{
     display: flex;
@@ -147,7 +147,7 @@ a{
 }
 #make_community{
     margin-top: 30px;
-    width: 800px;
+    width: 100%;
     height: 1200px;
     box-sizing: border-box;
 }
@@ -169,11 +169,21 @@ a{
     margin-bottom: 20px;
 }
 #facility_form_m div{
-    width:1200px;
-    display: flex;
+    width:100%;
+    display: inline-block;
     flex-direction: column;
-    padding:20px;
 }
 #board_make_admin{
     width: 1200px;
+}
+#top1{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+#top{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
 }

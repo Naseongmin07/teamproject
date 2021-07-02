@@ -88,7 +88,7 @@ submitBtn.addEventListener('click', async ()=>{
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(obj)
+        body: JSON.stringify(obj)s
     }
     let response = await fetch(url, options)
     let result = await response.json()
